@@ -1,9 +1,9 @@
 # MEARN STACK
-M - MongoDB
-E - Express JS
-A - AngularJS
-R - ReactJS
-N - Node.js
+- M - MongoDB
+- E - Express JS
+- A - AngularJS
+- R - ReactJS
+- N - Node.js
 
 ## Day 1 - 18/06/2025
 
