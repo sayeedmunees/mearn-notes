@@ -1,0 +1,37 @@
+23
+5. HIML Latest version: HTML 5
+24
+6. Basic Tags of HTML: used to display contents in webpage
+25
+- Heading Tag: h1 - h6 tags
+26
+- Paragraph tag: p tag
+27
+- Text Formatting tags:
+28
+- b tag - bold
+29
+- i tag, em tag - italics
+30
+- highlight - mark tag
+31
+- strikout content - s tag
+32
+- superlative content - sup tag
+33
+- Subscript content - sub tag
+34
+- Links: anchor / a tag
+35
+- href: hyperReference Text ()
+36
+- List:
+37
+- Ordered List: ol tag , li tagl
+Underordered ListDescription list Dl, dt, dd tag
+38
+Tags can be classified into 2 according to the display value in the browser
+39
+- Block Elements : h1-h6 tags, p tag
+40
+- Inline Elements : a tag

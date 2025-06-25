@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body background="">
+    <center>
+      <i class="fa-solid fa-house"></i>
+      <h1>Registration Form</h1>
+
+      <fieldset>
+        <form>
+          <!-- UserName -->
+          <label for="username"
+            >UserName :
+            <input id="username" type="text" placeholder="UserName" />
+          </label>
+          <br />
+          <br />
+
+          <!-- Password -->
+          <label for="Password">
+            Password :
+            <input id="Password" type="password" placeholder="Password" />
+          </label>
+          <br />
+          <br />
+
+          <!-- Email -->
+          <label for="Email">
+            Email :
+            <input id="Email" type="email" placeholder="Email" />
+          </label>
+          <br />
+          <br />
+
+          <!-- Experience -->
+          <label for="Experience">
+            Experience:
+            <input type="number" placeholder="Experience" id="Experience" />
+          </label>
+          <br />
+          <br />
+
+          <!-- Address -->
+          <label for="Add">
+            Address :
+            <textarea rows="3" cols="20" id="Add"></textarea>
+          </label>
+          <br /><br />
+
+          <!-- DOB -->
+          <label for="DOB">
+            DOB:
+            <input type="date" id="DOB" />
+          </label>
+          <br /><br />
+
+          <!-- Gender -->
+          <label>Gender :</label>
+          <input type="radio" name="Gender" id="male" />
+          <label for="male">Male</label>
+          <input type="radio" name="Gender" id="female" />
+          <label for="male">Female</label>
+
+          <br /><br />
+
+          <!-- Hobbies -->
+          <label for="">Hobbies:</label>
+          <input type="checkbox" id="h1" />
+          <label for="h1">Eat</label>
+          <input type="checkbox" id="h1" />
+          <label for="h1">Sleep</label>
+          <input type="checkbox" id="h1" />
+          <label for="h1">Code</label>
+          <br /><br />
+
+          <!-- Location -->
+          <label for="Location">Location :</label>
+          <select id="Location">
+            <option selected disabled hidden>Choose Location</option>
+            <option value="Kochi">Kochi</option>
+            <option value="Aluva">Aluva</option>
+            <option value="Angamaly">Angamaly</option>
+            <option value="Kakkanad">Kakkanad</option>
+          </select>
+          <br /><br />
+
+          <!-- Files -->
+          <label for="cv"
+            >Upload here:
+            <input type="file" id="cv" />
+          </label>
+          <br /><br />
+
+          <!-- Range -->
+          <label for="html"
+            >HTML:
+            <input type="range" id="html" />
+          </label>
+          <br /><br />
+
+          <!-- Button -->
+          <button>Submit</button>
+          <input type="button" value="Cancel" />
+
+          <br /><br />
+        </form>
+      </fieldset>
+    </center>
+  </body>
+</html>
