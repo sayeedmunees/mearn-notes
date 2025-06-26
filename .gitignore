@@ -1,0 +1,8 @@
+/workfiles
+*.sketch
+*.fig
+*.xd
+.DS_Store
+.prettierignore
+/design
+/Others
