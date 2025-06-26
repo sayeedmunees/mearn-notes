@@ -1,0 +1,26 @@
+*{
+    text-align: center;
+    color: cadetblue;
+}
+#head{
+    color: red;
+}
+
+.group1{
+    color: blue;
+}
+
+h3, h4{
+    font-size: 24px;
+    text-align: left;
+}
+
+div p{
+    text-align: justify;
+    color: blueviolet;
+}
+
+div>h2{
+    color: burlywood;
+    background-color: black;
+}
