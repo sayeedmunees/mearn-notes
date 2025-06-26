@@ -24,3 +24,12 @@ div>h2{
     color: burlywood;
     background-color: black;
 }
+
+div~p{
+    background-color: black;
+}
+
+div+p{
+    background-color: cornflowerblue;
+    color: black;
+}
