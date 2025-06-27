@@ -17,3 +17,9 @@ h1{
     padding-left: 100px;
     padding-right: 110px; */
 }
+
+a{    
+    border: solid 2px;
+    margin: 50px;
+    padding: 50px;
+}
