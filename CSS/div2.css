@@ -1,0 +1,13 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+div{
+    width: 100%;
+    height: 400px;
+    background-image: url("https://t4.ftcdn.net/jpg/03/92/25/09/360_F_392250914_2Od8jNRBPgpMu8W29vCh4hiu5EUXbgGU.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
