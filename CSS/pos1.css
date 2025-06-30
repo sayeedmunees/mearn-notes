@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.parent{
+    position: relative;
+}
+
+.child{
+    width: 300px;
+    height: auto;
+    border: solid;
+    background-color: bisque;
+    position: absolute;
+    top: 0;
+}
+
+.img1{
+    width: 100%;
+}
+
+#d2{
+    z-index: 1;
+}
