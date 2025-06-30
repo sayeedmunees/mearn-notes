@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    background-color: aqua;
+    padding: 10px;
+    position: fixed;
+}
+
+span{
+    font-weight: 600;
+    font-size: 45px;
+}
+
+h1{
+    padding-top: 150px;
+}
+
