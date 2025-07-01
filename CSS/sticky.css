@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#top{
+    background-color: yellow;
+    position: sticky;
+    top:100px;
+}
+
+.nav1{
+    background-color: red;
+    position: sticky;
+    top: 0px;
+}
