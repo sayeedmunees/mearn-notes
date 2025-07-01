@@ -1,0 +1,28 @@
+/* *{
+    margin: 0px;
+    padding: 0px;
+} */
+
+.parent{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    border: solid;
+    height: 500px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.child{
+    border: solid;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+img{
+    width: 100%;
+    border-radius: 10px;
+}
