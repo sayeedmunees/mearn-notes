@@ -1,0 +1,123 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+#header{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.3rem 1%;
+    background: rgba(209, 209, 209, 0.175);
+    backdrop-filter:blur(50px);
+    z-index: 1;
+}
+
+.logo{
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#check{
+    display: none;
+}
+
+.icons{
+    font-size: 2rem;
+    font-weight: 600;
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: rgb(21, 15, 87);
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.contents{
+    padding-top: 150px;
+}
+
+h1{
+    color: red;
+}
+
+p{
+    font-size: 1.25rem;
+    line-height: 1.2;
+    text-align: justify;
+}
+
+.container{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.item{
+    width:300px;
+    height: max-content;
+    border: solid 1px;
+}
+
+.group1{
+    width: 100%;
+}
+
+@media (max-width: 760px){
+
+    .icons{
+        display: flex;
+    }
+
+    #closeIcon{
+        display: none;
+    }
+
+    #check:checked~.icons #menuicon{
+        display: none;
+    }
+
+    #check:checked~.icons #closeicon{
+        display: block;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left:0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(20px);
+        display: none;
+    }
+
+    .navbar a{
+        display: block;
+        color: white;
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 1.5rem 0px;
+    }
+
+    h1{
+        color: blue;
+    }
+
+    p{
+        font-size: 1.5rem;
+        line-height: 1.75;
+    }
+
+    .container{
+        flex-wrap: wrap;
+    }
+}
