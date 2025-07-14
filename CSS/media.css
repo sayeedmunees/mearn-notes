@@ -82,11 +82,11 @@ p{
         display: none;
     }
 
-    #check:checked~.icons #menuicon{
+    #check:checked~.icons #menuIcon{
         display: none;
     }
 
-    #check:checked~.icons #closeicon{
+    #check:checked~.icons #closeIcon{
         display: block;
     }
 
