@@ -100,6 +100,10 @@ p{
         display: none;
     }
 
+    #check:checked~.navbar{
+        display: block;
+    }
+
     .navbar a{
         display: block;
         color: white;
