@@ -12,16 +12,50 @@
     <div
       class="min-h-screen bg-[url('./assets/bg.jpeg')] bg-center bg-cover px-28 py-5"
     >
+      <!-- navbar -->
+
       <nav class="flex flex-row items-center">
-        <img src="./assets/logo.png" alt="logo" />
-        <ul class="flex flex-row">
-          <li><a href="">Home</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Features</a></li>
-          <li><a href="">Contact</a></li>
+        <img class="w-40 cursor-pointer" src="./assets/logo.png" alt="logo" />
+        <ul class="flex-1 text-center">
+          <li class="list-none inline-block px-5">
+            <a class="text-white px-2" href="#">Home</a>
+          </li>
+          <li class="list-none inline-block px-5">
+            <a class="text-white px-2" href="#">About</a>
+          </li>
+          <li class="list-none inline-block px-5">
+            <a class="text-white px-2" href="#">Features</a>
+          </li>
+          <li class="list-none inline-block px-5">
+            <a class="text-white px-2" href="#">Contact</a>
+          </li>
         </ul>
-        <a href=""><img src="./assets/cart.png" alt="" /></a>
+        <img class="w-7 cursor-pointer" src="./assets/cart.png" alt="" />
       </nav>
+
+      <!-- main contents -->
+
+      <div class="text-white mt-52 max-w-xl">
+        <h1 class="text-6xl font-semibold leading-normal">
+          Groceries <br />
+          Delivery in <span class="font-light">15 Minutes</span>
+        </h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque
+          debitis, praesentium repudiandae nihil hic commodi, tempore accusamus
+          autem a expedita illo eum, exercitationem adipisci quae inventore.
+          Voluptatibus quis magnam nam.
+        </p>
+        <div class="mt-10">
+          <a
+            class="bg-yellow-500 py-3 px-8 rounded-3xl font-semibold mr-4 hover:bg-transparent border hover:border-yellow-400 duration-200 ease-in"
+            href="#"
+            >Order Now</a
+          >
+          <a href="#">Download App <span> &#8595; </span></a>
+        </div>
+      </div>
+      <img class="w-full xl:w-1/3 xl:absolute bottom-0 right-24" src="./assets/man.png" alt="" />
     </div>
   </body>
 </html>
