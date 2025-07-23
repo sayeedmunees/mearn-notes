@@ -8,3 +8,4 @@ if (age >= 18){
     console.log('Not Eligible for Voting');
 }
 
+console.log(age >= 18 ? 'Eligible for Voting' : 'Not Eligible for Voting');

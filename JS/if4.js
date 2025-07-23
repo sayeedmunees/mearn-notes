@@ -1,6 +1,6 @@
-//  .a.p to display a number if its greater than 10
+//  w.a.p to display a number if its greater than 10
 
-const x = 11;
+x = 11;
 if (x > 10) {
-    console.log(`${x}`);
+    console.log(`Number ${x} is greater than 10`);
 }
