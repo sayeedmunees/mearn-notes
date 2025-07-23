@@ -10,4 +10,5 @@ if (num > 0){
     console.log(` ${num} is zero`);
 }
 
+console.log(num > 0 ? ` ${num} is +ve` : num < 0 ? ` ${num} is -ve` : ` ${num} is zero`);
 

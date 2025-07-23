@@ -10,3 +10,5 @@ if (x > y){
 } else{
     console.log(` Both are equal`);
 }
+
+console.log(x > y ? ` ${x} is largest` : y > x ? ` ${y} is largest` : ` Both are equal`);

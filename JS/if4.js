@@ -4,3 +4,4 @@ x = 11;
 if (x > 10) {
     console.log(`Number ${x} is greater than 10`);
 }
+
