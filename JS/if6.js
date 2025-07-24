@@ -1,8 +1,6 @@
 // WAP to print second largest number among 3 unique number and print them in ascending order
 
-num1 = 100;
-num2 = 60;
-num3 = 70;
+let num1 = 100, num2 = 60, num3 = 70;
 
 console.log(`Before sorting ${num1}, ${num2}, ${num3}`);
 
