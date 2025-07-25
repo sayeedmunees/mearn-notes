@@ -9,7 +9,7 @@ var input = prompt("Enter any number: ")
 var num = Number(input)
 
 var fact = 1;
-while (num>0) {
+while (num > 1) {
     fact *= num;
     num--;
 }
