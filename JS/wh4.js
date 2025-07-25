@@ -8,6 +8,7 @@ while (i <= 10) {
 
 console.log(sum);
 
+
 // var j = 10;
 // sum1 = (j*(j+1))/2;
 // console.log(sum1);
