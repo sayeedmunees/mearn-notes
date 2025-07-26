@@ -1,4 +1,8 @@
-//  write a program to check a 3 digit number is armstrong or not
+//  write a program
+// input     2           3           4                 5
+// Logic 1   2*12        3*123       4*1234
+// Logic 2   2+22        3+33+333    4+44+444+4444
+// output    24          369         4936              ?
 
 // import prompt
 const prompt = require("prompt-sync")({sigint:true})
@@ -11,7 +15,7 @@ var num = Number(input);
 var addingNumber = 1 ;
 var multiplyNumber = "";
 
-while (num >= addingNumber) {
+while (addingNumber <= num) {
     multiplyNumber += addingNumber;
     addingNumber++;
 }
