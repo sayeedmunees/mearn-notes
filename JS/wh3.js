@@ -1,4 +1,4 @@
-//  write a program
+//  write a program to do the logic below
 // input     2           3           4                 5
 // Logic 1   2*12        3*123       4*1234
 // Logic 2   2+22        3+33+333    4+44+444+4444
