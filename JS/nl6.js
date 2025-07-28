@@ -1,4 +1,4 @@
-// print pattern
+// print this pattern
 
 //       #
 //     #   #
