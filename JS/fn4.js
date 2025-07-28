@@ -4,7 +4,7 @@
 //     return num%2 == 0 ? "Even" : "Odd"
 // }
 
-const oddOrEven
+const oddOrEven = num => num%2 == 0 ? "Even" : "Odd";
 
 console.log(oddOrEven(6));
 console.log(oddOrEven(7));
