@@ -10,13 +10,16 @@ var leastExpense = expenses[0];
 var highestExpense = expenses[0];
 var totalExpense = 0;
 for (let i of expenses){
-    if ( leastExpense > i){
-        leastExpense = i
-    }
-    else if (highestExpense < i){
-        highestExpense = i
-    }
+    leastExpense > i ? leastExpense = i : highestExpense < i ? highestExpense = i : "false";
     totalExpense += i ;
 }
 
 console.log(`Least expense: ${leastExpense}, Highest expense: ${highestExpense}, Total expense: ${totalExpense}`);
+
+
+// if ( leastExpense > i){
+//         leastExpense = i
+//     }
+// else if (highestExpense < i){
+//     highestExpense = i
+// }
