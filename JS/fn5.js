@@ -1,6 +1,6 @@
 console.log("Normal Function");
 
 // Callback function
-setTimeout( () => {
+setTimeout( () => { 
     console.log("Hello World");
 },5000)
