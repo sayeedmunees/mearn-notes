@@ -2,17 +2,23 @@
 // input = [4,5,6]....[7,8,9]
 // output = [11,10,9]....[17,16,15]
 
-var inputArray = [7,8,9];
+var inputArray = [4,5,6];
 var outputArray = [];
 for (index in inputArray){
-    index == 0 ? outputArray.push((inputArray[1]*2)+1) : index == 1 ? outputArray.push((inputArray[1]*2)) : index == 2 ? outputArray.push((inputArray[1]*2)-1) : false
 
+    // sum of array - each number
+    outputArray.push(inputArray[0]+inputArray[1]+inputArray[2]-inputArray[index])
+
+    // adding or subtracting one
+    // index == 0 ? outputArray.push((inputArray[1]*2)+1) : index == 1 ? outputArray.push((inputArray[1]*2)) : index == 2 ? outputArray.push((inputArray[1]*2)-1) : false
+
+    // adding or subtracting 3
     // if (index == 0){
-    //     outputArray.push((inputArray[1]*2)+1)
+    //     outputArray.push((inputArray[0]*2)+3)
     // }else if (index == 1){
     //     outputArray.push((inputArray[1]*2))
     // }else if (index == 2){
-    //     outputArray.push((inputArray[1]*2)-1)
+    //     outputArray.push((inputArray[2]*2)-3)
     // }
 }
 
