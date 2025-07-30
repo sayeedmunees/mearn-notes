@@ -3,7 +3,7 @@
 var numArray = [10, 11, 34, 2, 56, 78, 12];
 flag = false;
 for (num of numArray){
-    if (num == 2){
+    if (num == 24){
         flag = true;
         break
     }
