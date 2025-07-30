@@ -4,10 +4,16 @@
 
 var inputArray = [4,5,6];
 var outputArray = [];
+var sum = 0;
+
+for (num of inputArray){
+    sum += num;
+}
+
 for (index in inputArray){
 
     // sum of array - each number
-    outputArray.push(inputArray[0]+inputArray[1]+inputArray[2]-inputArray[index])
+    outputArray.push(sum-inputArray[index])
 
     // adding or subtracting one
     // index == 0 ? outputArray.push((inputArray[1]*2)+1) : index == 1 ? outputArray.push((inputArray[1]*2)) : index == 2 ? outputArray.push((inputArray[1]*2)-1) : false
