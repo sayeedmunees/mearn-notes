@@ -80,4 +80,4 @@ console. log(`${curedCases}`);
 
 console.log("Print curred cases in idukki:");
 const curredCases = covid_data.find(cases => cases[1] == "Idukki")
-console.log(`${curredCases[4]}`);
+console.log(`Curred cases in idukki: ${curredCases[4]}`);
