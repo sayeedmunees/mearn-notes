@@ -13,6 +13,16 @@ employee =[
 
 // find total salary of all employees
 
+console.log("------Total Salary--------");
+
+const totalSalary = employee.map (emp=>emp[4]). reduce((s1, s2) => s1+s2);
+console. log(`Total salary is ${totalSalary}`);
+
+// var totalSalar = 0;
+// employee.map(emp => totalSalar += emp[4]);
+// console.log(totalSalar);
+
+
 // Find employee with highest salary
 
 console.log("------Highest Salary--------");
