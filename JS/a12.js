@@ -45,10 +45,11 @@ console.log("+ve case in descending order");
 covid_data.sort((a,b) => b[2] - a[2]).forEach(a => console.log(a[1]))
 
 
-//5.  Is districts with +ve cases > 15000 ?
+//5.  Is there districts with +ve cases > 15000 ?
 
 console.log("Districts with +ve cases > 15000");
-covid_data.filter(cases => cases[2] > 15000).forEach(cases => console.log(cases[1]));
+console.log(`Is there districts with +ve cases > 15000 ? : ${covid_data.some(cases => cases[2] > 15000) ? "Yes" : "No" }`);
+
 
 //6.  sort data with 1st dose vaccine :
 
