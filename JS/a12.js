@@ -50,6 +50,8 @@ covid_data.sort((a,b) => b[2] - a[2]).forEach(a => console.log(a[1]))
 console.log("Districts with +ve cases > 15000");
 console.log(`Is there districts with +ve cases > 15000 ? : ${covid_data.some(cases => cases[2] > 15000) ? "Yes" : "No" }`);
 
+console.log(`Is all districts with +ve cases > 15000 ? : ${covid_data.every(cases => cases[2] > 15000) ? "Yes" : "No" }`);
+
 
 //6.  sort data with 1st dose vaccine :
 
@@ -59,7 +61,8 @@ covid_data.sort((a,b) => a[5] - b[5]).forEach(a => console.log(a))
 //7.  Print thrissur details:
 
 console.log("Print thrissur details:");
-covid_data.filter(cases => cases[1] == 'Thrissur').forEach(cases => console.log(cases));
+console.log(covid_data.find(cases => cases[1] == 'Thrissur'));
+
 
 //8.  Print total number of positive cases:
 
@@ -76,4 +79,5 @@ console. log(`${curedCases}`);
 //10. print curred cases in idukki:
 
 console.log("Print curred cases in idukki:");
-const curredCases = covid_data.filter(cases => cases[1] == "Idukki").forEach(cases => console.log(`${cases[4]}`));
+const curredCases = covid_data.find(cases => cases[1] == "Idukki")
+console.log(`${curredCases[4]}`);
