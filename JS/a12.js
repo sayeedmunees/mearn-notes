@@ -23,19 +23,21 @@ covid_data = [
 //1. District having Highest +ve case:
 
 console.log("District having Highest +ve case:");
-console.log(covid_data.reduce((a,b) =>a[2] > b[2] ? a : b));
-
+const dangerZone = (covid_data.reduce((a,b) =>a[2] > b[2] ? a : b));
+console.log(`${dangerZone[1]}`);
 
 //2. District having highest 1st dose vaccine :
 
 console.log("District having highest 1st dose vaccine : ");
-console.log(covid_data.reduce((a,b) =>a[5] > b[5] ? a : b));
+const highest1stVaccine = (covid_data.reduce((a,b) =>a[5] > b[5] ? a : b));
+console.log(highest1stVaccine[1]);
 
 
 //3. District having lowest death rate :
 
 console.log("District having lowest death rate :");
-console.log(covid_data.reduce((a,b) =>a[3] < b[3] ? a : b));
+const lowDeathRate = (covid_data.reduce((a,b) =>a[3] < b[3] ? a : b));
+console.log(lowDeathRate[1]);
 
 //4.  sort data with +ve case in descending order :
 
