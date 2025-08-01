@@ -11,18 +11,31 @@ employee =[
     [1008, 'Nihaan', 'developer', 'TVM', 25000,3],
 ]
 
+// find total salary of all employees
+
 // Find employee with highest salary
 
 console.log("------Highest Salary--------");
-employee.sort((a, b) => b[4] - a[4])
-console.log(employee[0]);
+
+const highSalary = employee.reduce((a,b) =>a[4]>b[4] ? a :b)
+console. log(`High salary : ${highSalary[1]} Salary : ${highSalary[4]}`);
+
+// employee.sort((a, b) => b[4] - a[4])
+// console.log(employee[0]);
 
 
 // Find employee with Least salary
 
 console.log("------Least Salary--------");
-employee.sort((a, b) => b[4] - a[4])
-console.log(employee[employee.length-1]);
+
+const leastSalary = employee. reduce((a,b)=>a[4]<b[4] ? a :b)
+console. log(`leastSalary : ${leastSalary[1]} Salary : ${leastSalary[4]}`);
+
+const leastSalaryFirst = employee.reduceRight((a,b)=>a[4]<b[4] ? a :b)
+console. log( `leastSalary : ${leastSalaryFirst[1]} Salary : ${leastSalaryFirst[4]}`);
+
+// employee.sort((a, b) => b[4] - a[4])
+// console.log(employee[employee.length-1]);
 
 
 //  Find employee name
