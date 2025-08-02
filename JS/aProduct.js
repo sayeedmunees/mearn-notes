@@ -9,7 +9,6 @@ products =[
     [5,'tiger',20,30],
     [6,'unibic',60,20],
     [7,'good day',70,20],
-
 ]
 
 
