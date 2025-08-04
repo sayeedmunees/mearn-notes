@@ -8,6 +8,6 @@ console. log(nameArray.indexOf("Rini"));
 
 // Remove "Rini: from the above array
 
-console. log (nameArray);
+console. log(nameArray);
 console. log(nameArray.splice(2,1));
-console. log (nameArray) ;
+console. log(nameArray);
