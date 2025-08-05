@@ -14,6 +14,6 @@ console.log(sentence.split(' '));
 console.log(sentence.split(''));
 console.log(`Does str starts with Ma: ${str.includes('Ma')}`);
 
-var word = "    Hello World    "
+var word = "    Hello World    ";
 console.log(`Word length before: ${word.length}`);
 console.log(`Word length after: ${word.trim().length}`);
