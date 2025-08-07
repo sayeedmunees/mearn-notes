@@ -12,3 +12,19 @@ weatherData=[
 
 //  print district with its highest temperature
 // output : {Trissur:32,Kottayam:30,....}
+
+output = {}
+weatherData.forEach(districtDetails  => {
+    dist = districtDetails.district
+    currentTemp = districtDetails.temp
+    if(output.hasOwnProperty(dist)){
+        oldTemp = output[dist];
+        if(currentTemp >= oldTemp){
+            output [dist] = currentTemp
+        }
+    }else{
+        output [dist] = currentTemp;
+    }
+})
+
+console.log(output);
