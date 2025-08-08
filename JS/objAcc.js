@@ -92,36 +92,34 @@ credit1002Transactions = accounts.map(account => account.transaction).flat(Infin
 console.log(credit1002Transactions);
 
 // 7. print total credited amount to 1002 -
-console.log(`-------total credited amount to 1002 : -------------`);
 
-var totalCredit = 0;
-totalCredit1002Transactions = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.to == 1002).forEach(trans => totalCredit += trans.amount);
-
-console.log(totalCredit);
+totalCredit1002 = credit1002Transactions.map(details=>details.amount).reduce((a,b)=>a+b);
+console. log(`-------total credited amount to 1002 :${totalCredit1002} ----`);
 
 // 8. print debit transaction of account 1002 -
-console.log("-------debit transaction of account 1002-------------");
 
-debit1002Transactions = accounts.filter(accDetail => accDetail.acno == 1002).map(account => account.transaction).flat(Infinity);
-console.log(debit1002Transactions);
+console. log("-----debit transaction of account 1002---");
+debit1002Transaction = accounts.find(details => details.acno == 1002).transaction;
+console.log(debit1002Transaction);
 
 // 9. print total debited amount from 1002 -
-console.log("-------debit amount from 1002-------------");
-
-var totalDebit = 0;
-totalDebit1002Transactions = accounts.filter(accDetail => accDetail.acno == 1002).map(account => account.transaction).flat(Infinity).forEach(trans => totalDebit += trans.amount);
-
-console.log(totalDebit);
+totalDebit1002 = debit1002Transaction.map(details=>details.amount).reduce((a,b)=>a+b);
+console.log(`------Total debited amount from 1002 : ${totalDebit1002}--------`);
 
 // 10. print transaction history of 1002 -
 console.log("-------Transaction history of 1002-------------");
 
-console.log(debit1002Transactions);
-console.log(credit1002Transactions);
+transactionHistory = [...credit1002Transactions, ...debit1002Transaction]
+console.log(transactionHistory);
 
 
 // 11. print current balance (balance+credit amount) of 1002
+console.log("-------current balance (balance+credit amount) of 1002------------");
 
+console.log(accounts.find(account => account.acno == 1002).balance + totalCredit1002);
 
 // 12. print highest balance account details
 console.log("-------highest balance account details------------");
+
+highestbalanceAcc = accounts.reduce((a,b) => a.balance > b.balance ? a : b);
+console. log(`-------highest balance Account is ${highestbalanceAcc.acno} - has balance of: ${highestbalanceAcc.balance}------`);
