@@ -87,36 +87,37 @@ console.log(accTransactions);
 // 6. print credit transaction of account 1002 -
 console.log("--------credit transaction of account 1002-----------------");
 
-accTransactionsOf1002 = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.to == 1002);
+credit1002Transactions = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.to == 1002);
 
-console.log(accTransactionsOf1002);
+console.log(credit1002Transactions);
 
 // 7. print total credited amount to 1002 -
 console.log(`-------total credited amount to 1002 : -------------`);
 
 var totalCredit = 0;
-accTotalTransactionsTo1002 = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.to == 1002).forEach(trans => totalCredit += trans.amount);
+totalCredit1002Transactions = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.to == 1002).forEach(trans => totalCredit += trans.amount);
 
 console.log(totalCredit);
 
 // 8. print debit transaction of account 1002 -
 console.log("-------debit transaction of account 1002-------------");
 
-var totalDebit = 0;
-accTotalTransactionsOf1002 = accounts.filter(accDetail => accDetail.acno == 1002).map(account => account.transaction).flat(Infinity).forEach(trans => totalDebit += trans.amount);;
-
-console.log(totalDebit);
-
-// forEach(trans => totalDebit += trans.amount);
+debit1002Transactions = accounts.filter(accDetail => accDetail.acno == 1002).map(account => account.transaction).flat(Infinity);
+console.log(debit1002Transactions);
 
 // 9. print total debited amount from 1002 -
 console.log("-------debit amount from 1002-------------");
 
+var totalDebit = 0;
+totalDebit1002Transactions = accounts.filter(accDetail => accDetail.acno == 1002).map(account => account.transaction).flat(Infinity).forEach(trans => totalDebit += trans.amount);
+
+console.log(totalDebit);
 
 // 10. print transaction history of 1002 -
 console.log("-------Transaction history of 1002-------------");
 
-
+console.log(debit1002Transactions);
+console.log(credit1002Transactions);
 
 
 // 11. print current balance (balance+credit amount) of 1002
