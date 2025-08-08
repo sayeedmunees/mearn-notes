@@ -71,33 +71,46 @@ console.log(accounts.find(account => account.acno == 1000).balance);
 // 4. print all gpay transactions-
 console.log("--------All gpay transactions------------------");
 
-accTransactions = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.mode == 'gpay');
+accGpayTransactions = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.mode == 'gpay');
 
-console.log(accTransactions);
+console.log(accGpayTransactions);
 
 
 
 // 5. print all transactions whose amount  > 5000-
 console.log("--------All transactions whose amount  > 5000------------------");
 
+accTransactions = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.amount > 5000 );
+
+console.log(accTransactions);
 
 // 6. print credit transaction of account 1002 -
 console.log("--------credit transaction of account 1002-----------------");
 
+accTransactionsOf1002 = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.to == 1002);
 
-
+console.log(accTransactionsOf1002);
 
 // 7. print total credited amount to 1002 -
 console.log(`-------total credited amount to 1002 : -------------`);
 
+var totalCredit = 0;
+accTotalTransactionsTo1002 = accounts.map(account => account.transaction).flat(Infinity).filter(accDetail => accDetail.to == 1002).forEach(trans => totalCredit += trans.amount);
+
+console.log(totalCredit);
 
 // 8. print debit transaction of account 1002 -
 console.log("-------debit transaction of account 1002-------------");
 
+var totalDebit = 0;
+accTotalTransactionsOf1002 = accounts.filter(accDetail => accDetail.acno == 1002).map(account => account.transaction).flat(Infinity).forEach(trans => totalDebit += trans.amount);;
 
+console.log(totalDebit);
 
+// forEach(trans => totalDebit += trans.amount);
 
 // 9. print total debited amount from 1002 -
+console.log("-------debit amount from 1002-------------");
 
 
 // 10. print transaction history of 1002 -
