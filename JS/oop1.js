@@ -15,4 +15,5 @@ class Employee{
 
 // object
 const emp1 = new Employee(1, "Sulu", 23000, "Tester");
+
 emp1.displayEmp();
