@@ -47,15 +47,24 @@ class Bank{
 
     // function for fund transfer(fromAcno, toAcno, amount)
 
-    fundTransfer(acno1, acno2, amount){
-        if (this.validateAccount(acno1) && this.validateAccount(acno2)){
-            if (amount <= this.accountDetails[acno1].balance){
+    fundTransfer(fromAcno, toAcno, amount){
+        if (this.validateAccount(fromAcno) && this.validateAccount(toAcno)){
+            if (amount <= this.accountDetails[fromAcno].balance){
+
+                console.log(`Before transfer balance of Account ${fromAcno} is ${this.accountDetails[fromAcno].balance} and of Account ${toAcno} is ${this.accountDetails[toAcno].balance}`);
+
+
+                this.accountDetails[fromAcno].balance -= amount;
+                this.accountDetails[toAcno].balance += amount;
+
                 console.log("Fund Transfer Successful");
+
+                console.log(`After transfer balance of Account ${fromAcno} is ${this.accountDetails[fromAcno].balance} and of Account ${toAcno} is ${this.accountDetails[toAcno].balance}`);
             } else{
-                console.log("Fund Transfer Failed, No enough amount");
+                console.log("Insufficient Balance");
             }
         }else{
-            console.log('Invalid account');
+            console.log('Invalid credit or debit account');
         }
     }
 
