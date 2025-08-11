@@ -15,5 +15,7 @@ class Employee{
 
 // object
 const emp1 = new Employee(1, "Sulu", 23000, "Tester");
-
 emp1.displayEmp();
+
+const emp2 = new Employee(2, "Raju", 33000, "Developer");
+emp2.displayEmp();
