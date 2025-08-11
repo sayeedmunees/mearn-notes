@@ -38,5 +38,5 @@ class Products {
     }
 }
 
-const prod1 = new Products(1,'Biscuit', 20, 2)
+const prod1 = new Products(1,'Biscuit', 20, 25)
 prod1.displayProduct();
