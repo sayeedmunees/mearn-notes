@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <h3 class="text-primary text-center">details</h3>
+          <div class="d-flex mt-5">
+            <input
+              id="age"
+              class="form control"
+              type="text"
+              placeholder="enter your age!!"
+            />
+            <button onclick="vote()" type="button" class="btn btn-primary">
+              check
+            </button>
+          </div>
+          <div id="result"></div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const vote = () => {
+      console.log(age.value);
+      if (age.value) {
+        if (age.value >= 18) {
+          result.innerHTML = `<p class "text-success>mhhh avamm.....</p>`;
+          result.style.color = "green";
+        } else {
+          result.innerHTML = `<p class "text-success>nirthirooo neee</p>`;
+          result.style.color = "red";
+          result.style.fontsize = "";
+        }
+      } else {
+        alert("pannik poda");
+      }
+    };
+  </script>
+</html>

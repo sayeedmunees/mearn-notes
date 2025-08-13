@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- External CSS -->
-     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-</body>
-<!-- External JS -->
- <script src="./script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" placeholder="0" id="result" class="display" readonly />
+      <div class="buttons">
+        <button onclick="displayContent('7')" class="button">7</button>
+        <button onclick="displayContent('8')" class="button">8</button>
+        <button onclick="displayContent('9')" class="button">9</button>
+        <button onclick="displayContent('')" class="button operator">+</button>
+        <button onclick="displayContent('4')" class="button">4</button>
+        <button onclick="displayContent('5')" class="button">5</button>
+        <button onclick="displayContent('6')" class="button">6</button>
+        <button onclick="displayContent('-')" class="button operator">-</button>
+        <button onclick="displayContent('1')" class="button">1</button>
+        <button onclick="displayContent('2')" class="button">2</button>
+        <button onclick="displayContent('3')" class="button">3</button>
+        <button onclick="displayOperator('*')" class="button operator">
+          *
+        </button>
+        <button onclick="calcScreenClear()" class="button">AC</button>
+        <button onclick="displayContent('0')" class="button">0</button>
+        <button onclick="displayOperator('/')" class="button">/</button>
+        <button onclick="calcOutput()" id="equal" class="button operator">=</button>
+        <button onclick="removeLastDigit()" id="del" class="button">DEL</button>
+      </div>
+    </div>
+  </body>
+  <!-- External JS -->
+  <script src="./script.js"></script>
 </html>

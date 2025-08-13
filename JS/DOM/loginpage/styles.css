@@ -1,0 +1,56 @@
+/* body {
+  background-color: #16c3ef !important;
+} */
+
+.card {
+  border-radius: 16px !important;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1rem !important;
+  }
+  .img-fluid {
+    max-height: 140px !important;
+    padding: 1rem !important;
+  }
+}
+
+
+/* Reset some default margin/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar Styling */
+#custom-navbar {
+  background-color: #16c3ef;
+  min-height: 60px;
+}
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.welcome-text {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  color: #222;
+}
+
+@media (max-width: 600px) {
+  .welcome-text {
+    font-size: 2rem;
+  }
+  .logo-img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
