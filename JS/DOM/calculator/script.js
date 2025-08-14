@@ -1,18 +1,16 @@
-// display content in calculator screen
-function displayContent(content) {
-    result.value += content
+//to display content
+function displayContent(content){
+    result.value+=content
 }
-
-// clear
+//clear
 function calcScreenClear(){
-    result.value = "";
+    result.value=""
 }
-
-// result
+//result
 function calcOutput(){
-    result.value = eval(result.value)
+    result.value=eval(result.value)
 }
-
+//remove last digit
 function removeLastDigit(){
-    result.value = result. value.slice(0, -1)
+    result.value=result.value.slice(0,-1)
 }

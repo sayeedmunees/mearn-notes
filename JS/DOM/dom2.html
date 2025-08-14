@@ -11,22 +11,20 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
-    <div class="container mt-5">
+  <body class="bg-dark">
+    <div class="container p-5">
       <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-          <h3 class="text-primary text-center">details</h3>
+          <h3 class="text-primary text-center">Checking Voting Eligibility</h3>
           <div class="d-flex mt-5">
             <input
               id="age"
-              class="form control"
+              class="form-control"
               type="text"
-              placeholder="enter your age!!"
+              placeholder="Enter your age!!"
             />
-            <button onclick="vote()" type="button" class="btn btn-primary">
-              check
-            </button>
+            <button onclick="vote()" class="btn btn-primary ms-2">Check</button>
           </div>
           <div id="result"></div>
         </div>
@@ -39,15 +37,16 @@
       console.log(age.value);
       if (age.value) {
         if (age.value >= 18) {
-          result.innerHTML = `<p class "text-success>mhhh avamm.....</p>`;
-          result.style.color = "green";
+          result.innerHTML = `<p class="text-success">Eligible for voting</p>`;
+          result.style.fontSize = "20px";
         } else {
-          result.innerHTML = `<p class "text-success>nirthirooo neee</p>`;
+          result.innerHTML = `<p>Not Eligible for voting</p>`;
           result.style.color = "red";
-          result.style.fontsize = "";
+          result.style.fontSize = "20px";
+          // result.style.fontWeight = "bold";
         }
       } else {
-        alert("pannik poda");
+        alert("Invalid");
       }
     };
   </script>
