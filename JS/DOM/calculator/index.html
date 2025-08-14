@@ -12,84 +12,194 @@
     />
   </head>
   <body>
-    <div class="row container ">
+    <div class="row container">
+      <h2 class="text-center mt-5">Simple Calculator</h2>
       <div class="col-4"></div>
-      <div class="col-4 mt-5 p-5 shadow ">
-        <div class="row g-3 ">
+      <div class="col-4 mt-5 p-5 shadow">
+        <div class="row g-3">
           <div class="col">
-            <input id="result" class="w-100 form-control" type="text" placeholder="0" readonly />
-          </div>
-        </div>
-        <div class="row g-3 mt-2">
-          <div class="col ">
-            <button onclick="displayContent('7')" type="button" class="btn btn-light w-75">7</button>
-          </div>
-          <div class="col">
-            <button onclick="displayContent('8')" type="button" class="btn btn-light w-75">8</button>
-          </div>
-
-          <div class="col">
-            <button onclick="displayContent('9')" type="button" class="btn btn-light w-75">9</button>
-          </div>
-          <div class="col">
-            <button onclick="displayContent('+')" type="button" class="btn btn-warning w-75">+</button>
+            <input
+              id="result"
+              class="w-100 form-control"
+              type="text"
+              placeholder="0"
+              readonly
+            />
           </div>
         </div>
         <div class="row g-3 mt-2">
           <div class="col">
-            <button onclick="displayContent('4')" type="button" class="btn btn-light w-75">4</button>
+            <button
+              onclick="displayContent('7')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              7
+            </button>
           </div>
           <div class="col">
-            <button  onclick="displayContent('5')" type="button" class="btn btn-light w-75">5</button>
+            <button
+              onclick="displayContent('8')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              8
+            </button>
           </div>
 
           <div class="col">
-            <button onclick="displayContent('6')" type="button" class="btn btn-light w-75">6</button>
+            <button
+              onclick="displayContent('9')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              9
+            </button>
           </div>
           <div class="col">
-            <button onclick="displayContent('-')" type="button" class="btn btn-warning w-75">-</button>
+            <button
+              onclick="removeLastDigit()"
+              type="button"
+              class="btn btn-warning w-100"
+            >
+              &#8592;
+            </button>
+          </div>
+        </div>
+        <div class="row g-3 mt-2">
+          <div class="col">
+            <button
+              onclick="displayContent('4')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              4
+            </button>
+          </div>
+          <div class="col">
+            <button
+              onclick="displayContent('5')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              5
+            </button>
+          </div>
+
+          <div class="col">
+            <button
+              onclick="displayContent('6')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              6
+            </button>
+          </div>
+          <div class="col">
+            <button
+              onclick="calcScreenClear()"
+              type="button"
+              class="btn btn-danger w-100"
+            >
+              AC
+            </button>
           </div>
         </div>
 
         <div class="row g-3 mt-2">
           <div class="col">
-            <button onclick="displayContent('1')" type="button" class="btn btn-light w-75">1</button>
+            <button
+              onclick="displayContent('1')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              1
+            </button>
           </div>
           <div class="col">
-            <button onclick="displayContent('2')" type="button" class="btn btn-light w-75">2</button>
+            <button
+              onclick="displayContent('2')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              2
+            </button>
           </div>
 
           <div class="col">
-            <button onclick="displayContent('3')" type="button" class="btn btn-light w-75">3</button>
+            <button
+              onclick="displayContent('3')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              3
+            </button>
           </div>
           <div class="col">
-            <button onclick="displayContent('*')" type="button" class="btn btn-warning w-75">*</button>
+            <button
+              onclick="displayContent('+')"
+              type="button"
+              class="btn btn-primary w-100"
+            >
+              +
+            </button>
           </div>
         </div>
-          <div class="row g-3 mt-2">
+        <div class="row g-3 mt-2">
           <div class="col">
-            <button onclick="calcScreenClear()" type="button" class="btn btn-warning w-75">AC</button>
+            <button
+              onclick="displayContent('0')"
+              type="button"
+              class="btn btn-light w-100"
+            >
+              0
+            </button>
           </div>
           <div class="col">
-            <button onclick="displayContent('0')" type="button" class="btn btn-light w-75">0</button>
+            <button
+              onclick="displayContent('/')"
+              type="button"
+              class="btn btn-primary w-100"
+            >
+              /
+            </button>
           </div>
 
           <div class="col">
-            <button onclick="displayContent('/')" type="button" class="btn btn-warning w-75">/</button>
+            <button
+              onclick="displayContent('*')"
+              type="button"
+              class="btn btn-primary w-100"
+            >
+              *
+            </button>
           </div>
+
           <div class="col">
-            <button onclick="calcOutput()" type="button" class="btn btn-warning w-75">=</button>
+            <button
+              onclick="displayContent('-')"
+              type="button"
+              class="btn btn-primary w-100"
+            >
+              -
+            </button>
           </div>
         </div>
-          <div class="row g-3 mt-2 ">
-            <div class="col-12">
-              <button onclick="removeLastDigit()" type="button" class="btn btn-light w-100">&#8592;</button>
-            </div>
+        <div class="row g-3 mt-2">
+          <div class="col-12">
+            <button
+              onclick="calcOutput()"
+              type="button"
+              class="btn btn-primary w-100"
+            >
+              =
+            </button>
           </div>
         </div>
       </div>
-      <div class="col-4"></div>
     </div>
+    <div class="col-4"></div>
+    <!-- </div> -->
   </body>
   <script src="./script.js"></script>
 </html>
