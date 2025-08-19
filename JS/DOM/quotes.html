@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quotes Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div
+      style="min-height: 100vh"
+      class="bg-secondary w-100 d-flex justify-content-center align-items-center"
+    >
+      <div class="container text-center">
+        <h1 class="text-light">Quote Generator App</h1>
+        <button onclick="getQuote()" class="mt-5 btn btn-success">
+          Generate Quote
+        </button>
+        <div id="result" class="my-5">
+          <div class="border rounded p-5">
+            <h1 class="text-light">Quote for the day</h1>
+          </div>
+        </div>
+      </div>
+      I
+    </div>
+  </body>
+  <script>
+    const getQuote = () => {
+      alert("Function called....");
+    };
+  </script>
+</html>
