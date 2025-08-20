@@ -24,6 +24,7 @@
         <div id="result" class="my-5">
           <div class="border rounded p-5">
             <h1 class="text-light">Quote for the day</h1>
+            <p class="fw-bolder text-white fs-2"></p>
           </div>
         </div>
       </div>
@@ -32,7 +33,35 @@
   </body>
   <script>
     const getQuote = () => {
-      alert("Function called....");
+      // 1. Create an object for XMLHttpRequest class
+      const api = new XMLHttpRequest();
+      // 2. Create/initialize request to https://dummyjson.com/quotes
+      api.open("get", "https://dummyjson.com/quotes");
+      // 3. send request
+      api.send();
+      api.onreadystatechange = () => {
+        console.log(api.readyState);
+        if (api.readyState == 4) {
+          if (api.status >= 200 && api.status < 300) {
+            console.log(api.responseText);
+            const response = JSON.parse(api.responseText);
+            console.log(response);
+            const allQuotes = response.quotes;
+            console.log(allQuotes);
+            const randomIndex = Math.floor(Math.random() * allQuotes.length);
+            console.log(randomIndex);
+            const displayQuote = allQuotes[randomIndex].quote;
+            result.innerHTML = `<div class="border rounded p-5">
+            <h1 class="text-light">Quote for the day</h1>
+            <p class="fw-bolder text-white fs-2">${displayQuote}</p>
+          </div>`;
+          } else {
+            console.log("Api call failed...");
+          }
+        } else {
+          console.log("Waiting for server to respond...");
+        }
+      };
     };
   </script>
 </html>
