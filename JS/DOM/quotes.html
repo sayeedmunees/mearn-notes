@@ -50,10 +50,11 @@
             console.log(allQuotes);
             const randomIndex = Math.floor(Math.random() * allQuotes.length);
             console.log(randomIndex);
-            const displayQuote = allQuotes[randomIndex].quote;
+            const displayQuote = allQuotes[randomIndex];
             result.innerHTML = `<div class="border rounded p-5">
-            <h1 class="text-light">Quote for the day</h1>
-            <p class="fw-bolder text-white fs-2">${displayQuote}</p>
+            <h1 class="text-light mb-3">Quote for the day</h1>
+            <p class="fw-bolder text-white fs-2">"${displayQuote.quote}"</p>
+            <p class="fw-bolder text-white fs-2"> ~ ${displayQuote.author}</p>
           </div>`;
           } else {
             console.log("Api call failed...");
