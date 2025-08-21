@@ -28,31 +28,9 @@
           </button>
         </div>
         <div class="row align-items-center py-5">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-6" id="result">
-            <div class="row border rounded bg-light align-items-center py-3">
-              <h1 class="text-start">Country Name</h1>
-              <div class="col-lg-6">
-                <img
-                  class="img-fluid"
-                  src="https://cdn.britannica.com/97/1597-050-008F30FA/Flag-India.jpg"
-                  alt="flag"
-                />
-                <a href="#" class="mt-5">Click here to view in map</a>
-              </div>
-              <div class="col-lg-6 ps-3 justify-content-start">
-                <ul class="text-start fs-5 list-group" style="list-style: none">
-                  <li class="list-group-item">Capital :</li>
-                  <li class="list-group-item">Population :</li>
-                  <li class="list-group-item">Time Zone :</li>
-                  <li class="list-group-item">Continent :</li>
-                  <li class="list-group-item">Languages :</li>
-                  <li class="list-group-item">Currency :</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3"></div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10" id="result"></div>
+          <div class="col-lg-1"></div>
         </div>
       </div>
     </div>
@@ -71,6 +49,34 @@
           `https://restcountries.com/v3.1/name/${userInput.value}?fullText=true`
         );
         console.log(response);
+        if (response.status == 200) {
+          const countryDetails = await response.json();
+          console.log(countryDetails);
+          const displayData = countryDetails[0];
+          console.log(displayData);
+          result.innerHTML = `
+          <div class="row border rounded bg-light align-items-center py-3">
+              <h1 class="text-start">${displayData.name.common}</h1>
+              <div class="col-lg-6 row">
+                <img
+                  class="img-fluid"
+                  src="${displayData.flags.png}"
+                  alt="flag"
+                />
+                <a href="${displayData.maps.googleMaps}" class="mt-5">Click here to view in map</a>
+              </div>
+              <div class="col-lg-6 ps-3 justify-content-start">
+                <ul class="text-start fs-5 list-group" style="list-style: none">
+                  <li class="list-group-item">Capital : ${displayData.capital}</li>
+                  <li class="list-group-item">Population : ${displayData.population}</li>
+                  <li class="list-group-item">Time Zone : ${displayData.timezones}</li>
+                  <li class="list-group-item">Continent : ${displayData.continents}</li>
+                  <li class="list-group-item">Languages : ${Object.values(displayData.languages)}</li>
+                  <li class="list-group-item">Currency : ${displayData.currencies[Object.keys(displayData.currencies)].symbol} ${displayData.currencies[Object.keys(displayData.currencies)].name}</li>
+                </ul>
+              </div>
+            </div>`;
+        }
       } else {
         alert("Please Enter a valid Country");
       }
