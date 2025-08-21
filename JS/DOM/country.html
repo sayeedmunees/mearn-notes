@@ -16,33 +16,35 @@
       <div class="container text-center">
         <h1 class="text-success py-5">Know more about Countries</h1>
         <form class="d-flex justify-content-center" role="search">
-          <input
+          <input id="userInput"
             class="form-control me-2 w-50"
             type="search"
             placeholder="Enter Country NAme"
             aria-label="Search"
           />
-          <button class="btn btn-success" type="submit">Search</button>
+          <button onclick="getCountry()" class="btn btn-success" type="submit">Search</button>
         </form>
         <div class="row align-items-center py-5">
           <div class="col-lg-3"></div>
-          <div class="col-lg-6">
+          <div class="col-lg-6" id="result">
             <div class="row border rounded bg-light align-items-center py-3">
               <div class="col-lg-6">
-                <h1>Country Name</h1>
+                <h1 class="text-start ">Country Name</h1>
                 <img
-                  style="width: 300px;"
+                  class="img-fluid"
                   src="https://cdn.britannica.com/97/1597-050-008F30FA/Flag-India.jpg"
                   alt="flag"
                 />
+                <a href="#" class="mt-5">Click here to view in map</a>
               </div>
-              <div class="col-lg-6">
-                <ul class="text-start fs-4">
-                  <li>Capital</li>
-                  <li>Population</li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
+              <div class="col-lg-6 ps-3 justify-content-start">
+                <ul class="text-start fs-5 list-group" style="list-style: none">
+                  <li class="list-group-item">Capital :</li>
+                  <li class="list-group-item">Population :</li>
+                  <li class="list-group-item">Time Zone :</li>
+                  <li class="list-group-item">Continent :</li>
+                  <li class="list-group-item">Languages :</li>
+                  <li class="list-group-item">Currency :</li>
                 </ul>
               </div>
             </div>
