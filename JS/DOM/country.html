@@ -16,20 +16,23 @@
       <div class="container text-center">
         <h1 class="text-success py-5">Know more about Countries</h1>
         <form class="d-flex justify-content-center" role="search">
-          <input id="userInput"
+          <input
+            id="userInput"
             class="form-control me-2 w-50"
             type="search"
-            placeholder="Enter Country NAme"
+            placeholder="Enter Country Name"
             aria-label="Search"
           />
-          <button onclick="getCountry()" class="btn btn-success" type="submit">Search</button>
+          <button onclick="getCountry()" class="btn btn-success" type="submit">
+            Search
+          </button>
         </form>
         <div class="row align-items-center py-5">
           <div class="col-lg-3"></div>
           <div class="col-lg-6" id="result">
             <div class="row border rounded bg-light align-items-center py-3">
+              <h1 class="text-start">Country Name</h1>
               <div class="col-lg-6">
-                <h1 class="text-start ">Country Name</h1>
                 <img
                   class="img-fluid"
                   src="https://cdn.britannica.com/97/1597-050-008F30FA/Flag-India.jpg"
@@ -59,4 +62,18 @@
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"
   ></script>
+
+  <script>
+    const getCountry = async () => {
+      if (userInput.value) {
+        // api call
+        const response = await fetch(
+          `https://restcountries.com/v3.1/names/${userInput.value}?fullText=true`
+        );
+        console.log(response);
+      } else {
+        alert("Please Enter a valid Country");
+      }
+    };
+  </script>
 </html>
