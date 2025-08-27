@@ -3,6 +3,7 @@ import Company from "./Company"
 import Employee from "./Employee"
 import MyCar from "./MyCar";
 import Counter from "./Counter";
+import Todo from "./Todo";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
       {/* Inline CSS */}
+      <Todo/>
       <h1 style={{textAlign:"center", color:"green", marginTop:"2rem"}}>Demo Project</h1>
       <h3 className="text-center">Welcome back <span style={spanStyle}>{empName}</span></h3>
       <Counter/>
