@@ -6,13 +6,15 @@ import Counter from "./Counter";
 
 function App() {
 
+  const[count, setCount] = useState(0)
   const [userName, setUserName] = useState("")
 
   // JS code
   const empName = "Maxx Well";
   const spanStyle = {fontWeight: 600, color:"blue"};
   const ShowAlert = () => {
-    alert("Button Clicked")
+    setCount(count+1)
+    alert(`Button Clicked: ${count}`)
   }
 
   const ShowAlertWithData = (data) => {
