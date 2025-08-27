@@ -2,6 +2,7 @@ import { useState } from "react";
 import Company from "./Company"
 import Employee from "./Employee"
 import MyCar from "./MyCar";
+import Counter from "./Counter";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       {/* Inline CSS */}
       <h1 style={{textAlign:"center", color:"green", marginTop:"2rem"}}>Demo Project</h1>
       <h3 className="text-center">Welcome back <span style={spanStyle}>{empName}</span></h3>
+      <Counter/>
       <div className="text-center my-3">
         <button onClick={ShowAlert} className="btn btn-primary">Show Alert</button> <br />
         <button onClick={() => ShowAlertWithData(empName)} className="btn btn-success mt-3">Show Alert With Data</button>
