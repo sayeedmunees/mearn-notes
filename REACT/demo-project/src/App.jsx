@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Company from "./Company"
 import Employee from "./Employee"
 import MyCar from "./MyCar";
@@ -6,15 +6,23 @@ import Counter from "./Counter";
 
 function App() {
 
-  const[count, setCount] = useState(0)
+  const ref = useRef(0)
+  // const[count, setCount] = useState(0)
+  const inputRef = useRef(null)
   const [userName, setUserName] = useState("")
 
   // JS code
   const empName = "Maxx Well";
   const spanStyle = {fontWeight: 600, color:"blue"};
+
+  useEffect(()=>{
+    inputRef.current.focus()
+  },[])
+
   const ShowAlert = () => {
-    setCount(count+1)
-    alert(`Button Clicked: ${count}`)
+    // setCount(count+1)
+    ref.current += 1
+    alert(`Button Clicked: ${ref.current}`)
   }
 
   const ShowAlertWithData = (data) => {
@@ -36,7 +44,7 @@ function App() {
         <button onClick={() => ShowAlertWithData(empName)} className="btn btn-success mt-3">Show Alert With Data</button>
       </div>
       <div className="m-4 center">
-        <input  onChange={(e) => getUserData(e.target.value)} className="form-control text-center" type="text" placeholder="Enter Username"/>
+        <input ref={inputRef} onChange={(e) => getUserData(e.target.value)} className="form-control text-center" type="text" placeholder="Enter Username"/>
         <h3 className="mt-3">{userName}</h3>
       </div>
       {/* Employee */}
