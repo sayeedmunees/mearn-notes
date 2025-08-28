@@ -10,6 +10,8 @@ function App() {
   const [rate, setRate] = useState(0);
   const [year, setYear] = useState(0);
 
+  const validateInput(inputTag)
+
   return (
     <>
       <div
@@ -31,6 +33,8 @@ function App() {
                 id="outlined-priciple"
                 label="₹ Principle Amount"
                 variant="outlined"
+                onChange={(e) => validateInputs(e.target)}
+                name="principle"
               />
             </div>
             {/* Rate */}
