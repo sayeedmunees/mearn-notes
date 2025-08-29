@@ -10,7 +10,13 @@ function App() {
   const [rate, setRate] = useState(0);
   const [year, setYear] = useState(0);
 
-  const validateInput(inputTag)
+  const validateInputs = (inputTag) => {
+    const { name, value } = inputTag;
+    console.log(name,value);
+    console.log(!!value.match(/^[0-9]*.?[0-9]+$/));
+    console.log(value.match(/^\d*.?\d+$/));
+
+  };
 
   return (
     <>
@@ -44,6 +50,8 @@ function App() {
                 id="outlined-rate"
                 label="% Rate of Interest"
                 variant="outlined"
+                onChange={(e) => validateInputs(e.target)}
+                name="rate"
               />
             </div>
             {/* Year */}
@@ -53,6 +61,8 @@ function App() {
                 id="outlined-year"
                 label="Year (yr)"
                 variant="outlined"
+                onChange={(e) => validateInputs(e.target)}
+                name="year"
               />
             </div>
             <Stack direction="row" spacing={2}>
