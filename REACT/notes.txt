@@ -1,0 +1,279 @@
+                            REACT FRONTEND CREATION
+
+
+1  npm create vite@latest rbuild -- --template react
+2  cd rbuild
+3  npm install
+4  code .
+5  npm run dev
+6  Clear the unwanted code 
+7  Install 3rd Party Library 
+
+    i) react material-ui  : https://mui.com/material-ui/
+            -> npm install @mui/material @emotion/react @emotion/styled 
+                        (@emotion/react and @emotion/styled are required peer dependencies for styling in MUI.)
+            -> npm install @mui/icons-material 
+                        (This package includes all the Material Design icons in SVG format as React components.)
+
+    ii) React Icons : https://tsi.github.io/react-icons/
+            -> npm install react-icons --save
+
+    iii) Google fonts  : https://fonts.google.com/
+
+            Embed code in the <head> of your html
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400..700&family=Edu+AU+VIC+WA+NT+Pre&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AU+SA:wght@100..400&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Playwrite+IN:wght@100..400&family=Playwrite+TZ+Guides&family=Playwrite+VN:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Tektur:wght@400..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+            Choose font family
+                font-family: "Barlow", sans-serif;
+                font-weight: 400;
+                font-style: normal;   
+
+    iv) Alert : https://sweetalert2.github.io/
+                npm install sweetalert2
+
+    v) React Bootstrap : npm install react-bootstrap bootstrap  
+
+
+8  Install necessary dependencies
+        
+        npm install axios react-router-dom html2canvas jspdf 
+
+
+
+9 Component creation 
+
+├── src/
+│   ├── components/
+│   │   ├── Form.jsx
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── Edit.jsx
+        ├── Preview.jsx
+        
+│   ├── pages/
+│   │   ├── LandingPage.jsx
+│   │   ├── ResumeGeneratorPage.jsx
+│   │   |___ History.jsx
+│   │   └── PageNotFound.jsx
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   └── ...
+├── package.json
+└── vite.config.js
+
+10 Routing 
+
+Routing in React refers to navigating between different views or pages within a single-page application (SPA). 
+React Router is the standard library for handling routing in React apps. 
+It allows you to create navigation links between components without refreshing the entire page.
+
+Core Concepts of React Router
+
+BrowserRouter: This is the parent component that enables routing in React. It uses the HTML5 History API to maintain clean URLs without page reloads.
+
+Routes: A container for all the route definitions. It renders the appropriate route based on the current URL.
+
+Route: Represents a single route in your application. A Route has a path and an element. When the URL matches the path, it renders the element.
+
+Link: A component used for navigation between routes. It works similarly to an anchor (<a>) tag, but instead of reloading the page, it changes the route.
+
+useNavigate and Navigate: Used for programmatically navigating to other routes. 
+useNavigate is a hook that can be used to redirect, while Navigate is a component used to navigate declaratively.
+
+
+📌 What is html2canvas?
+html2canvas is a JavaScript library used to capture a visual representation of a webpage element (like a div, section, form, etc.) and convert it into an image.
+
+📖 How It Works:
+It scans the styles and structure of an HTML element.
+
+It renders that visual layout onto a virtual canvas.
+
+This canvas is essentially a digital image version of that element.
+
+You can then use this canvas image as a downloadable file, or to embed it elsewhere, such as in a PDF.
+
+🎯 Common Use Case:
+In a Resume Builder, when a user previews their resume, html2canvas captures that preview section exactly as it looks — with colors, fonts, layouts — and converts it into an image.
+
+📌 What is jsPDF?
+jsPDF is a JavaScript library used to create and download PDF documents directly from the browser — no need for a server.
+
+📖 What It Does:
+Creates a new PDF document from scratch.
+
+Allows you to add text, images, shapes, or tables.
+
+Most importantly, it lets you insert images (like those created from html2canvas) into a PDF file.
+
+🎯 Common Use Case:
+After capturing the resume preview as an image using html2canvas, you pass that image to jsPDF. It embeds the image into a standard A4-sized PDF page and triggers a download, giving the user a final printable resume.
+
+🔁 How They Work Together (In Your App):
+Imagine the process like taking a screenshot and then printing it on paper:
+
+User previews resume in the frontend.
+
+When the user clicks "Download Resume":
+
+html2canvas captures the visual layout and turns it into an image.
+
+jsPDF places that image into a PDF page.
+
+The PDF is instantly downloaded to the user’s computer.
+
+
+
+--------------------------------------------------Design Completed-------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                        JSON Server Notes for Resume Builder
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is JSON Server?
+JSON Server is a fake/mock REST API based on a simple db.json file.
+It's great for prototyping, testing frontends, or small projects.
+ 
+Why Use JSON Server?- Quickly simulate a backend.- Supports full CRUD (Create, Read, Update, Delete).- No real database required.
+
+
+Steps to Use JSON Server:
+
+ 1. Install JSON Server:
+        npm install -g json-server
+ 2. Create db.json:
+         {
+     "resumes": [
+       {
+         "id": 1,
+         "name": "Amritha Asok",
+         "email": "amritha@example.com",
+         "skills": ["React", "Node.js"],
+         "education": [
+           {
+           }
+             "degree": "MCA",
+             "institution": "Kannur University",
+             "year": 2022
+         ]
+   }
+     ]
+       }
+
+ 3. Run the Server:
+                npx json-server db.json 
+
+ 4. Available Endpoints:
+
+|  # | Method | Endpoint       | Description                              |
+| -: | ------ | -------------- | ---------------------------------------- |
+|  1 | POST   | `/resumes`     | Add a new resume                         |
+|  2 | POST   | `/history`     | Add a new resume to history              |
+|  3 | GET    | `/history`     | Get all resume history entries           |
+|  4 | DELETE | `/history/:id` | Delete a resume from history by ID       |
+|  5 | GET    | `/history/:id` | Get a specific resume from history by ID |
+|  6 | PUT    | `/history/:id` | Update a resume in history by ID         |
+
+ 5. Optional Script in package.json:
+   "scripts": {
+   "start": "npx json-server --watch db.json"
+  },
+   Then run: npm run start
+   
+ 6. Connecting Frontend (React Example):
+        ✅ AllAPIs.js → contains named API functions (like addResumeAPI, getResumeHistoryAPI, etc.)
+
+        ✅ commonAPI.js → handles all generic HTTP requests
+
+        ✅ serverURL.js → central place for your server base URL
+
+A clean and modular architecture to connect your frontend with the JSON Server backend, structured into three core layers:
+
+✅ serverURL.js
+Stores the base URL of your backend (e.g., http://localhost:5000).
+This makes your project easily configurable for different environments.
+
+✅ commonAPI.js
+A universal Axios-based helper function that handles all API requests (GET, POST, PUT, DELETE) in one place.
+It simplifies your code and keeps all HTTP logic centralized.
+
+✅ AllAPIs.js
+This file contains neatly named API functions (like addResumeAPI, getResumeHistoryAPI, etc.) that internally use commonAPI and serverURL.
+This makes your component code clean and readable.
+
+💡 Benefits of This Structure
+Reusability: Write once, use everywhere.
+
+Maintainability: Easy to update/extend APIs.
+
+Readability: Clean and well-structured code.
+
+Separation of Concerns: Each file has a clear single purpose.
+
+Scalability: Easy to scale for bigger projects or real backend integration.
+
+---------------------------------------------------------------------------------------------
+
+Component Communication
+Here i implemented child-to-parent data communication using callback props.
+This allows child components (like forms or inputs) to send data back to the parent component for shared state updates or conditional rendering.
+
+Example:
+
+
+
+// In Parent Component
+const handleDataFromChild = (data) => {
+  setResumeDetails(data);
+};
+
+<ChildForm onSubmit={handleDataFromChild} />
+
+✅ Why it's important:
+
+Enables two-way interaction
+
+Keeps state management centralized
+
+Promotes reusability and clean UI flow
+
+
+
+---------------------------------------------
+
+ App Data Flow
+
+ --------------------------------
+ App (Main Layout)
+  ↓
+Form (User fills input fields)
+  ↓
+Steps (Multiple pages: Personal → Edu → Skills → Projects)
+  ↓
+Preview (Final formatted resume preview)
+  ↓
+Edit (If needed, return to steps)
+  ↓
+Back to Preview
+---------------------------------------------------------------------------
+
+History Component Flow (Download + Save)
+
+--------------------------------------------------------------------------
+Preview Page
+  ↓
+User clicks "Download Resume" button
+  ↓
+Trigger: AddResumeHistoryAPI(currentResumeData)
+  ↓
+Data saved to JSON Server (/history)
+  ↓
+Navigate to History Component
+  ↓
+History displays previously saved resumes with options to:
+    - View as Image of Resume
+    - Delete
