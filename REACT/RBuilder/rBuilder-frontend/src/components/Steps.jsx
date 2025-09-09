@@ -6,6 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
 
 const steps = [
   "Basic Information",
@@ -173,7 +174,29 @@ const Steps = () => {
           </div>
         );
       case 4:
-        return "Skills";
+        return (
+          <div>
+            <h3>Skills</h3>
+            <Box>
+              <Stack spacing={2}>
+                <TextField
+                  id="standard-basic"
+                  label="Job or Internship"
+                  variant="standard"
+                />
+                <Button variant="text" sx={{ maxWidth: "40px" }}>
+                  Add
+                </Button>
+              </Stack>
+              <div>
+                <h5>Suggestions: </h5>
+                <Button variant="outlied" size="small">
+                  React
+                </Button>
+              </div>
+            </Box>
+          </div>
+        );
       case 5:
         return (
           <div>
@@ -196,7 +219,7 @@ const Steps = () => {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }} className="p-5">
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
