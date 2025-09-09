@@ -1,18 +1,25 @@
 import { Button } from "@mui/material";
 import "./LandingPage.css";
 import React from "react";
+import { Link } from "react-router-dom";
+
 const LandingPage = () => {
   return (
     <div>
-      <section id="bg1">
+      <section id="bg1" style={{ height: "600px" }}>
         <div className="row py-5">
           <div className="col-4"></div>
           <div className="col-4 box py-5 mt-5 border text-center">
             <h3>Designed to get hired.</h3>
             <h4>Your skills, your story, your next job - all in one.</h4>
-            <Button variant="contained" sx={{ backgroundColor: "blueviolet" }}>
-              Make Your Resume
-            </Button>
+            <Link to={"/resumegenerator"}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "blueviolet" }}
+              >
+                Make Your Resume
+              </Button>
+            </Link>
           </div>
           <div className="col-4"></div>
         </div>
