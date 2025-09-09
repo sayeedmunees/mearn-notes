@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import Steps from "../components/Steps";
+import Preview from "../components/Preview";
 
 const Form = () => {
   return (
-    <div>Form</div>
-  )
-}
+    <div className="row">
+      <div className="col-6">
+        <Steps />
+      </div>
+      <div className="col-6">
+        <Preview />
+      </div>
+    </div>
+  );
+};
 
-export default Form
+export default Form;

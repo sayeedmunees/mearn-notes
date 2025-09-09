@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div>
-      <section id="bg1" style={{ height: "600px" }}>
+      <section id="bg1" style={{ height:"600px" }}>
         <div className="row py-5">
           <div className="col-4"></div>
           <div className="col-4 box py-5 mt-5 border text-center">
@@ -24,7 +24,7 @@ const LandingPage = () => {
           <div className="col-4"></div>
         </div>
       </section>
-      <section className="py-5">
+      <section className="py-5 ">
         <h3 className="text-center mt-4 pt-4 fs-2"> Tools</h3>
         <div className="row pb-5">
           <div className="col-6 p-5 ">
@@ -51,9 +51,9 @@ const LandingPage = () => {
         </div>
       </section>
       <section id="bg2">
-        <h1>Testimony</h1>
+        <h1 className="ms-4 pt-5">Testimony</h1>
         <div className="row">
-          <div className="col-6">
+          <div className="col-6 ps-5">
             <h4>Trusted by professionals worldwide.</h4>
             <p>
               At LiveCareer, we don't just help you create résumés we help you
