@@ -204,10 +204,10 @@ const Steps = () => {
             <div>
               <TextField
                 id="standard-multiline-static"
-                label="Multiline"
+                label="Summary"
                 multiline
                 rows={4}
-                defaultValue="Default Value"
+                defaultValue="eg: I'm a passionate Web Developer"
                 variant="standard"
               />
             </div>
