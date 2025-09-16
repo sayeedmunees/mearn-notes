@@ -6,13 +6,13 @@
 3  npm install
 4  code .
 5  npm run dev
-6  Clear the unwanted code 
-7  Install 3rd Party Library 
+6  Clear the unwanted code
+7  Install 3rd Party Library
 
     i) react material-ui  : https://mui.com/material-ui/
-            -> npm install @mui/material @emotion/react @emotion/styled 
+            -> npm install @mui/material @emotion/react @emotion/styled
                         (@emotion/react and @emotion/styled are required peer dependencies for styling in MUI.)
-            -> npm install @mui/icons-material 
+            -> npm install @mui/icons-material
                         (This package includes all the Material Design icons in SVG format as React components.)
 
     ii) React Icons : https://tsi.github.io/react-icons/
@@ -27,21 +27,21 @@
             Choose font family
                 font-family: "Barlow", sans-serif;
                 font-weight: 400;
-                font-style: normal;   
+                font-style: normal;
 
     iv) Alert : https://sweetalert2.github.io/
                 npm install sweetalert2
 
-    v) React Bootstrap : npm install react-bootstrap bootstrap  
+    v) React Bootstrap : npm install react-bootstrap bootstrap
 
 
 8  Install necessary dependencies
-        
-        npm install axios react-router-dom html2canvas jspdf 
+
+        npm install axios react-router-dom html2canvas jspdf
 
 
 
-9 Component creation 
+9 Component creation
 
 ├── src/
 │   ├── components/
@@ -50,7 +50,7 @@
 │   │   ├── Footer.jsx
 │   │   └── Edit.jsx
         ├── Preview.jsx
-        
+
 │   ├── pages/
 │   │   ├── LandingPage.jsx
 │   │   ├── ResumeGeneratorPage.jsx
@@ -63,10 +63,10 @@
 ├── package.json
 └── vite.config.js
 
-10 Routing 
+10 Routing
 
-Routing in React refers to navigating between different views or pages within a single-page application (SPA). 
-React Router is the standard library for handling routing in React apps. 
+Routing in React refers to navigating between different views or pages within a single-page application (SPA).
+React Router is the standard library for handling routing in React apps.
 It allows you to create navigation links between components without refreshing the entire page.
 
 Core Concepts of React Router
@@ -79,7 +79,7 @@ Route: Represents a single route in your application. A Route has a path and an 
 
 Link: A component used for navigation between routes. It works similarly to an anchor (<a>) tag, but instead of reloading the page, it changes the route.
 
-useNavigate and Navigate: Used for programmatically navigating to other routes. 
+useNavigate and Navigate: Used for programmatically navigating to other routes.
 useNavigate is a hook that can be used to redirect, while Navigate is a component used to navigate declaratively.
 
 
@@ -137,7 +137,7 @@ The PDF is instantly downloaded to the user’s computer.
 What is JSON Server?
 JSON Server is a fake/mock REST API based on a simple db.json file.
 It's great for prototyping, testing frontends, or small projects.
- 
+
 Why Use JSON Server?- Quickly simulate a backend.- Supports full CRUD (Create, Read, Update, Delete).- No real database required.
 
 
@@ -165,7 +165,7 @@ Steps to Use JSON Server:
        }
 
  3. Run the Server:
-                npx json-server db.json 
+                npx json-server db.json
 
  4. Available Endpoints:
 
@@ -183,7 +183,7 @@ Steps to Use JSON Server:
    "start": "npx json-server --watch db.json"
   },
    Then run: npm run start
-   
+
  6. Connecting Frontend (React Example):
         ✅ AllAPIs.js → contains named API functions (like addResumeAPI, getResumeHistoryAPI, etc.)
 
