@@ -17,7 +17,9 @@ const steps = [
   "Review & Submit",
 ];
 
-const Steps = () => {
+const Steps = ({ formData, setFormData }) => {
+  console.log(formData);
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -71,16 +73,43 @@ const Steps = () => {
             <h3>Personal Details</h3>
             <div className="d-flex row p-3">
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      name: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Full Name"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      jobTitle: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Job Title"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      location: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Location"
                 variant="standard"
@@ -93,23 +122,72 @@ const Steps = () => {
           <div>
             <h3>Contact Details</h3>
             <div className="d-flex row p-3">
-              <TextField id="standard-basic" label="Email" variant="standard" />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      email: e.target.value,
+                    },
+                  })
+                }
+                id="standard-basic"
+                label="Email"
+                variant="standard"
+              />
+              <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      phoneNumber: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Phone number"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      github: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Github Link"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      linkedin: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="LinkedIn Link"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    personalData: {
+                      ...formData.personalData,
+                      portfolio: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Portfolio Link"
                 variant="standard"
@@ -123,21 +201,57 @@ const Steps = () => {
             <h3>Educational Details</h3>
             <div className="d-flex row p-3">
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    education: {
+                      ...formData.education,
+                      course: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Course Name"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    education: {
+                      ...formData.education,
+                      college: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="College Name"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    education: {
+                      ...formData.education,
+                      university: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="University"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    education: {
+                      ...formData.education,
+                      year: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Year of Passout"
                 variant="standard"
@@ -151,21 +265,57 @@ const Steps = () => {
             <h3>Proffessional Details</h3>
             <div className="d-flex row p-3">
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    experience: {
+                      ...formData.experience,
+                      jobRole: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Job or Internship"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    experience: {
+                      ...formData.experience,
+                      company: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Company Name"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    experience: {
+                      ...formData.experience,
+                      location: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Location"
                 variant="standard"
               />
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    experience: {
+                      ...formData.experience,
+                      duration: e.target.value,
+                    },
+                  })
+                }
                 id="standard-basic"
                 label="Duration"
                 variant="standard"
@@ -203,6 +353,12 @@ const Steps = () => {
             <h3>Proffessional Summary</h3>
             <div>
               <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    summary: e.target.value,
+                  })
+                }
                 id="standard-multiline-static"
                 label="Summary"
                 multiline
