@@ -18,7 +18,7 @@ const steps = [
 ];
 
 const Steps = ({ formData, setFormData }) => {
-  console.log(formData);
+  console.log(formData.personalData);
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
@@ -82,6 +82,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.personalData.name}
                 id="standard-basic"
                 label="Full Name"
                 variant="standard"
@@ -96,12 +97,14 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.personalData.jobTitle}
                 id="standard-basic"
                 label="Job Title"
                 variant="standard"
               />
               <TextField
-                onChange={(e) =>
+                value={formData.personalData.location}
+                onChange={e =>
                   setFormData({
                     ...formData,
                     personalData: {
@@ -132,6 +135,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.personalData.email}
                 id="standard-basic"
                 label="Email"
                 variant="standard"
@@ -146,6 +150,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.personalData.phoneNumber}
                 id="standard-basic"
                 label="Phone number"
                 variant="standard"
@@ -160,6 +165,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.personalData.github}
                 id="standard-basic"
                 label="Github Link"
                 variant="standard"
@@ -174,6 +180,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.personalData.linkedin}
                 id="standard-basic"
                 label="LinkedIn Link"
                 variant="standard"
@@ -188,6 +195,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.personalData.portfolio}
                 id="standard-basic"
                 label="Portfolio Link"
                 variant="standard"
@@ -210,6 +218,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.education.course}
                 id="standard-basic"
                 label="Course Name"
                 variant="standard"
@@ -224,6 +233,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.education.college}
                 id="standard-basic"
                 label="College Name"
                 variant="standard"
@@ -238,6 +248,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.education.university}
                 id="standard-basic"
                 label="University"
                 variant="standard"
@@ -252,6 +263,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.education.year}
                 id="standard-basic"
                 label="Year of Passout"
                 variant="standard"
@@ -274,6 +286,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.experience.jobRole}
                 id="standard-basic"
                 label="Job or Internship"
                 variant="standard"
@@ -288,6 +301,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.experience.company}
                 id="standard-basic"
                 label="Company Name"
                 variant="standard"
@@ -302,6 +316,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.experience.location}
                 id="standard-basic"
                 label="Location"
                 variant="standard"
@@ -316,6 +331,7 @@ const Steps = ({ formData, setFormData }) => {
                     },
                   })
                 }
+                value={formData.experience.duration}
                 id="standard-basic"
                 label="Duration"
                 variant="standard"
@@ -359,6 +375,7 @@ const Steps = ({ formData, setFormData }) => {
                     summary: e.target.value,
                   })
                 }
+                value={formData.summary}
                 id="standard-multiline-static"
                 label="Summary"
                 multiline

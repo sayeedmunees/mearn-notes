@@ -7,7 +7,7 @@ const Form = () => {
     personalData: {
       name: "",
       jobTitle: "",
-      loctaion: "",
+      location: "",
       email: "",
       phoneNumber: "",
       github: "",
