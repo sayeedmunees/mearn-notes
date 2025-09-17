@@ -36,7 +36,7 @@ const Form = () => {
         <Steps formData={formData} setFormData={setFormData} />
       </div>
       <div className="col-6">
-        <Preview />
+        <Preview formData={formData} setFormData={setFormData} />
       </div>
     </div>
   );

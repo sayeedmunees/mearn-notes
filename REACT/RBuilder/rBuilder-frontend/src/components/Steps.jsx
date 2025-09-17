@@ -18,7 +18,10 @@ const steps = [
 ];
 
 const Steps = ({ formData, setFormData }) => {
-  console.log(formData.personalData);
+  // console.log(formData);
+  // Skill
+  const [inputSkill, setInputSkill] = React.useState("");
+  const suggestions = ["React", "Angular", "Node.js", "Express", "MongoDB"];
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
@@ -104,7 +107,7 @@ const Steps = ({ formData, setFormData }) => {
               />
               <TextField
                 value={formData.personalData.location}
-                onChange={e =>
+                onChange={(e) =>
                   setFormData({
                     ...formData,
                     personalData: {
@@ -346,11 +349,16 @@ const Steps = ({ formData, setFormData }) => {
             <Box>
               <Stack spacing={2}>
                 <TextField
+                  onChange={(e) => setInputSkill(e.target.value)}
                   id="standard-basic"
                   label="Job or Internship"
                   variant="standard"
                 />
-                <Button variant="text" sx={{ maxWidth: "40px" }}>
+                <Button
+                  onClick={() => addSkill(inputSkill)}
+                  variant="text"
+                  sx={{ maxWidth: "40px" }}
+                >
                   Add
                 </Button>
               </Stack>
@@ -388,6 +396,15 @@ const Steps = ({ formData, setFormData }) => {
         );
       default:
         return null;
+    }
+  };
+
+  const addSkill = (skill) => {
+    // console.log(skill);
+    if (formData.skills.includes(skill)){
+      alert('Skill already exists')
+    }else{
+      setFormData(data=>({...data,skills:[...data.skills,skill]}))
     }
   };
 

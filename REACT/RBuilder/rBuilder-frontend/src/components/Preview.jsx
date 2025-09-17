@@ -10,7 +10,9 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Edit from "./Edit";
 
-const Preview = () => {
+const Preview = ({ formData, setFormData }) => {
+  console.log(formData);
+
   return (
     <div className="p-3">
       <Stack
@@ -43,38 +45,38 @@ const Preview = () => {
       >
         <Paper elevation={7}>
           <Typography variant="h3" align="center">
-            Full name
+            {formData.personalData.name}
           </Typography>
           <Typography variant="subtitle1" align="center" color="#2962ff">
-            Full Stack Developer
+            {formData.personalData.jobTitle}
           </Typography>
 
           <Typography variant="body2" align="center">
-            user@gmail.com | 9876543210 | Kochi
+            {formData.personalData.email} | {formData.personalData.phoneNumber} | {formData.personalData.location}
           </Typography>
           <Typography variant="body2" align="center" mb={3}>
-            <Link>Github</Link> | <Link>Linkedin</Link> | <Link>Profile</Link>
+            <Link href={formData.personalData.github}>Github</Link> | <Link href={formData.personalData.linkedin}>Linkedin</Link> | <Link href={formData.personalData.portfolio}>Profile</Link>
           </Typography>
 
           <Divider>Summary</Divider>
           <Typography mb={3} mt={1} align="center">
-            I'm a passionate Web Developer
+            {formData.summary}
           </Typography>
 
           <Divider>Education</Divider>
           <Typography mt={1} varient="h6" align="center">
-            Course
+            {formData.education.course}
           </Typography>
           <Typography variant="body2" align="center" mb={3}>
-            College University | 2025
+            {formData.education.college} | {formData.education.university} | {formData.education.year}
           </Typography>
 
           <Divider>Professional Experience</Divider>
           <Typography mt={1} varient="h6" align="center">
-            Job Title
+            {formData.experience.jobRole}
           </Typography>
           <Typography variant="body2" align="center" mb={3}>
-            Company | Location | Duration
+            {formData.experience.company} | {formData.experience.location} | {formData.experience.duration}
           </Typography>
 
           <Divider>Skills</Divider>
