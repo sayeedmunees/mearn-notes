@@ -401,10 +401,10 @@ const Steps = ({ formData, setFormData }) => {
 
   const addSkill = (skill) => {
     // console.log(skill);
-    if (formData.skills.includes(skill)){
-      alert('Skill already exists')
-    }else{
-      setFormData(data=>({...data,skills:[...data.skills,skill]}))
+    if (formData.skills.includes(skill)) {
+      alert("Skill already exists");
+    } else {
+      setFormData((data) => ({ ...data, skills: [...data.skills, skill] }));
     }
   };
 
