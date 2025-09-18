@@ -19,6 +19,9 @@ const steps = [
 
 const Steps = ({ formData, setFormData }) => {
   // console.log(formData);
+
+  const { personalData, education, experience, skills, summary } = formData;
+
   // Skill
   const [inputSkill, setInputSkill] = React.useState("");
   const suggestions = ["React", "Angular", "Node.js", "Express", "MongoDB"];
@@ -364,9 +367,26 @@ const Steps = ({ formData, setFormData }) => {
               </Stack>
               <div>
                 <h5>Suggestions: </h5>
-                <Button variant="outlied" size="small">
-                  React
-                </Button>
+                {suggestions.map((item) => (
+                  <Button
+                    onClick={() => addSkill(item)}
+                    className="btn btn-primary m-1"
+                    size="small"
+                  >
+                    {item}
+                  </Button>
+                ))}
+              </div>
+              <div>
+                <h5>Added: </h5>
+                {skills.length > 0
+                  ? skills.map((item) => (
+                      <span className="btn btn-primary m-1">
+                        {item}
+                        <Button variant="outlied">X</Button>
+                      </span>
+                    ))
+                  : ""}
               </div>
             </Box>
           </div>
@@ -406,6 +426,10 @@ const Steps = ({ formData, setFormData }) => {
     } else {
       setFormData((data) => ({ ...data, skills: [...data.skills, skill] }));
     }
+  };
+
+  const handleAddResume = () => {
+    alert("Submitted");
   };
 
   return (
@@ -458,8 +482,12 @@ const Steps = ({ formData, setFormData }) => {
                 Skip
               </Button>
             )}
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            <Button>
+              {activeStep === steps.length - 1 ? (
+                <Button onClick={handleAddResume}>Finish </Button>
+              ) : (
+                <Button onClick={handleNext}>Next </Button>
+              )}
             </Button>
           </Box>
         </React.Fragment>
