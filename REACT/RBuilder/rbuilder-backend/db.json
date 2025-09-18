@@ -1,3 +1,101 @@
 {
-    "resumes":[]
+  "resumes": [
+    {
+      "id": "2197",
+      "personalData": {
+        "name": "Maxx Well",
+        "jobTitle": "Developer",
+        "location": "Kochi",
+        "email": "example@mail.com",
+        "phoneNumber": "9876543210",
+        "github": "max.github.com",
+        "linkedin": "maxx.linkedin",
+        "portfolio": "maxx.me"
+      },
+      "education": {
+        "course": "Bsc",
+        "college": "BMC",
+        "university": "MG",
+        "year": "2025"
+      },
+      "experience": {
+        "jobRole": "Job",
+        "company": "Softtern",
+        "location": "Kochi",
+        "duration": "5"
+      },
+      "skills": [
+        "React",
+        "Angular",
+        "Node.js",
+        "Express",
+        "MongoDB"
+      ],
+      "summary": "Seasoned Software Engineer with 10+ years of experience in cloud architecture and scalable system design, proven to deliver robust solutions that improve system efficiency by up to 25%. Seeking to leverage expertise in [specific technology or project] to drive innovation"
+    },
+    {
+      "id": "e13e",
+      "personalData": {
+        "name": "maxx",
+        "jobTitle": "sa",
+        "location": "fas",
+        "email": "",
+        "phoneNumber": "",
+        "github": "fasf",
+        "linkedin": "",
+        "portfolio": ""
+      },
+      "education": {
+        "course": "sfafas",
+        "college": "fs",
+        "university": "safasf",
+        "year": ""
+      },
+      "experience": {
+        "jobRole": "ffsas",
+        "company": "safas",
+        "location": "",
+        "duration": "asf"
+      },
+      "skills": [
+        "Express",
+        "Node.js",
+        "Angular",
+        "React"
+      ],
+      "summary": "fasfsfs"
+    },
+    {
+      "id": "9d96",
+      "personalData": {
+        "name": "maxx",
+        "jobTitle": "sa",
+        "location": "fas",
+        "email": "",
+        "phoneNumber": "",
+        "github": "fasf",
+        "linkedin": "",
+        "portfolio": ""
+      },
+      "education": {
+        "course": "sfafas",
+        "college": "fs",
+        "university": "safasf",
+        "year": ""
+      },
+      "experience": {
+        "jobRole": "ffsas",
+        "company": "safas",
+        "location": "",
+        "duration": "asf"
+      },
+      "skills": [
+        "Express",
+        "Node.js",
+        "Angular",
+        "React"
+      ],
+      "summary": "fasfsfs"
+    }
+  ]
 }

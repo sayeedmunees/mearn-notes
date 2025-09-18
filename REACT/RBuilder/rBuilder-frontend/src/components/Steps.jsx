@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+import { addResumeAPI } from "../services/allAPI";
+import Swal from "sweetalert2";
 
 const steps = [
   "Basic Information",
@@ -354,7 +356,7 @@ const Steps = ({ formData, setFormData }) => {
                 <TextField
                   onChange={(e) => setInputSkill(e.target.value)}
                   id="standard-basic"
-                  label="Job or Internship"
+                  label="Add skills"
                   variant="standard"
                 />
                 <Button
@@ -367,7 +369,7 @@ const Steps = ({ formData, setFormData }) => {
               </Stack>
               <div>
                 <h5>Suggestions: </h5>
-                {suggestions.map((item) => (
+                {suggestions.map((item, index) => (
                   <Button
                     onClick={() => addSkill(item)}
                     className="btn btn-primary m-1"
@@ -383,7 +385,12 @@ const Steps = ({ formData, setFormData }) => {
                   ? skills.map((item) => (
                       <span className="btn btn-primary m-1">
                         {item}
-                        <Button variant="outlied">X</Button>
+                        <Button
+                          onClick={() => handleRemoveSkill(item)}
+                          variant="outlied"
+                        >
+                          X
+                        </Button>
                       </span>
                     ))
                   : ""}
@@ -428,8 +435,32 @@ const Steps = ({ formData, setFormData }) => {
     }
   };
 
-  const handleAddResume = () => {
-    alert("Submitted");
+  const handleAddResume = async () => {
+    try {
+      const result = await addResumeAPI(formData);
+      console.log(result);
+      Swal.fire({
+        title: "Success!",
+        text: "Resume created Succesfully",
+        icon: "success",
+        confirmButtonText: "Back",
+      });
+    } catch (err) {
+      console.log("Error", err);
+      Swal.fire({
+        title: "Error!",
+        text: "Do you want to continue",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
+  };
+
+  const handleRemoveSkill = (item) => {
+    setFormData({
+      ...formData,
+      skills: skills.filter((data) => data !== item),
+    });
   };
 
   return (

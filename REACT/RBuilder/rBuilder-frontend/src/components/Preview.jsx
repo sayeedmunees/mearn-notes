@@ -12,6 +12,7 @@ import Edit from "./Edit";
 
 const Preview = ({ formData, setFormData }) => {
   console.log(formData);
+  const { personalData, education, experience, skills, summary } = formData;
 
   return (
     <div className="p-3">
@@ -52,10 +53,13 @@ const Preview = ({ formData, setFormData }) => {
           </Typography>
 
           <Typography variant="body2" align="center">
-            {formData.personalData.email} | {formData.personalData.phoneNumber} | {formData.personalData.location}
+            {formData.personalData.email} | {formData.personalData.phoneNumber}{" "}
+            | {formData.personalData.location}
           </Typography>
           <Typography variant="body2" align="center" mb={3}>
-            <Link href={formData.personalData.github}>Github</Link> | <Link href={formData.personalData.linkedin}>Linkedin</Link> | <Link href={formData.personalData.portfolio}>Profile</Link>
+            <Link href={formData.personalData.github}>Github</Link> |{" "}
+            <Link href={formData.personalData.linkedin}>Linkedin</Link> |{" "}
+            <Link href={formData.personalData.portfolio}>Profile</Link>
           </Typography>
 
           <Divider>Summary</Divider>
@@ -68,7 +72,8 @@ const Preview = ({ formData, setFormData }) => {
             {formData.education.course}
           </Typography>
           <Typography variant="body2" align="center" mb={3}>
-            {formData.education.college} | {formData.education.university} | {formData.education.year}
+            {formData.education.college} | {formData.education.university} |{" "}
+            {formData.education.year}
           </Typography>
 
           <Divider>Professional Experience</Divider>
@@ -76,14 +81,25 @@ const Preview = ({ formData, setFormData }) => {
             {formData.experience.jobRole}
           </Typography>
           <Typography variant="body2" align="center" mb={3}>
-            {formData.experience.company} | {formData.experience.location} | {formData.experience.duration}
+            {formData.experience.company} | {formData.experience.location} |{" "}
+            {formData.experience.duration}
           </Typography>
 
           <Divider>Skills</Divider>
-          <Stack direction={"row"} justifyContent={"space-evenly"} mt={3}>
-            <Button variant="contained">React</Button>
-            <Button variant="contained">React</Button>
-            <Button variant="contained">React</Button>
+          <Stack
+            direction={"row"}
+            justifyContent={"space-evenly"}
+            mt={3}
+            sx={{ flexWrap: "wrap" }}
+            spacing={{ xs: 1, sm: 2 }}
+          >
+            {skills.map((item) => (
+              <div>
+                <Button className="mt-2" variant="contained">
+                  {item}
+                </Button>
+              </div>
+            ))}
           </Stack>
         </Paper>
       </Box>
