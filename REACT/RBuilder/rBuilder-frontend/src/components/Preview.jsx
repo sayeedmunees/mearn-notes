@@ -9,10 +9,33 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Edit from "./Edit";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { addHistoryAPI } from "../services/allAPI";
 
 const Preview = ({ formData, setFormData }) => {
   console.log(formData);
   const { personalData, education, experience, skills, summary } = formData;
+
+  const downloadPDF = async () => {
+    const input = document.getElementById("result"); //to get document
+    const canvas = await html2canvas(input, { scale: 2 }); //cnvrt selctd html to canvas(ss)
+    const imgData = canvas.toDataURL("image/png"); // to cnvrt canvas to img
+    // Create pdf
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("resume.pdf");
+
+    try {
+      const result = await addHistoryAPI(formData);
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="p-3">

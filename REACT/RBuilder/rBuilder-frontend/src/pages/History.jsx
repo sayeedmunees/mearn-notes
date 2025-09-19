@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -6,8 +6,23 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import { MdDelete } from "react-icons/md";
+import { getHistoryAPI } from "../services/allAPI";
 
 const History = () => {
+  const [history, setHistory] = useState([]);
+
+  const getHistory = async () => {
+    const result = await getHistoryAPI();
+    // console.log(result.data);
+    setHistory(result.data);
+  };
+
+  console.log(history);
+
+  useEffect(() => {
+    getHistory();
+  }, []);
+
   return (
     <div>
       <Typography variant="h3" align="center" my={3}>

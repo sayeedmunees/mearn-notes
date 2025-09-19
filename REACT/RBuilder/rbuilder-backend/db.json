@@ -98,6 +98,74 @@
         "MongoDB"
       ],
       "summary": "asfasfasfas"
+    },
+    {
+      "id": "7c21",
+      "personalData": {
+        "name": "Maxx",
+        "jobTitle": "Dev",
+        "location": "Koch",
+        "email": "dsgsg",
+        "phoneNumber": "sdgs",
+        "github": "sgdg",
+        "linkedin": "sgs",
+        "portfolio": "sgsdg"
+      },
+      "education": {
+        "course": "sdgs",
+        "college": "sgsd",
+        "university": "sdgs",
+        "year": "sgsdg"
+      },
+      "experience": {
+        "jobRole": "sdgsd",
+        "company": "sdds",
+        "location": "sdsd",
+        "duration": "sdg"
+      },
+      "skills": [
+        "React",
+        "Angular",
+        "Node.js",
+        "Express",
+        "MongoDB"
+      ],
+      "summary": "sdgsdgsdgsgsgsg"
+    }
+  ],
+  "history": [
+    {
+      "id": "bd81",
+      "personalData": {
+        "name": "Maxx",
+        "jobTitle": "Dev",
+        "location": "Koch",
+        "email": "dsgsg",
+        "phoneNumber": "sdgs",
+        "github": "sgdg",
+        "linkedin": "sgs",
+        "portfolio": "sgsdg"
+      },
+      "education": {
+        "course": "sdgs",
+        "college": "sgsd",
+        "university": "sdgs",
+        "year": "sgsdg"
+      },
+      "experience": {
+        "jobRole": "sdgsd",
+        "company": "sdds",
+        "location": "sdsd",
+        "duration": "sdg"
+      },
+      "skills": [
+        "React",
+        "Angular",
+        "Node.js",
+        "Express",
+        "MongoDB"
+      ],
+      "summary": "sdgsdgsdgsgsgsg"
     }
   ]
 }
