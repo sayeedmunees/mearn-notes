@@ -21,7 +21,7 @@ const Preview = ({ formData, setFormData }) => {
         spacing={2}
         sx={{ justifyContent: "center", alignItems: "flex-end" }}
       >
-        <Button>
+        <Button onClick={downloadPDF}>
           <FaFileDownload className="fs-3" />
         </Button>
         <Edit />
@@ -44,7 +44,7 @@ const Preview = ({ formData, setFormData }) => {
           },
         }}
       >
-        <Paper elevation={7}>
+        <Paper elevation={7} id="result">
           <Typography variant="h3" align="center">
             {formData.personalData.name}
           </Typography>

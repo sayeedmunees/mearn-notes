@@ -34,68 +34,70 @@
       "summary": "Seasoned Software Engineer with 10+ years of experience in cloud architecture and scalable system design, proven to deliver robust solutions that improve system efficiency by up to 25%. Seeking to leverage expertise in [specific technology or project] to drive innovation"
     },
     {
-      "id": "e13e",
+      "id": "db72",
       "personalData": {
-        "name": "maxx",
-        "jobTitle": "sa",
-        "location": "fas",
-        "email": "",
-        "phoneNumber": "",
-        "github": "fasf",
-        "linkedin": "",
-        "portfolio": ""
+        "name": "Carlos",
+        "jobTitle": "Tester",
+        "location": "Calicut",
+        "email": "example@gmail.com",
+        "phoneNumber": "9876540321",
+        "github": "carlos@github.com",
+        "linkedin": "carlos.linkedin.com",
+        "portfolio": "carlos.com"
       },
       "education": {
-        "course": "sfafas",
-        "college": "fs",
-        "university": "safasf",
-        "year": ""
+        "course": "B. Tech CS",
+        "college": "NIT",
+        "university": "NIT",
+        "year": "2020"
       },
       "experience": {
-        "jobRole": "ffsas",
-        "company": "safas",
-        "location": "",
-        "duration": "asf"
+        "jobRole": "Job",
+        "company": "ABC Soft",
+        "location": "Calicut",
+        "duration": "4"
       },
       "skills": [
-        "Express",
+        "React",
         "Node.js",
-        "Angular",
-        "React"
+        "Express",
+        "MongoDB",
+        "Angular"
       ],
-      "summary": "fasfsfs"
+      "summary": "I'm a professional tester having 4 years of experience."
     },
     {
-      "id": "9d96",
+      "id": "1b10",
       "personalData": {
-        "name": "maxx",
-        "jobTitle": "sa",
-        "location": "fas",
-        "email": "",
-        "phoneNumber": "",
-        "github": "fasf",
-        "linkedin": "",
-        "portfolio": ""
+        "name": "Anil",
+        "jobTitle": "Afd",
+        "location": "sas",
+        "email": "sfasf",
+        "phoneNumber": "sfsaf",
+        "github": "sfas",
+        "linkedin": "saf",
+        "portfolio": "safas"
       },
       "education": {
-        "course": "sfafas",
-        "college": "fs",
-        "university": "safasf",
-        "year": ""
+        "course": "asffsfsas",
+        "college": "asf",
+        "university": "asfas",
+        "year": "saf"
       },
       "experience": {
-        "jobRole": "ffsas",
-        "company": "safas",
-        "location": "",
-        "duration": "asf"
+        "jobRole": "asfsa",
+        "company": "fasfas",
+        "location": "afsf",
+        "duration": "asasf"
       },
       "skills": [
-        "Express",
-        "Node.js",
         "Angular",
-        "React"
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB"
       ],
-      "summary": "fasfsfs"
+      "summary": "asfasfasfas"
     }
   ]
 }

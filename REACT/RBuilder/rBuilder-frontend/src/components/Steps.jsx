@@ -19,7 +19,7 @@ const steps = [
   "Review & Submit",
 ];
 
-const Steps = ({ formData, setFormData }) => {
+const Steps = ({ formData, setFormData, setIsFinished }) => {
   // console.log(formData);
 
   const { personalData, education, experience, skills, summary } = formData;
@@ -445,6 +445,7 @@ const Steps = ({ formData, setFormData }) => {
         icon: "success",
         confirmButtonText: "Back",
       });
+      setIsFinished(true);
     } catch (err) {
       console.log("Error", err);
       Swal.fire({
