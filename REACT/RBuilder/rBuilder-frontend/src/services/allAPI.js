@@ -13,5 +13,17 @@ export const addHistoryAPI = async (reqBody) => {
 
 //  3. add resume history to the server using - GET
 export const getHistoryAPI = async () => {
-  return await commonAPI("get", `${serverURL}/history`,"");
+  return await commonAPI("get", `${serverURL}/history`, "");
+};
+
+//  4. delete a resume from history in the server using - Delete
+export const deleteHistoryAPI = async (id) => {
+  return await commonAPI("delete", `${serverURL}/history/${id}`, "");
+};
+
+//  5. Get a particular resume from history in the server using - Get
+export const getAResumeHistoryAPI = async (id) => {
+  console.log(id);
+
+  return await commonAPI("get", `${serverURL}/history/${id}`, "");
 };

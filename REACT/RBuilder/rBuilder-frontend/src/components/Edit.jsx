@@ -6,6 +6,9 @@ import Modal from "@mui/material/Modal";
 import { RiFileEditLine } from "react-icons/ri";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+import { getAResumeHistoryAPI } from "../services/allAPI";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const style = {
   position: "absolute",
@@ -22,10 +25,50 @@ const style = {
   p: 4,
 };
 
-const Edit = () => {
+const Edit = ({ resumeId }) => {
+  console.log(resumeId);
+
+  const [resumeDetails, setResumeDetails] = useState({
+    id: "",
+    personalData: {
+      name: "",
+      jobTitle: "",
+      location: "",
+      email: "",
+      phoneNumber: "",
+      github: "",
+      linkedin: "",
+      portfolio: "",
+    },
+    education: {
+      course: "",
+      college: "",
+      university: "",
+      year: "",
+    },
+    experience: {
+      jobRole: "",
+      company: "",
+      location: "",
+      duration: "",
+    },
+    skills: [],
+    summary: "",
+  });
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    getAResume();
+  }, [resumeId]);
+
+  const getAResume = async () => {
+    const result = await getAResumeHistoryAPI(resumeId);
+    console.log(result);
+    setResumeDetails(result.data)
+  };
 
   return (
     <div>
@@ -49,7 +92,7 @@ const Edit = () => {
             >
               Edit details
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2, mb: 2}}>
+            <Typography id="modal-modal-description" sx={{ mt: 2, mb: 2 }}>
               <div>
                 <h3>Personal Details</h3>
                 <div className="d-flex row p-3">

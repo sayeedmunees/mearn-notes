@@ -12,10 +12,14 @@ import Edit from "./Edit";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { addHistoryAPI } from "../services/allAPI";
+import { useState } from "react";
 
 const Preview = ({ formData, setFormData }) => {
   console.log(formData);
   const { personalData, education, experience, skills, summary } = formData;
+
+  const [resumeId, setResumeId] = useState("");
+  console.log(resumeId);
 
   const downloadPDF = async () => {
     const input = document.getElementById("result"); //to get document
@@ -32,6 +36,7 @@ const Preview = ({ formData, setFormData }) => {
     try {
       const result = await addHistoryAPI(formData);
       console.log(result);
+      setResumeId(result.data.id);
     } catch (err) {
       console.log(err);
     }
@@ -47,7 +52,7 @@ const Preview = ({ formData, setFormData }) => {
         <Button onClick={downloadPDF}>
           <FaFileDownload className="fs-3" />
         </Button>
-        <Edit />
+        <Edit resumeId={resumeId} />
         <Link href="/history">
           <Button>
             <FaHistory className="fs-3" />
