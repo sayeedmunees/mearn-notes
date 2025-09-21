@@ -10,7 +10,6 @@ import History from "./pages/History";
 import PageNotFound from "./pages/PageNotFound";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
