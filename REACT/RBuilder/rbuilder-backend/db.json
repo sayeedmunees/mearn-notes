@@ -421,6 +421,36 @@
         "Node.js"
       ],
       "summary": ""
+    },
+    {
+      "id": "3b31",
+      "personalData": {
+        "name": "Hello",
+        "jobTitle": "Dev",
+        "location": "Kochi",
+        "email": "asfa",
+        "phoneNumber": "sfas",
+        "github": "sds",
+        "linkedin": "dg",
+        "portfolio": "sd"
+      },
+      "education": {
+        "course": "gsd",
+        "college": "gd",
+        "university": "sd",
+        "year": "gds"
+      },
+      "experience": {
+        "jobRole": "dsdg",
+        "company": "gsd",
+        "location": "s",
+        "duration": "sd"
+      },
+      "skills": [
+        "Express",
+        "Node.js"
+      ],
+      "summary": "gsgs"
     }
   ],
   "history": [
@@ -488,359 +518,34 @@
       "summary": ""
     },
     {
-      "id": "ef19",
-      "personalData": {
-        "name": "Hi",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "b0fb",
+      "id": "bbec",
       "personalData": {
         "name": "Hello",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
+        "jobTitle": "Dev",
+        "location": "Kochi",
+        "email": "asfa",
+        "phoneNumber": "sfas",
+        "github": "sds",
+        "linkedin": "dg",
+        "portfolio": "sd"
       },
       "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
+        "course": "gsd",
+        "college": "gd",
+        "university": "sd",
+        "year": "gds"
       },
       "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
+        "jobRole": "dsdg",
+        "company": "gsd",
+        "location": "s",
+        "duration": "sd"
       },
       "skills": [
+        "Express",
         "Node.js"
       ],
-      "summary": ""
-    },
-    {
-      "id": "bf25",
-      "personalData": {
-        "name": "Gdssds",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js",
-        "Express"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "ad39",
-      "personalData": {
-        "name": "Gdssds",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js",
-        "Express"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "9b03",
-      "personalData": {
-        "name": "wwewr",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "sars",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "srs",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "sdrs",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js",
-        "Angular"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "28c5",
-      "personalData": {
-        "name": "dgds",
-        "jobTitle": "",
-        "location": "",
-        "email": "sdgsgds",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "sdgds",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "gsdg",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js",
-        "Express"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "0d08",
-      "personalData": {
-        "name": "sasfs",
-        "jobTitle": "sf",
-        "location": "",
-        "email": "",
-        "phoneNumber": "asfs",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "fasf",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "asfas",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js",
-        "Express"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "8fab",
-      "personalData": {
-        "name": "sfsfs",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "fsffs",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "asf",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "fasf",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Angular",
-        "Node.js"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "b6f2",
-      "personalData": {
-        "name": "sfsfs",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "fsffs",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "asf",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "fasf",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Angular",
-        "Node.js"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "ae0d",
-      "personalData": {
-        "name": "cZCz",
-        "jobTitle": "",
-        "location": "",
-        "email": "xcv",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Express"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "7359",
-      "personalData": {
-        "name": "",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js"
-      ],
-      "summary": ""
-    },
-    {
-      "id": "4fda",
-      "personalData": {
-        "name": "",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js"
-      ],
-      "summary": ""
+      "summary": "gsgs"
     }
   ]
 }

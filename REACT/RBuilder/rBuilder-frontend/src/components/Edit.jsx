@@ -67,7 +67,7 @@ const Edit = ({ resumeId }) => {
   const getAResume = async () => {
     const result = await getAResumeHistoryAPI(resumeId);
     console.log(result);
-    setResumeDetails(result.data)
+    setResumeDetails(result.data);
   };
 
   return (
@@ -100,16 +100,19 @@ const Edit = ({ resumeId }) => {
                     id="standard-basic"
                     label="Full Name"
                     variant="standard"
+                    value={resumeDetails?.personalData?.name}
                   />
                   <TextField
                     id="standard-basic"
                     label="Job Title"
                     variant="standard"
+                    value={resumeDetails?.personalData?.jobTitle}
                   />
                   <TextField
                     id="standard-basic"
                     label="Location"
                     variant="standard"
+                    value={resumeDetails?.personalData?.location}
                   />
                 </div>
               </div>
@@ -121,26 +124,31 @@ const Edit = ({ resumeId }) => {
                     id="standard-basic"
                     label="Email"
                     variant="standard"
+                    value={resumeDetails?.personalData?.email}
                   />
                   <TextField
                     id="standard-basic"
                     label="Phone number"
                     variant="standard"
+                    value={resumeDetails?.personalData?.phoneNumber}
                   />
                   <TextField
                     id="standard-basic"
                     label="Github Link"
                     variant="standard"
+                    value={resumeDetails?.personalData?.github}
                   />
                   <TextField
                     id="standard-basic"
                     label="LinkedIn Link"
                     variant="standard"
+                    value={resumeDetails?.personalData?.linkedin}
                   />
                   <TextField
                     id="standard-basic"
                     label="Portfolio Link"
                     variant="standard"
+                    value={resumeDetails?.personalData?.portfolio}
                   />
                 </div>
               </div>
@@ -152,21 +160,25 @@ const Edit = ({ resumeId }) => {
                     id="standard-basic"
                     label="Course Name"
                     variant="standard"
+                    value={resumeDetails?.education?.course}
                   />
                   <TextField
                     id="standard-basic"
                     label="College Name"
                     variant="standard"
+                    value={resumeDetails?.education?.college}
                   />
                   <TextField
                     id="standard-basic"
                     label="University"
                     variant="standard"
+                    value={resumeDetails?.education?.university}
                   />
                   <TextField
                     id="standard-basic"
                     label="Year of Passout"
                     variant="standard"
+                    value={resumeDetails?.education?.year}
                   />
                 </div>{" "}
               </div>
@@ -178,21 +190,25 @@ const Edit = ({ resumeId }) => {
                     id="standard-basic"
                     label="Job or Internship"
                     variant="standard"
+                    value={resumeDetails?.experience?.jobRole}
                   />
                   <TextField
                     id="standard-basic"
                     label="Company Name"
                     variant="standard"
+                    value={resumeDetails?.experience?.company}
                   />
                   <TextField
                     id="standard-basic"
                     label="Location"
                     variant="standard"
+                    value={resumeDetails?.experience?.location}
                   />
                   <TextField
                     id="standard-basic"
                     label="Duration"
                     variant="standard"
+                    value={resumeDetails?.experience?.duration}
                   />
                 </div>
               </div>
@@ -229,6 +245,8 @@ const Edit = ({ resumeId }) => {
                     rows={4}
                     defaultValue="eg: I'm a passionate Web Developer"
                     variant="standard"
+                    value={resumeDetails?.summary}
+
                   />
                 </div>
               </div>
