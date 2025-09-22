@@ -6,7 +6,10 @@ import Modal from "@mui/material/Modal";
 import { RiFileEditLine } from "react-icons/ri";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import { getAResumeHistoryAPI } from "../services/allAPI";
+import {
+  getAResumeHistoryAPI,
+  updateResumeHistoryAPI,
+} from "../services/allAPI";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -66,8 +69,13 @@ const Edit = ({ resumeId }) => {
 
   const getAResume = async () => {
     const result = await getAResumeHistoryAPI(resumeId);
-    console.log(result);
+    // console.log(result);
     setResumeDetails(result.data);
+  };
+
+  const updateResume = async () => {
+    const result = await updateResumeHistoryAPI(resumeId, resumeDetails);
+    console.log(result);
   };
 
   return (
@@ -101,18 +109,45 @@ const Edit = ({ resumeId }) => {
                     label="Full Name"
                     variant="standard"
                     value={resumeDetails?.personalData?.name}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          name: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Job Title"
                     variant="standard"
                     value={resumeDetails?.personalData?.jobTitle}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          jobTitle: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Location"
                     variant="standard"
                     value={resumeDetails?.personalData?.location}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          location: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </div>
               </div>
@@ -125,30 +160,75 @@ const Edit = ({ resumeId }) => {
                     label="Email"
                     variant="standard"
                     value={resumeDetails?.personalData?.email}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          email: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Phone number"
                     variant="standard"
                     value={resumeDetails?.personalData?.phoneNumber}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          phoneNumber: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Github Link"
                     variant="standard"
                     value={resumeDetails?.personalData?.github}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          github: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="LinkedIn Link"
                     variant="standard"
                     value={resumeDetails?.personalData?.linkedin}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          linkedin: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Portfolio Link"
                     variant="standard"
                     value={resumeDetails?.personalData?.portfolio}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        personalData: {
+                          ...resumeDetails.personalData,
+                          portfolio: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </div>
               </div>
@@ -161,24 +241,60 @@ const Edit = ({ resumeId }) => {
                     label="Course Name"
                     variant="standard"
                     value={resumeDetails?.education?.course}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        education: {
+                          ...resumeDetails.education,
+                          course: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="College Name"
                     variant="standard"
                     value={resumeDetails?.education?.college}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        education: {
+                          ...resumeDetails.education,
+                          college: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="University"
                     variant="standard"
                     value={resumeDetails?.education?.university}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        education: {
+                          ...resumeDetails.education,
+                          university: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Year of Passout"
                     variant="standard"
                     value={resumeDetails?.education?.year}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        education: {
+                          ...resumeDetails.education,
+                          year: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </div>{" "}
               </div>
@@ -191,24 +307,60 @@ const Edit = ({ resumeId }) => {
                     label="Job or Internship"
                     variant="standard"
                     value={resumeDetails?.experience?.jobRole}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        experience: {
+                          ...resumeDetails.experience,
+                          jobRole: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Company Name"
                     variant="standard"
                     value={resumeDetails?.experience?.company}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        experience: {
+                          ...resumeDetails.experience,
+                          company: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Location"
                     variant="standard"
                     value={resumeDetails?.experience?.location}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        experience: {
+                          ...resumeDetails.experience,
+                          location: e.target.value,
+                        },
+                      })
+                    }
                   />
                   <TextField
                     id="standard-basic"
                     label="Duration"
                     variant="standard"
                     value={resumeDetails?.experience?.duration}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        experience: {
+                          ...resumeDetails.experience,
+                          duration: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </div>
               </div>
@@ -250,11 +402,19 @@ const Edit = ({ resumeId }) => {
                     defaultValue="eg: I'm a passionate Web Developer"
                     variant="standard"
                     value={resumeDetails?.summary}
+                    onChange={(e) =>
+                      setResumeDetails({
+                        ...resumeDetails,
+                        summary: e.target.value,
+                      })
+                    }
                   />
                 </div>
               </div>
             </Typography>
-            <Button variant="contained">Update</Button>
+            <Button onClick={updateResume} variant="contained">
+              Update
+            </Button>
           </Box>
         </Modal>
       </div>

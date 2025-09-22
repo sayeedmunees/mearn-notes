@@ -24,6 +24,10 @@ export const deleteHistoryAPI = async (id) => {
 //  5. Get a particular resume from history in the server using - Get
 export const getAResumeHistoryAPI = async (id) => {
   console.log(id);
-
   return await commonAPI("get", `${serverURL}/history/${id}`, "");
+};
+
+//  6. Update a resume from history in the server using - PUT
+export const updateResumeHistoryAPI = async (id, reqBody) => {
+  return await commonAPI("put", `${serverURL}/history/${id}`, reqBody);
 };
