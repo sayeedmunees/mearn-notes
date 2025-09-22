@@ -95,81 +95,125 @@ const Preview = ({ formData, setFormData }) => {
       >
         <Paper elevation={7} id="result">
           {updateData ? (
-            <Typography variant="h3" align="center">
-              {updateData.personalData.name}
-            </Typography>
+            <>
+              <Typography variant="h3" align="center">
+                {updateData.personalData.name}
+              </Typography>
+              <Typography variant="h3" align="center">
+                {updateData.personalData.jobTitle}
+              </Typography>
+              <Typography variant="body2" align="center">
+                {updateData.personalData.email} |{" "}
+                {updateData.personalData.phoneNumber} |{" "}
+                {updateData.personalData.location}
+              </Typography>
+              <Typography variant="body2" align="center" mb={3}>
+                <Link href={updateData.personalData.github}>Github</Link> |{" "}
+                <Link href={updateData.personalData.linkedin}>Linkedin</Link> |{" "}
+                <Link href={updateData.personalData.portfolio}>Profile</Link>
+              </Typography>
+
+              <Divider>Summary</Divider>
+              <Typography mb={3} mt={1} align="center">
+                {updateData.summary}
+              </Typography>
+
+              <Divider>Education</Divider>
+              <Typography mt={1} varient="h6" align="center">
+                {updateData.education.course}
+              </Typography>
+              <Typography variant="body2" align="center" mb={3}>
+                {updateData.education.college} |{" "}
+                {updateData.education.university} | {updateData.education.year}
+              </Typography>
+
+              <Divider>Professional Experience</Divider>
+              <Typography mt={1} varient="h6" align="center">
+                {updateData.experience.jobRole}
+              </Typography>
+              <Typography variant="body2" align="center" mb={3}>
+                {updateData.experience.company} |{" "}
+                {updateData.experience.location} |{" "}
+                {updateData.experience.duration}
+              </Typography>
+
+              <Divider>Skills</Divider>
+              <Stack
+                direction={"row"}
+                justifyContent={"space-evenly"}
+                mt={3}
+                sx={{ flexWrap: "wrap" }}
+                spacing={{ xs: 1, sm: 2 }}
+              >
+                {skills.map((item) => (
+                  <div>
+                    <Button className="mt-2" variant="contained">
+                      {item}
+                    </Button>
+                  </div>
+                ))}
+              </Stack>
+            </>
           ) : (
-            <Typography variant="h3" align="center">
-              {formData.personalData.name}
-            </Typography>
+            <>
+              <Typography variant="h3" align="center">
+                {formData.personalData.name}
+              </Typography>
+              <Typography variant="subtitle1" align="center" color="#2962ff">
+                {formData.personalData.jobTitle}
+              </Typography>
+              <Typography variant="body2" align="center">
+                {formData.personalData.email} |{" "}
+                {formData.personalData.phoneNumber} |{" "}
+                {formData.personalData.location}
+              </Typography>
+              <Typography variant="body2" align="center" mb={3}>
+                <Link href={formData.personalData.github}>Github</Link> |{" "}
+                <Link href={formData.personalData.linkedin}>Linkedin</Link> |{" "}
+                <Link href={formData.personalData.portfolio}>Profile</Link>
+              </Typography>
+
+              <Divider>Summary</Divider>
+              <Typography mb={3} mt={1} align="center">
+                {formData.summary}
+              </Typography>
+
+              <Divider>Education</Divider>
+              <Typography mt={1} varient="h6" align="center">
+                {formData.education.course}
+              </Typography>
+              <Typography variant="body2" align="center" mb={3}>
+                {formData.education.college} | {formData.education.university} |{" "}
+                {formData.education.year}
+              </Typography>
+
+              <Divider>Professional Experience</Divider>
+              <Typography mt={1} varient="h6" align="center">
+                {formData.experience.jobRole}
+              </Typography>
+              <Typography variant="body2" align="center" mb={3}>
+                {formData.experience.company} | {formData.experience.location} |{" "}
+                {formData.experience.duration}
+              </Typography>
+
+              <Divider>Skills</Divider>
+              <Stack
+                direction={"row"}
+                justifyContent={"space-evenly"}
+                mt={3}
+                sx={{ flexWrap: "wrap" }}
+                spacing={{ xs: 1, sm: 2 }}
+              >
+                {skills.map((item) => (
+                  <div>
+                    <Button className="mt-2" variant="contained">
+                      {item}
+                    </Button>
+                  </div>
+                ))}
+              </Stack>
+            </>
           )}
-          {updateData ? (
-            <Typography variant="h3" align="center">
-              {updateData.personalData.jobTitle}
-            </Typography>
-          ) : (
-            <Typography variant="subtitle1" align="center" color="#2962ff">
-              {formData.personalData.jobTitle}
-            </Typography>
-          )}
-          {updateData ? (
-            <Typography variant="body2" align="center">
-              {updateData.personalData.email} |{" "}
-              {updateData.personalData.phoneNumber} |{" "}
-              {updateData.personalData.location}
-            </Typography>
-          ) : (
-            <Typography variant="body2" align="center">
-              {formData.personalData.email} |{" "}
-              {formData.personalData.phoneNumber} |{" "}
-              {formData.personalData.location}
-            </Typography>
-          )}
-          <Typography variant="body2" align="center" mb={3}>
-            <Link href={formData.personalData.github}>Github</Link> |{" "}
-            <Link href={formData.personalData.linkedin}>Linkedin</Link> |{" "}
-            <Link href={formData.personalData.portfolio}>Profile</Link>
-          </Typography>
-
-          <Divider>Summary</Divider>
-          <Typography mb={3} mt={1} align="center">
-            {formData.summary}
-          </Typography>
-
-          <Divider>Education</Divider>
-          <Typography mt={1} varient="h6" align="center">
-            {formData.education.course}
-          </Typography>
-          <Typography variant="body2" align="center" mb={3}>
-            {formData.education.college} | {formData.education.university} |{" "}
-            {formData.education.year}
-          </Typography>
-
-          <Divider>Professional Experience</Divider>
-          <Typography mt={1} varient="h6" align="center">
-            {formData.experience.jobRole}
-          </Typography>
-          <Typography variant="body2" align="center" mb={3}>
-            {formData.experience.company} | {formData.experience.location} |{" "}
-            {formData.experience.duration}
-          </Typography>
-
-          <Divider>Skills</Divider>
-          <Stack
-            direction={"row"}
-            justifyContent={"space-evenly"}
-            mt={3}
-            sx={{ flexWrap: "wrap" }}
-            spacing={{ xs: 1, sm: 2 }}
-          >
-            {skills.map((item) => (
-              <div>
-                <Button className="mt-2" variant="contained">
-                  {item}
-                </Button>
-              </div>
-            ))}
-          </Stack>
         </Paper>
       </Box>
     </div>
