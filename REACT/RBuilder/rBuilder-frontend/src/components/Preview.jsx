@@ -19,7 +19,9 @@ const Preview = ({ formData, setFormData }) => {
   const { personalData, education, experience, skills, summary } = formData;
 
   const [resumeId, setResumeId] = useState("");
-  console.log(resumeId);
+  const [downloadStatus, setDownloadStatus] = useState(false);
+
+  // console.log(resumeId);
 
   const downloadPDF = async () => {
     const input = document.getElementById("result"); //to get document
@@ -32,6 +34,7 @@ const Preview = ({ formData, setFormData }) => {
 
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
     pdf.save("resume.pdf");
+    setDownloadStatus(true);
 
     try {
       const result = await addHistoryAPI(formData);
@@ -44,21 +47,33 @@ const Preview = ({ formData, setFormData }) => {
 
   return (
     <div className="p-3">
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{ justifyContent: "center", alignItems: "flex-end" }}
-      >
-        <Button onClick={downloadPDF}>
-          <FaFileDownload className="fs-3" />
-        </Button>
-        <Edit resumeId={resumeId} />
-        <Link href="/history">
-          <Button>
-            <FaHistory className="fs-3" />
+      {downloadStatus ? (
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{ justifyContent: "center", alignItems: "flex-end" }}
+        >
+          <Button onClick={downloadPDF}>
+            <FaFileDownload className="fs-3" />
           </Button>
-        </Link>
-      </Stack>
+          <Edit resumeId={resumeId} />
+          <Link href="/history">
+            <Button>
+              <FaHistory className="fs-3" />
+            </Button>
+          </Link>
+        </Stack>
+      ) : (
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{ justifyContent: "center", alignItems: "flex-end" }}
+        >
+          <Button onClick={downloadPDF}>
+            <FaFileDownload className="fs-3" />
+          </Button>
+        </Stack>
+      )}
       <Box
         sx={{
           display: "flex",
