@@ -12,6 +12,7 @@ import {
 } from "../services/allAPI";
 import { useEffect } from "react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -76,8 +77,28 @@ const Edit = ({ resumeId }) => {
   };
 
   const updateResume = async () => {
-    const result = await updateResumeHistoryAPI(resumeId, resumeDetails);
-    console.log(result);
+    try {
+      const result = await updateResumeHistoryAPI(resumeId, resumeDetails);
+      console.log(result);
+      if (result.status == 200) {
+        Swal.fire({
+          title: "Success!",
+          text: "Resume Updated Succesfully",
+          icon: "success",
+          confirmButtonText: "Back",
+        });
+        handleClose();
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Error Updating Resume",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const addSkill = (skill) => {
