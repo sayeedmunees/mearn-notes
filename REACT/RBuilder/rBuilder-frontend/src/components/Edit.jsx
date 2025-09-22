@@ -88,7 +88,7 @@ const Edit = ({ resumeId, onUpdate }) => {
           confirmButtonText: "Back",
         });
         handleClose();
-        onUpdate(result.data)
+        onUpdate(result.data);
       } else {
         Swal.fire({
           title: "Error!",
@@ -112,6 +112,13 @@ const Edit = ({ resumeId, onUpdate }) => {
         skills: [...data.skills, skill],
       }));
     }
+  };
+
+  const handleRemoveSkill = (item) => {
+    setResumeDetails({
+      ...resumeDetails,
+      skills: skills.filter((data) => data !== item),
+    });
   };
 
   return (
@@ -423,9 +430,15 @@ const Edit = ({ resumeId, onUpdate }) => {
                     <h5>Selected: </h5>
                     {resumeDetails?.skills?.length > 0
                       ? resumeDetails?.skills.map((item, index) => (
-                          <Button variant="outlied" size="small">
+                          <span className="btn btn-primary m-1">
                             {item}
-                          </Button>
+                            <Button
+                              onClick={() => handleRemoveSkill(item)}
+                              variant="outlied"
+                            >
+                              X
+                            </Button>
+                          </span>
                         ))
                       : ""}
                   </div>

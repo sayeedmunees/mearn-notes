@@ -943,32 +943,33 @@
     {
       "id": "6ad1",
       "personalData": {
-        "name": "fass",
-        "jobTitle": "esgs",
-        "location": "dfgdf",
-        "email": "fdh",
-        "phoneNumber": "hfhd",
-        "github": "hdf",
-        "linkedin": "dfh",
-        "portfolio": "hfdh"
+        "name": "Hello",
+        "jobTitle": "Dev",
+        "location": "Kochi",
+        "email": "mail",
+        "phoneNumber": "9876",
+        "github": "git",
+        "linkedin": "linkedin",
+        "portfolio": "portfolio"
       },
       "education": {
-        "course": "hfddh",
-        "college": "hdfhf",
-        "university": "hdf",
-        "year": "hfdf"
+        "course": "Bsc",
+        "college": "MG",
+        "university": "MG",
+        "year": "2424"
       },
       "experience": {
-        "jobRole": "dfhhfd",
-        "company": "hdfhfd",
-        "location": "hdhd",
-        "duration": "hdfh"
+        "jobRole": "job",
+        "company": "ABC",
+        "location": "Calivut",
+        "duration": "5"
       },
       "skills": [
         "Node.js",
-        "Express"
+        "Express",
+        "Java"
       ],
-      "summary": "dfhhfhfdhf"
+      "summary": "I'm a developer"
     }
   ]
 }
