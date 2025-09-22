@@ -29,7 +29,7 @@ const style = {
   p: 4,
 };
 
-const Edit = ({ resumeId }) => {
+const Edit = ({ resumeId, onUpdate }) => {
   console.log(resumeId);
 
   const [resumeDetails, setResumeDetails] = useState({
@@ -88,6 +88,7 @@ const Edit = ({ resumeId }) => {
           confirmButtonText: "Back",
         });
         handleClose();
+        onUpdate(result.data)
       } else {
         Swal.fire({
           title: "Error!",

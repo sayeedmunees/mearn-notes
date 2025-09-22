@@ -509,11 +509,11 @@ const Steps = ({ formData, setFormData, setIsFinished }) => {
               Back
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
-            {isStepOptional(activeStep) && (
+            {/* {isStepOptional(activeStep) && (
               <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                 Skip
               </Button>
-            )}
+            )} */}
             <Button>
               {activeStep === steps.length - 1 ? (
                 <Button onClick={handleAddResume}>Finish </Button>

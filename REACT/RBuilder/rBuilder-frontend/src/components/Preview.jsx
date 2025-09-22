@@ -20,6 +20,7 @@ const Preview = ({ formData, setFormData }) => {
 
   const [resumeId, setResumeId] = useState("");
   const [downloadStatus, setDownloadStatus] = useState(false);
+  const [updateData, setUpdateData] = useState(false);
 
   // console.log(resumeId);
 
@@ -34,6 +35,7 @@ const Preview = ({ formData, setFormData }) => {
 
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
     pdf.save("resume.pdf");
+
     setDownloadStatus(true);
 
     try {
@@ -43,6 +45,10 @@ const Preview = ({ formData, setFormData }) => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleUpdate = (data) => {
+    setUpdateData(data);
   };
 
   return (
@@ -56,7 +62,7 @@ const Preview = ({ formData, setFormData }) => {
           <Button onClick={downloadPDF}>
             <FaFileDownload className="fs-3" />
           </Button>
-          <Edit resumeId={resumeId} />
+          <Edit resumeId={resumeId} onUpdate={handleUpdate} />
           <Link href="/history">
             <Button>
               <FaHistory className="fs-3" />
@@ -88,17 +94,37 @@ const Preview = ({ formData, setFormData }) => {
         }}
       >
         <Paper elevation={7} id="result">
-          <Typography variant="h3" align="center">
-            {formData.personalData.name}
-          </Typography>
-          <Typography variant="subtitle1" align="center" color="#2962ff">
-            {formData.personalData.jobTitle}
-          </Typography>
-
-          <Typography variant="body2" align="center">
-            {formData.personalData.email} | {formData.personalData.phoneNumber}{" "}
-            | {formData.personalData.location}
-          </Typography>
+          {updateData ? (
+            <Typography variant="h3" align="center">
+              {updateData.personalData.name}
+            </Typography>
+          ) : (
+            <Typography variant="h3" align="center">
+              {formData.personalData.name}
+            </Typography>
+          )}
+          {updateData ? (
+            <Typography variant="h3" align="center">
+              {updateData.personalData.jobTitle}
+            </Typography>
+          ) : (
+            <Typography variant="subtitle1" align="center" color="#2962ff">
+              {formData.personalData.jobTitle}
+            </Typography>
+          )}
+          {updateData ? (
+            <Typography variant="body2" align="center">
+              {updateData.personalData.email} |{" "}
+              {updateData.personalData.phoneNumber} |{" "}
+              {updateData.personalData.location}
+            </Typography>
+          ) : (
+            <Typography variant="body2" align="center">
+              {formData.personalData.email} |{" "}
+              {formData.personalData.phoneNumber} |{" "}
+              {formData.personalData.location}
+            </Typography>
+          )}
           <Typography variant="body2" align="center" mb={3}>
             <Link href={formData.personalData.github}>Github</Link> |{" "}
             <Link href={formData.personalData.linkedin}>Linkedin</Link> |{" "}
