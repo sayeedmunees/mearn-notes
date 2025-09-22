@@ -59,6 +59,8 @@ const Edit = ({ resumeId }) => {
     summary: "",
   });
 
+  const [inputSkill, setInputSkill] = React.useState("");
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -76,6 +78,18 @@ const Edit = ({ resumeId }) => {
   const updateResume = async () => {
     const result = await updateResumeHistoryAPI(resumeId, resumeDetails);
     console.log(result);
+  };
+
+  const addSkill = (skill) => {
+    // console.log(skill);
+    if (resumeDetails.skills.includes(skill)) {
+      alert("Skill already exists");
+    } else {
+      setResumeDetails((data) => ({
+        ...data,
+        skills: [...data.skills, skill],
+      }));
+    }
   };
 
   return (
@@ -373,8 +387,13 @@ const Edit = ({ resumeId }) => {
                       id="standard-basic"
                       label="Job or Internship"
                       variant="standard"
+                      onChange={(e) => setInputSkill(e.target.value)}
                     />
-                    <Button variant="text" sx={{ maxWidth: "40px" }}>
+                    <Button
+                      onClick={() => addSkill(inputSkill)}
+                      variant="text"
+                      sx={{ maxWidth: "40px" }}
+                    >
                       Add
                     </Button>
                   </Stack>
