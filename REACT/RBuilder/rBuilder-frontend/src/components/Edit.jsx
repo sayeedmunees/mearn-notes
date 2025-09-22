@@ -227,10 +227,14 @@ const Edit = ({ resumeId }) => {
                     </Button>
                   </Stack>
                   <div>
-                    <h5>Suggestions: </h5>
-                    <Button variant="outlied" size="small">
-                      React
-                    </Button>
+                    <h5>Selected: </h5>
+                    {resumeDetails?.skills?.length > 0
+                      ? resumeDetails?.skills.map((item, index) => (
+                          <Button variant="outlied" size="small">
+                            {item}
+                          </Button>
+                        ))
+                      : ""}
                   </div>
                 </Box>
               </div>
@@ -246,7 +250,6 @@ const Edit = ({ resumeId }) => {
                     defaultValue="eg: I'm a passionate Web Developer"
                     variant="standard"
                     value={resumeDetails?.summary}
-
                   />
                 </div>
               </div>
