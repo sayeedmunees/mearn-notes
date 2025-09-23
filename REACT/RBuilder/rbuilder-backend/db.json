@@ -699,36 +699,6 @@
       "summary": "Seasoned Software Engineer with 10+ years of experience in cloud architecture and scalable system design, proven to deliver robust solutions that improve system efficiency by up to 25%. Seeking to leverage expertise in [specific technology or project] to drive innovation"
     },
     {
-      "id": "7259",
-      "personalData": {
-        "name": "Hello",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "MongoDB",
-        "Express"
-      ],
-      "summary": ""
-    },
-    {
       "id": "bbec",
       "personalData": {
         "name": "Hello",
@@ -819,96 +789,6 @@
         "Java"
       ],
       "summary": "Dfffefsa"
-    },
-    {
-      "id": "fb84",
-      "personalData": {
-        "name": "fafafass",
-        "jobTitle": "",
-        "location": "saff",
-        "email": "fsa",
-        "phoneNumber": "sfa",
-        "github": "fas",
-        "linkedin": "fas",
-        "portfolio": "asf"
-      },
-      "education": {
-        "course": "asf",
-        "college": "ffa",
-        "university": "sf",
-        "year": "asfa"
-      },
-      "experience": {
-        "jobRole": "asf",
-        "company": "asf",
-        "location": "fas",
-        "duration": "fsafas"
-      },
-      "skills": [
-        "Express",
-        "Node.js"
-      ],
-      "summary": "sdgdsgsgsd"
-    },
-    {
-      "id": "2194",
-      "personalData": {
-        "name": "sdgsafss",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "dg",
-        "github": "",
-        "linkedin": "",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "gdsgsd",
-        "year": ""
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "gdsgsdgsdsgd",
-        "location": "",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js",
-        "Express"
-      ],
-      "summary": "sgdgssgd"
-    },
-    {
-      "id": "e434",
-      "personalData": {
-        "name": "Hello",
-        "jobTitle": "",
-        "location": "",
-        "email": "",
-        "phoneNumber": "",
-        "github": "",
-        "linkedin": "gsdgds",
-        "portfolio": ""
-      },
-      "education": {
-        "course": "",
-        "college": "",
-        "university": "",
-        "year": "sgdgs"
-      },
-      "experience": {
-        "jobRole": "",
-        "company": "",
-        "location": "sgdgsd",
-        "duration": ""
-      },
-      "skills": [
-        "Node.js",
-        "Express"
-      ],
-      "summary": "sdggsd"
     },
     {
       "id": "084d",
