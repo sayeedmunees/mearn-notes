@@ -117,7 +117,7 @@ const Edit = ({ resumeId, onUpdate }) => {
   const handleRemoveSkill = (item) => {
     setResumeDetails({
       ...resumeDetails,
-      skills: skills.filter((data) => data !== item),
+      skills: resumeDetails?.skills.filter((data) => data !== item),
     });
   };
 
