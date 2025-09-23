@@ -145,7 +145,7 @@ const Preview = ({ formData, setFormData }) => {
                 sx={{ flexWrap: "wrap" }}
                 spacing={{ xs: 1, sm: 2 }}
               >
-                {skills.map((item) => (
+                {updateData.skills.map((item) => (
                   <div>
                     <Button className="mt-2" variant="contained">
                       {item}
