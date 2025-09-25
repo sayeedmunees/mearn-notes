@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <div>E-Cart</div>
+      <h1 className="text-4xl">E-Cart</h1>
     </>
   );
 }
