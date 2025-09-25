@@ -545,6 +545,8 @@
         4. Hooks used in redux
             -useSelector(state function)
             - useDispatch()
+                - action without argument : dispatch-function(action-name())
+                - action with argument : dispatch-function(action-name(arg1,...)), to acccess an argument
     --------------- MongoDB - Database -----------------------
     1. used to store and manage data Permanently
     2. Difference between SQL Vs MongoDB
