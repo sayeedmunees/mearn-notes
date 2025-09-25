@@ -542,7 +542,9 @@
             - useDispatch hook : used to execute action from a component , and it Returns the dispatch function capable of executing action
             - All redux methods are Synchronous
             - createAsyncThunk(actiontype,function can return promise) : To make Asynchronous function call in an action, normal reducer cannot resolve promise, inorder to resolve promise we have to use extraReducers in slice. extraReducers has builder object which can define diffrent cases for pending / fullfilled / rejected
-
+        4. Hooks used in redux
+            -useSelector(state function)
+            - useDispatch()
     --------------- MongoDB - Database -----------------------
     1. used to store and manage data Permanently
     2. Difference between SQL Vs MongoDB
