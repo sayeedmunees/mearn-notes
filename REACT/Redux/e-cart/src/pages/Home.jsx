@@ -18,7 +18,7 @@ const Home = () => {
             <div className="text-center">
               <h3 className="text-xl font-bold">title</h3>
               <Link
-                to={"/id/view"}
+                to={"/view"}
                 className="bg-violet-500 rounded p-2 mt-3 text-white inline-block"
               >
                 View more.....
