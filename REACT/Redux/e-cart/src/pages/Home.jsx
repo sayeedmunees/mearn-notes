@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchproducts } from "../redux/slices/productSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchproducts());
+  }, []);
+
   return (
     <>
       <Header insideHome={true} />
