@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <Header />
+      <Header insideHome={true} />
       <div style={{ paddingTop: "100px" }} className="container px-4 mx-auto">
         <div className="grid grid-cols-4 gap-4">
           <div className="rounded border border-violet-600 p-2 shadow">

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ insideHome }) => {
   return (
     <>
       <nav className=" flex bg-violet-600 fixed w-full p-5 text-white">
@@ -10,13 +10,15 @@ const Header = () => {
           <span className="text-2xl">Daily Cart</span>
         </Link>
         <ul className="flex-1 text-right">
-          <li className="list-none inline-block px-5 ">
-            <input
-              type="text"
-              className="rounded p-2 border bg-white text-violet-600"
-              placeholder="Search Products Here!"
-            />
-          </li>
+          {insideHome && (
+            <li className="list-none inline-block px-5 ">
+              <input
+                type="text"
+                className="rounded p-2 border bg-white text-violet-600"
+                placeholder="Search Products Here!"
+              />
+            </li>
+          )}
           <Link to={"/wishlist"}>
             <li className="list-none inline-block px-5">
               <i className="fa-solid fa-heart text-red-600"></i> Wishlist{" "}
