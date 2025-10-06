@@ -7,12 +7,11 @@ const View = () => {
   const { id } = useParams();
   console.log(id);
 
-  const { allProducts } = useSelector((state) => state.productReducer);
-  console.log(allProducts);
-
   useEffect(() => {
-    const data = allProducts.find((item) => item.id == id);
-    console.log(data);
+    if (sessionStorage.getItem("allProducts")) {
+      const allproducts = JSON.parse(sessionStorage.getItem("allProducts"));
+      console.log(allproducts.find((item) => item.id == id));
+    }
   }, []);
 
   return (
