@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchproducts } from "../redux/slices/productSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { allProducts, loading, errorMsg } = useSelector(
+    (state) => state.productReducer
+  );
+
+  console.log(allProducts, loading, errorMsg);
 
   useEffect(() => {
     dispatch(fetchproducts());
@@ -15,25 +20,42 @@ const Home = () => {
     <>
       <Header insideHome={true} />
       <div style={{ paddingTop: "100px" }} className="container px-4 mx-auto">
-        <div className="grid grid-cols-4 gap-4">
-          <div className="rounded border border-violet-600 p-2 shadow">
+        {loading ? (
+          <div className="flex justify-center items-center my-5 mx-auto">
             <img
-              width={"100%"}
-              height={"200px"}
-              src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
-              alt="no image"
+              width={"70px"}
+              height={"70px"}
+              src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif"
+              alt="Loading......"
             />
-            <div className="text-center">
-              <h3 className="text-xl font-bold">title</h3>
-              <Link
-                to={"/view"}
-                className="bg-violet-500 rounded p-2 mt-3 text-white inline-block"
-              >
-                View more.....
-              </Link>
-            </div>
           </div>
-        </div>
+        ) : (
+          <div className="grid grid-cols-4 gap-4">
+            {allProducts.length > 0 ? (
+              allProducts?.map((product) => (
+                <div className="rounded border border-violet-600 p-2 shadow">
+                  <img
+                    width={"100%"}
+                    height={"200px"}
+                    src={product?.thumbnail}
+                    alt="no image"
+                  />
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold">{product?.title}</h3>
+                    <Link
+                      to={`${product?.id}/view`}
+                      className="bg-violet-500 rounded p-1 mt-3 text-white inline-block"
+                    >
+                      View more.....
+                    </Link>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div>Products not found!!!</div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
