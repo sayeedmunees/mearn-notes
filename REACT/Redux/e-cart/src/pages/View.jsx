@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const View = () => {
-  const params = useParams();
-  console.log(params);
+  const { id } = useParams();
+  console.log(id);
+
+  const { allProducts } = useSelector((state) => state.productReducer);
+  console.log(allProducts);
+
+  useEffect(() => {
+    const data = allProducts.find((item) => item.id == id);
+    console.log(data);
+  }, []);
 
   return (
     <>
