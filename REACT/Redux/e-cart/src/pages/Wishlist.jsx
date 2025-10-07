@@ -1,10 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "../redux/slices/wishlistSlice";
 
 const Wishlist = () => {
   const userWishlist = useSelector((state) => state.wishlistReducer);
+  const dispatch = useDispatch();
   return (
     <>
       <Header />
@@ -24,7 +26,10 @@ const Wishlist = () => {
                   <div className="text-center">
                     <h3 className="text-xl font-bold">{product?.title}</h3>
                     <div className="flex justify-evenly mt-3">
-                      <button className="text-xl">
+                      <button
+                        className="text-xl"
+                        onClick={() => dispatch(removeItem(product?.id))}
+                      >
                         <i className="fa-solid fa-heart-circle-xmark text-red-500"></i>
                       </button>
                       <button className="text-xl">
