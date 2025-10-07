@@ -9,14 +9,16 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/:id/view" element={<View />} />
-        <Route path="/*" element={<Pnf />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col justify-between h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/:id/view" element={<View />} />
+          <Route path="/*" element={<Pnf />} />
+        </Routes>
+        <Footer />
+      </div>
     </>
   );
 }

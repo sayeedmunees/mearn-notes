@@ -24,17 +24,17 @@ const productSlice = createSlice({
     builder.addCase(fetchproducts.fulfilled, (state, apiResult) => {
       state.allProducts = apiResult.payload;
       state.loading = false;
-      state.errorMsg = "";
+      state.errMsg = "";
     });
     builder.addCase(fetchproducts.pending, (state) => {
       state.allProducts = [];
       state.loading = true;
-      state.errorMsg = "";
+      state.errMsg = "";
     });
     builder.addCase(fetchproducts.rejected, (state) => {
       state.allProducts = [];
       state.loading = false;
-      state.errorMsg = "API call failed....";
+      state.errMsg = "API call failed....";
     });
   },
 });

@@ -1,36 +1,51 @@
 import React from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Wishlist = () => {
+  const userWishlist = useSelector((state) => state.wishlistReducer);
   return (
     <>
       <Header />
       <div style={{ paddingTop: "100px" }} className="px-5">
-        <>
-          <h1 className="text-4x1 font-boldtext-red-600 text-center">
-            My Wishlist
-          </h1>
-          <div className="grid grid-cols-4 gap-4">
-            <div className="rounded border border-violet-600 p-2 shadow">
-              <img
-                width={"100%"}
-                height={"200px"}
-                src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
-                alt="no image"
-              />
-              <div className="text-center">
-                <h3 className="text-xl font-bold">title</h3>
-                <Link
-                  to={"/id/view"}
-                  className="bg-violet-500 rounded p-2 mt-3 text-white inline-block"
-                >
-                  View more.....
-                </Link>
-              </div>
+        {userWishlist?.length > 0 ? (
+          <>
+            <h1 className="text-4xl font-bold text-center">My Wishlist</h1>
+            <div className="grid grid-cols-4 gap-4">
+              {userWishlist?.map((product) => (
+                <div className="rounded border border-violet-600 p-2 shadow">
+                  <img
+                    width={"100%"}
+                    height={"200px"}
+                    src={product.thumbnail}
+                    alt="no image"
+                  />
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold">{product?.title}</h3>
+                    <div className="flex justify-evenly mt-3">
+                      <button className="text-xl">
+                        <i className="fa-solid fa-heart-circle-xmark text-red-500"></i>
+                      </button>
+                      <button className="text-xl">
+                        <i className="fa-solid fa-cart-plus text-green-500"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
+          </>
+        ) : (
+          <div className="flex flex-col justify-center items-center h-fit">
+            <img
+              className="w-sm"
+              src="https://assets-v2.lottiefiles.com/a/76623d28-4e37-11ef-87f5-03e9496a5cb5/PR2PeUMHrd.gif"
+              alt=""
+            />
+            <h1 className="text-3xl text-violet-600">Your wishlist is empty</h1>
           </div>
-        </>
+        )}
       </div>
     </>
   );
