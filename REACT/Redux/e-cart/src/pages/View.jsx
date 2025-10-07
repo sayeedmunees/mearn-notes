@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const View = () => {
-  const [product, setProduct] = useState({});
 
+  const userWishlist = useSelector((state) => state.wishlistReducer);
+  const [product, setProduct] = useState({});
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     if (sessionStorage.getItem("allProducts")) {
@@ -51,10 +52,7 @@ const View = () => {
             <h3 className="font-bold">Client Reviews</h3>
             {product?.reviews?.length > 0 ? (
               product.reviews?.map((item) => (
-                <div
-                  key={item?.date}
-                  className="shadow rounded p-2 mb-2"
-                >
+                <div key={item?.date} className="shadow rounded p-2 mb-2">
                   <h5>
                     <span className="font-bold mr-2">{item?.reviewerName}</span>
                     <span>{item?.comment}</span>
