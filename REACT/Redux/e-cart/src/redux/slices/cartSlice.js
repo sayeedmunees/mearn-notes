@@ -36,19 +36,7 @@ const cartSlice = createSlice({
       );
       state = [...remainingProducts, existingProduct];
     },
-
-    decrementQuantity: (state, actionFromCart) => {
-      const existingProduct = state.find(
-        (item) => item.id == actionFromCart.payload
-      );
-      existingProduct.quantity--;
-      existingProduct.totalPrice =
-        existingProduct.quantity * existingProduct.price;
-      const remainingProducts = state.filter(
-        (item) => item.id != existingProduct.id
-      );
-      state = [...remainingProducts, existingProduct];
-    },
+    
   },
 });
 
