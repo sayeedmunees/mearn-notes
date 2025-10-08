@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decrementQuantity,
+  emptyCart,
   incrementQuantity,
   removeCartItem,
 } from "../redux/slices/cartSlice";
@@ -20,6 +21,16 @@ const Cart = () => {
       );
     }
   });
+
+  // Second Method - Checking outside slice
+
+  // const handleDecrement = (product) => {
+  //   if (product?.quantity > 1) {
+  //     dispatch(decrementQuantity(product?.id));
+  //   } else {
+  //     dispatch(removeCartItem(product?.id));
+  //   }
+  // };
 
   return (
     <>
@@ -96,7 +107,10 @@ const Cart = () => {
                   </tbody>
                 </table>
                 <div className=" float-right mt-5">
-                  <button className="bg-red-600 rounded p-2 text-white">
+                  <button
+                    onClick={() => dispatch(emptyCart())}
+                    className="bg-red-600 rounded p-2 text-white"
+                  >
                     Empty Cart
                   </button>
                   <Link
@@ -114,7 +128,10 @@ const Cart = () => {
                     <span className="text-red-600">${cartTotal}</span>
                   </h2>
                   <hr />
-                  <button className="bg-green-600 rounded p-2 text-white w-full mt-4">
+                  <button
+                    onClick={() => dispatch(emptyCart())}
+                    className="bg-green-600 rounded p-2 text-white w-full mt-4"
+                  >
                     EMPTY CART
                   </button>
                 </div>
