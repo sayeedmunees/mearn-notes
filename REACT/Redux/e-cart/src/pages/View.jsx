@@ -6,6 +6,7 @@ import { addToWishlist } from "../redux/slices/wishlistSlice";
 
 const View = () => {
   const dispatch = useDispatch();
+  const userCart = useSelector((state) => state.cartReducer);
   const userWishlist = useSelector((state) => state.wishlistReducer);
 
   const [product, setProduct] = useState({});
