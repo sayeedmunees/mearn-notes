@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
   const userCart = useSelector((state) => state.cartReducer);
+  const [cartTotal, setCartTotal] = useState(0);
+
+  useEffect(() => {
+    if (userCart?.length > 0) {
+      setCartTotal(
+        userCart?.map((item) => item.totalPrice).reduce((a1, a2) => a1 + a2)
+      );
+    }
+  });
 
   return (
     <>
@@ -51,7 +60,7 @@ const Cart = () => {
                             <button className="font-bold">+</button>
                           </div>
                         </td>
-                        <td>{product.totalPrice}</td>
+                        <td>${product.totalPrice}</td>
                         <td>
                           <button className="text-red-600">
                             <i className="fa-solid fa-trash"></i>
@@ -76,7 +85,8 @@ const Cart = () => {
               <div className="col-span-1">
                 <div className="border rounded shadow p-5">
                   <h2 className="text-2x1 font-bold">
-                    Total amount: <span className="text-red-600">$345</span>
+                    Total amount:{" "}
+                    <span className="text-red-600">${cartTotal}</span>
                   </h2>
                   <hr />
                   <button className="bg-green-600 rounded p-2 text-white w-full mt-4">
