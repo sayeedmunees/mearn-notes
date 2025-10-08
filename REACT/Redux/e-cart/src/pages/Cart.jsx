@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { incrementQuantity } from "../redux/slices/cartSlice";
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const userCart = useSelector((state) => state.cartReducer);
   const [cartTotal, setCartTotal] = useState(0);
 
@@ -50,14 +52,28 @@ const Cart = () => {
                         </td>
                         <td>
                           <div className="flex">
-                            <button className="font-bold">-</button>
+                            <button
+                              onClick={() =>
+                                dispatch(decrementQuantity(product?.id))
+                              }
+                              className="font-bold"
+                            >
+                              -
+                            </button>
                             <input
                               style={{ width: "40px" }}
                               type="text"
                               className="border p-1 rounded"
                               value={product.quantity}
                             />
-                            <button className="font-bold">+</button>
+                            <button
+                              onClick={() =>
+                                dispatch(incrementQuantity(product?.id))
+                              }
+                              className="font-bold"
+                            >
+                              +
+                            </button>
                           </div>
                         </td>
                         <td>${product.totalPrice}</td>
