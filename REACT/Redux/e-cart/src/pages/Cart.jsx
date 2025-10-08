@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { incrementQuantity, removeCartItem } from "../redux/slices/cartSlice";
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeCartItem,
+} from "../redux/slices/cartSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -52,7 +56,14 @@ const Cart = () => {
                         </td>
                         <td>
                           <div className="flex">
-                            <button className="font-bold">-</button>
+                            <button
+                              onClick={() =>
+                                dispatch(decrementQuantity(product?.id))
+                              }
+                              className="font-bold"
+                            >
+                              -
+                            </button>
                             <input
                               style={{ width: "40px" }}
                               type="text"
