@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = ({ insideHome }) => {
+  const userCart = useSelector((state) => state.cartReducer);
   const userWishlist = useSelector((state) => state.wishlistReducer);
 
   return (
@@ -33,9 +34,9 @@ const Header = ({ insideHome }) => {
 
           <Link to={"/cart"}>
             <li className="list-none inline-block px-5">
-              <i className="fa-solid fa-cart-plus text-green-600"></i>Cart{" "}
+              <i className="fa-solid fa-cart-plus text-green-600"></i>Cart
               <span className="bg-white text-violet-600 rounded-full p-1 mx-2">
-                10
+                {userCart?.length}
               </span>
             </li>
           </Link>

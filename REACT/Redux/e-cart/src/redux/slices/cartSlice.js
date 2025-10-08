@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import wishlistSlice from "./wishlistSlice";
 
 const cartSlice = createSlice({
   name: "cartItems",
@@ -27,5 +26,6 @@ const cartSlice = createSlice({
     },
   },
 });
-export const { addToCart } = wishlistSlice.actions;
+
+export const { addToCart } = cartSlice.actions;
 export default cartSlice.reducer;

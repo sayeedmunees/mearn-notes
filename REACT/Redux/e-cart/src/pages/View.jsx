@@ -30,6 +30,15 @@ const View = () => {
     }
   };
 
+  const handleCart = () => {
+    const existingProduct = userCart?.find((item) => item?.id == id);
+    if (existingProduct) {
+      alert("Product already in wishlist!!!!");
+    } else {
+      alert("Product added to wishlist!!!!");
+      dispatch(addToWishlist(product));
+    }
+  };
   console.log(product);
 
   return (
