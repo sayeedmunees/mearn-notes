@@ -27,35 +27,38 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Product Name</td>
-                      <td>
-                        <img
-                          width={"70px"}
-                          height={"70px"}
-                          src="https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp"
-                          alt="no image"
-                        />
-                      </td>
-                      <td>
-                        <div className="flex">
-                          <button className="font-bold">-</button>
-                          <input
-                            style={{ width: "40px" }}
-                            type="text"
-                            className="border p-1 rounded"
+                    {userCart?.map((product, index) => (
+                      <tr key={product?.id}>
+                        <td>{index + 1}</td>
+                        <td>{product.title}</td>
+                        <td>
+                          <img
+                            width={"70px"}
+                            height={"70px"}
+                            src={product.thumbnail}
+                            alt="no image"
                           />
-                          <button className="font-bold">+</button>
-                        </div>
-                      </td>
-                      <td>$234</td>
-                      <td>
-                        <button className="text-red-600">
-                          <i className="fa-solid fa-trash"></i>
-                        </button>
-                      </td>
-                    </tr>
+                        </td>
+                        <td>
+                          <div className="flex">
+                            <button className="font-bold">-</button>
+                            <input
+                              style={{ width: "40px" }}
+                              type="text"
+                              className="border p-1 rounded"
+                              value={product.quantity}
+                            />
+                            <button className="font-bold">+</button>
+                          </div>
+                        </td>
+                        <td>{product.totalPrice}</td>
+                        <td>
+                          <button className="text-red-600">
+                            <i className="fa-solid fa-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
                 <div className=" float-right mt-5">
