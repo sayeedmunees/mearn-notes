@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist } from "../redux/slices/wishlistSlice";
+import { addToCart } from "../redux/slices/cartSlice";
 
 const View = () => {
   const dispatch = useDispatch();
@@ -32,12 +33,12 @@ const View = () => {
   };
 
   const handleCart = () => {
+    dispatch(addToCart(product));
     const existingProduct = userCart?.find((item) => item?.id == id);
     if (existingProduct) {
-      alert("Product already in wishlist!!!!");
+      alert("Product Quantity Increased!!!!");
     } else {
-      alert("Product added to wishlist!!!!");
-      dispatch(addToWishlist(product));
+      alert("Product added to Cart!!!!");
     }
   };
   console.log(product);
@@ -56,7 +57,10 @@ const View = () => {
               >
                 ADD TO WISHLIST
               </button>
-              <button className="bg-green-600 rounded text-white p-2">
+              <button
+                onClick={handleCart}
+                className="bg-green-600 rounded text-white p-2"
+              >
                 ADD TO CART
               </button>
             </div>
