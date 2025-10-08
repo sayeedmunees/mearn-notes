@@ -128,10 +128,7 @@ const Cart = () => {
                     <span className="text-red-600">${cartTotal}</span>
                   </h2>
                   <hr />
-                  <button
-                    onClick={() => dispatch(emptyCart())}
-                    className="bg-green-600 rounded p-2 text-white w-full mt-4"
-                  >
+                  <button className="bg-green-600 rounded p-2 text-white w-full mt-4">
                     EMPTY CART
                   </button>
                 </div>
