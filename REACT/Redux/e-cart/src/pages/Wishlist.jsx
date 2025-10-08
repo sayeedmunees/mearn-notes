@@ -12,7 +12,7 @@ const Wishlist = () => {
 
   const handleCart = (product) => {
     dispatch(addToCart(product));
-    const existingProduct = userCart?.find((item) => item?.id == id);
+    const existingProduct = userCart?.find((item) => item?.id == product?.id);
     if (existingProduct) {
       alert("Product Quantity Increased!!!!");
     } else {
