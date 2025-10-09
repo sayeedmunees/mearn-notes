@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decrementQuantity,
@@ -10,6 +10,7 @@ import {
 } from "../redux/slices/cartSlice";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const userCart = useSelector((state) => state.cartReducer);
   const [cartTotal, setCartTotal] = useState(0);
@@ -21,6 +22,12 @@ const Cart = () => {
       );
     }
   });
+
+  const handleCheckout = () => {
+    dispatch(emptyCart());
+    alert("Order placed. Thank you for shoppin with us.");
+    navigate("/");
+  };
 
   // Second Method - Checking outside slice
 
@@ -128,8 +135,11 @@ const Cart = () => {
                     <span className="text-red-600">${cartTotal}</span>
                   </h2>
                   <hr />
-                  <button className="bg-green-600 rounded p-2 text-white w-full mt-4">
-                    EMPTY CART
+                  <button
+                    onClick={handleCheckout}
+                    className="bg-green-600 rounded p-2 text-white w-full mt-4"
+                  >
+                    Checkout
                   </button>
                 </div>
               </div>
