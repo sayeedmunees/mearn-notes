@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,16 @@ const Home = () => {
   const dispatch = useDispatch();
   const { allProducts, loading, errorMsg } = useSelector(
     (state) => state.productReducer
+  );
+
+  const [currentPage, setCurrentPage] = useState();
+  const productPerPage = 8;
+  const totalPages = Math.ceil(allProducts?.length / productPerPage);
+  const currentPageLastIndex = currentPage * productPerPage;
+  const currentPageFirstIndex = currentPageLastIndex - productPerPage;
+  const visibleAllProducts = allProducts?.slices(
+    currentPageFirstIndex,
+    currentPageLastIndex
   );
 
   console.log(allProducts, loading, errorMsg);
