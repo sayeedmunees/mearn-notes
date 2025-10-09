@@ -19,7 +19,13 @@ const productSlice = createSlice({
     loading: false,
     errMsg: "",
   },
-  reducers: {},
+  reducers: {
+    searchproduct: (state, actionbyHeader) => {
+      state.allProducts = state.allProducts.filter((item) =>
+        item.title.toLowerCase().includes(actionbyHeader.payload)
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchproducts.fulfilled, (state, apiResult) => {
       state.allProducts = apiResult.payload;
@@ -39,4 +45,5 @@ const productSlice = createSlice({
   },
 });
 
+export const { searchproduct } = productSlice.actions;
 export default productSlice.reducer;
