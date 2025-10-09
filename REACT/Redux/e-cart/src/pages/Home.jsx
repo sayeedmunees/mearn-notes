@@ -27,6 +27,18 @@ const Home = () => {
     dispatch(fetchproducts());
   }, []);
 
+  const navigateNextPage = () => {
+    if (currentPage != totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const navigatePrevPage = () => {
+    if (currentPage != 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <>
       <Header insideHome={true} />
@@ -69,13 +81,13 @@ const Home = () => {
         )}
       </div>
       <div className="text-2xl text-center font-bold mt-20">
-        <span className="cursor-pointer">
+        <span onClick={navigatePrevPage} className="cursor-pointer">
           <i class="fa-solid fa-backward"></i>
         </span>
         <span>
           {currentPage} of {totalPages}
         </span>
-        <span className="cursor-pointer">
+        <span onClick={navigateNextPage} className="cursor-pointer">
           <i class="fa-solid fa-forward"></i>
         </span>
       </div>
