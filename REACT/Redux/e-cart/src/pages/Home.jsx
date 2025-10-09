@@ -21,7 +21,7 @@ const Home = () => {
     currentPageLastIndex
   );
 
-  console.log(allProducts, loading, errorMsg);
+  // console.log(allProducts, loading, errorMsg);
 
   useEffect(() => {
     dispatch(fetchproducts());
