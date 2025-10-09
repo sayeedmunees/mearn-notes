@@ -10,12 +10,13 @@ const Home = () => {
     (state) => state.productReducer
   );
 
-  const [currentPage, setCurrentPage] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
   const productPerPage = 8;
   const totalPages = Math.ceil(allProducts?.length / productPerPage);
   const currentPageLastIndex = currentPage * productPerPage;
   const currentPageFirstIndex = currentPageLastIndex - productPerPage;
-  const visibleAllProducts = allProducts?.slices(
+
+  const visibleAllProducts = allProducts?.slice(
     currentPageFirstIndex,
     currentPageLastIndex
   );
@@ -42,7 +43,7 @@ const Home = () => {
         ) : (
           <div className="grid grid-cols-4 gap-4">
             {allProducts.length > 0 ? (
-              allProducts?.map((product) => (
+              visibleAllProducts?.map((product) => (
                 <div className="rounded border border-violet-600 p-2 shadow">
                   <img
                     width={"100%"}
@@ -66,6 +67,17 @@ const Home = () => {
             )}
           </div>
         )}
+      </div>
+      <div className="text-2xl text-center font-bold mt-20">
+        <span className="cursor-pointer">
+          <i class="fa-solid fa-backward"></i>
+        </span>
+        <span>
+          {currentPage} of {totalPages}
+        </span>
+        <span className="cursor-pointer">
+          <i class="fa-solid fa-forward"></i>
+        </span>
       </div>
     </>
   );
