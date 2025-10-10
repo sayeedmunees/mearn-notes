@@ -1,7 +1,9 @@
 import React from "react";
 
 const PageNotFound = () => {
-  return <div>PageNotFound</div>;
+  return <>
+  <div className="w-full h-screen "></div>
+  </>;
 };
 
 export default PageNotFound;
