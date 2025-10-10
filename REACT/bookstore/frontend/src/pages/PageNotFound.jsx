@@ -7,13 +7,13 @@ const PageNotFound = () => {
       <div className="w-full h-screen flex justify-center items-center">
         <div className="md:grid grid-cols-3">
           <div></div>
-          <div>
+          <div className="flex flex-col justify-center items-center">
             <img
               src="https://miro.medium.com/v2/resize:fit:1400/0*GUYQoLJ08bNdTigR.gif"
               alt="Oops.."
             />
             <p className="text-center">Oh No!</p>
-            <h2 className="md:text-5xl text-2xl text-center">
+            <h2 className="md:text-4xl text-2xl text-center">
               Looks like you're lost
             </h2>
             <h5 className="text-center">
