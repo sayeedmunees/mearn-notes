@@ -9,8 +9,8 @@ const Preloader = () => {
           <div></div>
           <div className="flex flex-col justify-center items-center">
             <img
-              src="https://miro.medium.com/v2/resize:fit:1400/0*GUYQoLJ08bNdTigR.gif"
-              alt="Oops.."
+              src="https://media.tenor.com/_m9BeUagaMkAAAAi/writing-hand-joypixels.gif"
+              alt="Loading"
             />
           </div>
         </div>
