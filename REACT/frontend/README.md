@@ -1,3 +1,11 @@
+1. Created Project
+2. Removed Unwanted Codes
+3. Google Fonts
+4. FontAwesome
+   npm install --save @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons
+5. Tailwind CSS
+6. React Router Dom
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
