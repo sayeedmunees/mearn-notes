@@ -12,20 +12,20 @@ const Header = () => {
   return (
     <>
       <nav className="mx-auto">
-        <div className="flex flex-row justify-start md:justify-between items-center w-full h-20 px-4 gap-4">
-          <div>
+        <div className="grid grid-cols-3 w-full h-20 px-8">
+          <div className="col-span-1 flex justify-start items-center">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdAhTXETNIvE8PsF6Uc6bElMUo-GmSmCx01Q&s"
               alt=""
               className="h-12 w-auto md:h-14"
             />
           </div>
-          <div>
+          <div className="col-span-2 md:col-span-1 flex justify-start md:justify-center items-center">
             <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl uppercase">
               Book Store
             </h1>
           </div>
-          <div className="hidden md:inline-flex items-center gap-2">
+          <div className="hidden md:inline-flex items-center gap-2 col-span-1 justify-end ">
             <FontAwesomeIcon className="text-xl" icon={faInstagram} />
             <FontAwesomeIcon className="text-xl" icon={faXTwitter} />
             <FontAwesomeIcon className="text-xl" icon={faFacebook} />
@@ -51,7 +51,9 @@ const Header = () => {
           </div>
           <div className="flex justify-center items-center text-white">
             <ul
-              className={status ? "md:flex" : "md:flex gap-4 justify-center hidden"}
+              className={
+                status ? "md:flex" : "md:flex gap-4 justify-center hidden"
+              }
             >
               <li>Home</li>
               <li>Books</li>
