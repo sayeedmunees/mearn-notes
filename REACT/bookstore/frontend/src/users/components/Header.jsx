@@ -4,26 +4,25 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 
 const Header = () => {
   return (
     <>
-      <nav className="container">
-        <div className="flex flex-row justify-around items-center mx-auto w-full h-20">
+      <nav className="container mx-auto">
+        <div className="flex flex-row justify-between items-center mx-auto w-full h-20">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdAhTXETNIvE8PsF6Uc6bElMUo-GmSmCx01Q&s"
             alt=""
             className="h-12"
           />
-          <h2>Book Store</h2>
+          <h1 className="font-bold text-3xl">Book Store</h1>
           <div className="inline-flex items-center gap-2">
-            <FontAwesomeIcon icon={faInstagram} />
-            <FontAwesomeIcon icon={faXTwitter} />
-            <FontAwesomeIcon icon={faFacebook} />
-            <div className="bg-amber-800 rounded-full h-8 w-8 flex justify-center items-center">
+            <FontAwesomeIcon className="text-2xl" icon={faInstagram} />
+            <FontAwesomeIcon className="text-2xl" icon={faXTwitter} />
+            <FontAwesomeIcon className="text-2xl" icon={faFacebook} />
+            <button className="bg-amber-800 rounded-full h-8 w-8 flex justify-center items-center">
               <h2 className=" text-white">L</h2>
-            </div>
+            </button>
           </div>
         </div>
       </nav>
