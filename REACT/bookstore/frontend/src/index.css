@@ -12,8 +12,19 @@ header {
   background-size: cover;
 }
 
-#main{
+#main {
   height: 500px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.44);
+}
+
+#auth {
+  background-image: url("https://lynnrosen.com/wp-content/uploads/2023/05/bookstore.jpg");
+  /* height: 60vh; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.44);
 }
