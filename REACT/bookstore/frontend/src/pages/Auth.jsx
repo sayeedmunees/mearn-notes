@@ -69,7 +69,7 @@ const Auth = ({ register }) => {
           )}
         </div>
 
-        {register ? (
+        {register && (
           <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
             <input
               type="text"
@@ -77,8 +77,6 @@ const Auth = ({ register }) => {
               className=" placeholder-gray-600 w-full text-black border-none"
             />
           </div>
-        ) : (
-          ""
         )}
 
         <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
@@ -98,9 +96,16 @@ const Auth = ({ register }) => {
             />
             <FontAwesomeIcon className="text-green-950" icon={faEyeSlash} />
           </div>
-          <p className="text-base text-start">
-            *Never share password with others.
-          </p>
+          <div className="flex justify-between">
+            <p className="text-base text-start">
+              *Never share password with others.
+            </p>
+            {!register && (
+              <a href="#" className="underline">
+                Forget Password
+              </a>
+            )}
+          </div>
         </div>
 
         {register ? (
@@ -112,9 +117,7 @@ const Auth = ({ register }) => {
             Login
           </button>
         )}
-        {register ? (
-          ""
-        ) : (
+        {!register &&
           <>
             <div>
               <p className="text-xl">
@@ -123,13 +126,10 @@ const Auth = ({ register }) => {
             </div>
             <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 w-full px-4 py-2 ">
               <span className="font-semibold">Sign in with Google</span>
-              <FontAwesomeIcon
-              className="ps-2"
-                icon={faGoogle}
-              />
+              <FontAwesomeIcon className="ps-2" icon={faGoogle} />
             </button>
           </>
-        )}
+        }
         <div>
           {register ? (
             <p className="text-base">
