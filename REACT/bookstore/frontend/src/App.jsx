@@ -6,6 +6,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Auth from "./pages/Auth";
 import Preloader from "./components/Preloader";
 import { useEffect, useState } from "react";
+import AllBooks from "./users/pages/AllBooks";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,14 +18,13 @@ function App() {
   }, []);
   return (
     <>
-      <Header />
       <Routes>
         <Route path="/" element={isLoading ? <Preloader /> : <Home />} />
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Auth register />} />
+        <Route path="/all-books" element={<AllBooks />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
     </>
   );
 }

@@ -1,10 +1,14 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import Header from "../components/Header";
+import Footer from "../../components/Footer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
+      <Header />
       <header className="flex justify-center items-center">
         <div id="main" className="flex justify-center items-center w-full">
           <div className="md:grid grid-cols-3">
@@ -16,7 +20,7 @@ const Home = () => {
                 <input
                   type="text"
                   placeholder="Search Books"
-                  className=" placeholder-gray-600 w-full"
+                  className=" placeholder-gray-600 w-full text-black"
                 />
                 <FontAwesomeIcon
                   className="text-green-950"
@@ -82,9 +86,11 @@ const Home = () => {
           </div>
         </div>
         <div className="my-5">
-          <button className="bg-gray-900 hover:bg-green-950 text-white px-6 py-4">
-            Explore More
-          </button>
+          <Link to={"/all-books"}>
+            <button className="bg-green-950 border border-green-950 hover:bg-white text-white hover:text-green-950 font-semibold px-6 py-4">
+              Explore More
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -150,6 +156,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
