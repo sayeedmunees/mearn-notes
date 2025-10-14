@@ -7,6 +7,8 @@ import Auth from "./pages/Auth";
 import Preloader from "./components/Preloader";
 import { useEffect, useState } from "react";
 import AllBooks from "./users/pages/AllBooks";
+import Careers from "./users/pages/Careers";
+import Contact from "./users/pages/Contact";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +25,8 @@ function App() {
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Auth register />} />
         <Route path="/all-books" element={<AllBooks />} />
+        <Route path="/career" element={<Careers />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </>

@@ -121,6 +121,7 @@ const Auth = ({ register }) => {
               Login
             </button>
           )}
+          
           {!register && (
             <>
               <div>

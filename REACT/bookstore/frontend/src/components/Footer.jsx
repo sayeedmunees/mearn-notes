@@ -28,7 +28,7 @@ const Footer = () => {
             <input
               type="text"
               placeholder="Email"
-              className=" placeholder-gray-600 w-full"
+              className=" placeholder-gray-600 text-black w-full focus:outline-0"
             />
             <div className="bg-amber-400 w-12 h-full flex items-center justify-center">
               <FontAwesomeIcon

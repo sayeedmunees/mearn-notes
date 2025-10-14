@@ -20,7 +20,7 @@ const Home = () => {
                 <input
                   type="text"
                   placeholder="Search Books"
-                  className=" placeholder-gray-600 w-full text-black"
+                  className=" placeholder-gray-600 w-full focus:outline-0 text-black"
                 />
                 <FontAwesomeIcon
                   className="text-green-950"
