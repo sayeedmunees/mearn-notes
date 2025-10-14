@@ -35,7 +35,7 @@ const Home = () => {
         <h4 className="text-3xl mb-5 text-center">
           Explore Our Latest Collections
         </h4>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full my-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full my-5">
           <div className="p-3 shadow col-span-1">
             <img
               src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"

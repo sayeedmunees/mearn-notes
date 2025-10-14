@@ -11,7 +11,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <div className="flex flex-col lg:flex-row bg-green-950 text-white p-10">
+      <div className="flex flex-col gap-4 lg:flex-row bg-green-950 text-white p-10">
         <div className="flex-2">
           <h2 className="uppercase text-xl font-semibold mb-4">About Us</h2>
           <p>

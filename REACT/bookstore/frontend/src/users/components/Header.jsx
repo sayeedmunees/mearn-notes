@@ -6,6 +6,7 @@ import {
 import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [status, setStatus] = useState(false);
@@ -29,10 +30,17 @@ const Header = () => {
             <FontAwesomeIcon className="text-xl" icon={faInstagram} />
             <FontAwesomeIcon className="text-xl" icon={faXTwitter} />
             <FontAwesomeIcon className="text-xl" icon={faFacebook} />
-            <button className="border border-gray-700 bg-white rounded-lg h-8 w-fit p-3 flex justify-center items-center hover:bg-gray-800 text-gray-900 hover:text-white">
-              <FontAwesomeIcon icon={faUser} />
-              <h2>Login</h2>
-            </button>
+            <Link to={"/login"}>
+              <button className="border border-gray-700 bg-white rounded-lg h-8 w-fit p-3 flex justify-center items-center hover:bg-gray-800 text-gray-900 hover:text-white">
+                <FontAwesomeIcon icon={faUser} />
+                <h2>Login</h2>
+              </button>
+            </Link>
+            {/* <img
+              src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+              alt="UserLogin"
+              className="w-10 h-10"
+            /> */}
           </div>
         </div>
 
@@ -44,10 +52,17 @@ const Header = () => {
             >
               <FontAwesomeIcon icon={faBars} />
             </button>
-            <button className="rounded-lg h-8 w-fit p-3 flex justify-center items-center text-white">
-              <FontAwesomeIcon icon={faUser} />
-              <h2>Login</h2>
-            </button>
+            <Link to={"/login"}>
+              <button className="rounded-lg h-8 w-fit p-3 flex justify-center items-center text-white">
+                <FontAwesomeIcon icon={faUser} />
+                <h2>Login</h2>
+              </button>
+            </Link>
+            {/* <img
+              src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+              alt="UserLogin"
+              className="w-10 h-10"
+            /> */}
           </div>
           <div className="flex justify-center items-center text-white">
             <ul
@@ -55,7 +70,9 @@ const Header = () => {
                 status ? "md:flex" : "md:flex gap-4 justify-center hidden"
               }
             >
-              <li>Home</li>
+              <Link to={"/"}>
+                <li>Home</li>
+              </Link>
               <li>Books</li>
               <li>Career</li>
               <li>Contact</li>
