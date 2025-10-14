@@ -104,11 +104,11 @@ const Auth = ({ register }) => {
         </div>
 
         {register ? (
-          <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 px-4 py-2">
+          <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 px-6 py-2 font-bold">
             Register
           </button>
         ) : (
-          <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 px-4 py-2">
+          <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 px-6 py-2 font-bold">
             Login
           </button>
         )}
@@ -122,9 +122,9 @@ const Auth = ({ register }) => {
               </p>
             </div>
             <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 w-full px-4 py-2 ">
-              <span>Sign in with Google</span>
+              <span className="font-semibold">Sign in with Google</span>
               <FontAwesomeIcon
-                className="text-green-950 hover:text-white ps-2"
+              className="ps-2"
                 icon={faGoogle}
               />
             </button>
