@@ -21,7 +21,6 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   border: "none",
-  p: 4,
 };
 
 const Careers = () => {
@@ -32,7 +31,7 @@ const Careers = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center my-4 ">
+      <div className="flex flex-col w-full items-center my-4 ">
         <div className="flex flex-col items-center my-2 mt-4">
           <h2 className="text-xl text-center ">Start Your</h2>
           <h4 className="text-3xl text-center uppercase">Career With Us</h4>
@@ -93,7 +92,7 @@ const Careers = () => {
         </div>
 
         {/* Modal */}
-        <div>
+        <div className="w-full">
           <Modal
             open={open}
             onClose={handleClose}
@@ -101,13 +100,13 @@ const Careers = () => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <div className="bg-green-950 rounded-xl text-white text-center gap-4 flex flex-col justify-center items-center p-8">
+              <div className="flex flex-col justify-center items-center bg-green-950 rounded-xl text-white text-center gap-2 lg:gap-4 p-4 lg:p-8">
                 <div className=" flex flex-row w-full justify-between items-center py-2">
                   <h2 className="text-xl font-bold">Application Form</h2>
                   <FontAwesomeIcon onClick={handleClose} icon={faXmark} />
                 </div>
 
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-col lg:flex-row w-full gap-2">
                   <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                     <input
                       type="text"
@@ -124,7 +123,7 @@ const Careers = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-col lg:flex-row w-full gap-2">
                   <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                     <input
                       type="text"
@@ -185,13 +184,13 @@ const Careers = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-row gap-2 w-full">
-                  <button className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2 mt-8">
+                <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
+                  <button className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2">
                     <span className="font-bold me-2">Reset</span>
                     <FontAwesomeIcon icon={faArrowsRotate} />
                   </button>
 
-                  <button className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2 mt-8">
+                  <button className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2">
                     <span className="font-bold me-2">Submit</span>
                     <FontAwesomeIcon icon={faPaperPlane} />
                   </button>
