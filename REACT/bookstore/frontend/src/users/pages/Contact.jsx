@@ -58,7 +58,7 @@ const Contact = () => {
                 <input
                   type="text"
                   placeholder="Name"
-                  className=" placeholder-gray-600 w-full text-black border-none"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
                 />
               </div>
 
@@ -66,7 +66,7 @@ const Contact = () => {
                 <input
                   type="text"
                   placeholder="Email"
-                  className=" placeholder-gray-600 w-full text-black border-none"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
                 />
               </div>
 
