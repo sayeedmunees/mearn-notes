@@ -102,7 +102,7 @@ const Careers = () => {
           >
             <Box sx={style}>
               <div className="bg-green-950 rounded-xl text-white text-center gap-4 flex flex-col justify-center items-center p-8">
-                <div className=" flex flex-row w-full justify-between items-center px-5">
+                <div className=" flex flex-row w-full justify-between items-center py-2">
                   <h2 className="text-xl font-bold">Application Form</h2>
                   <FontAwesomeIcon onClick={handleClose} icon={faXmark} />
                 </div>
