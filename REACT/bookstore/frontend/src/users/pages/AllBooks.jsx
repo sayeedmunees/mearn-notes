@@ -13,11 +13,11 @@ const AllBooks = () => {
           <h2 className="text-xl text-center ">Our New</h2>
           <h4 className="text-3xl text-center uppercase">Collections</h4>
         </div>
-        <div className="flex w-xl shadow-2xl border my-2 bg-white rounded-3xl items-center py-2 px-4 ">
+        <div className="flex max-w-xl lg:w-xl shadow-2xl border my-2 bg-white rounded-3xl items-center py-2 px-4 ">
           <input
             type="text"
             placeholder="Search Books By Title"
-            className=" placeholder-gray-600 w-3xl  text-black focus:outline-0"
+            className=" placeholder-gray-600 max-w-3xl lg:w-3xl  text-black focus:outline-0"
           />
           <FontAwesomeIcon
             className="text-green-950"
@@ -25,7 +25,7 @@ const AllBooks = () => {
           />
         </div>
         <div className="grid grid-cols-4 my-4">
-          <div className="col-span-1">
+          <div className="col-span-4 md:col-span-1">
             <h2 className="text-xl font-semibold mb-4">Filters</h2>
             <div className="flex flex-col gap-4 mb-6">
               <label className="inline-flex items-center">
@@ -88,7 +88,7 @@ const AllBooks = () => {
               </label>
             </div>
           </div>
-          <div className="col-span-3 grid grid-cols-4 gap-2">
+          <div className="col-span-4 md:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             <div className="p-3 shadow-xl col-span-1">
               <img
                 src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"

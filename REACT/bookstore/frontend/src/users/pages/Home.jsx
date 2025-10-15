@@ -14,8 +14,8 @@ const Home = () => {
           <div className="md:grid grid-cols-3">
             <div></div>
             <div className="text-white text-center flex flex-col justify-center items-center ">
-              <h3 className="text-3xl lg:text-5xl">Wonderful Gifts</h3>
-              <p>Give your family and friends a book</p>
+              <h3 className="text-3xl font-semibold tracking-wider lg:text-5xl">Wonderful Gifts</h3>
+              <p className="font-semibold tracking-wider">Give your family and friends a book</p>
               <div className="flex mt-10 w-full bg-white rounded-3xl items-center py-2 px-4 ">
                 <input
                   type="text"

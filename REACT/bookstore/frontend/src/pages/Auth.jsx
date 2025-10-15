@@ -63,7 +63,7 @@ const Auth = ({ register }) => {
         </div> */}
 
         {/* Login */}
-        <div className="bg-green-950 rounded-xl text-white text-center gap-4 flex flex-col justify-center items-center w-xl p-10 ">
+        <div className="bg-green-950 rounded-xl text-white text-center gap-4 flex flex-col justify-center items-center w-xl p-10 mx-2">
           <div className=" flex justify-center items-center text-center flex-col px-5">
             <FontAwesomeIcon className="text-9xl" icon={faCircleUser} />
             {register ? (
@@ -100,12 +100,12 @@ const Auth = ({ register }) => {
               />
               <FontAwesomeIcon className="text-green-950" icon={faEyeSlash} />
             </div>
-            <div className="flex justify-between">
-              <p className="text-base text-start">
+            <div className="flex flex-col md:flex-row justify-between">
+              <p className="text-sm md:text-base text-start">
                 *Never share password with others.
               </p>
               {!register && (
-                <a href="#" className="underline">
+                <a href="#" className="underline text-start">
                   Forget Password
                 </a>
               )}
@@ -121,7 +121,7 @@ const Auth = ({ register }) => {
               Login
             </button>
           )}
-          
+
           {!register && (
             <>
               <div>
