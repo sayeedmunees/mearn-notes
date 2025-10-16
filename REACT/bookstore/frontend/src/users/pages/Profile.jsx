@@ -9,6 +9,22 @@ const Profile = () => {
   const [sellStatus, setSellStatus] = useState(true);
   const [bookStatus, setBookStatus] = useState(false);
   const [purchaceStatus, setPurchaceStatus] = useState(false);
+
+  const handleSellStatus = () => {
+    setSellStatus(true);
+    setBookStatus(false);
+    setPurchaceStatus(false);
+  };
+  const handleBookStatus = () => {
+    setSellStatus(false);
+    setBookStatus(true);
+    setPurchaceStatus(false);
+  };
+  const handlePurchaceStatus = () => {
+    setSellStatus(false);
+    setBookStatus(false);
+    setPurchaceStatus(true);
+  };
   return (
     <>
       <Header />
@@ -36,12 +52,47 @@ const Profile = () => {
         </p>
         <EditProfile />
       </div>
-      <p className="md:px-20 px-5 my-5 text-justify max-w-xl">
+      <p className="md:px-20 px-5 my-5 text-justify max-w-3xl">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum
         quam blanditiis animi quaerat voluptatibus repudiandae esse sequi nulla
         deleniti, quia laboriosam iusto incidunt nesciunt molestias?
         Perspiciatis unde impedit eius?
       </p>
+      {/* tabs */}
+      <div className="md:px-40 my-4">
+        <div className="flex justify-center">
+          <p
+            onClick={handleSellStatus}
+            className={
+              sellStatus
+                ? "p-4 text-green-950 border-2 border-b-0 border-gray-200 rounded cursor-pointer"
+                : "p-4 text-black border-b-2 border-b-gray-200"
+            }
+          >
+            Sell Books
+          </p>
+          <p
+            onClick={handleBookStatus}
+            className={
+              bookStatus
+                ? "p-4 text-green-950 border-2 border-b-0 border-gray-200 rounded cursor-pointer"
+                : "p-4 text-black border-b-2 border-b-gray-200"
+            }
+          >
+            Sold History
+          </p>
+          <p
+            onClick={handlePurchaceStatus}
+            className={
+              purchaceStatus
+                ? "p-4 text-green-950 border-2 border-b-0 border-gray-200 rounded cursor-pointer"
+                : "p-4 text-black border-b-2 border-b-gray-200"
+            }
+          >
+            Purchase History
+          </p>
+        </div>
+      </div>
       <Footer />
     </>
   );
