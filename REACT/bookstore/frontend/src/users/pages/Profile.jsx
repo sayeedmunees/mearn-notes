@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
@@ -6,9 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditProfile from "../components/EditProfile";
 
 const Profile = () => {
+  const [sellStatus, setSellStatus] = useState(true);
+  const [bookStatus, setBookStatus] = useState(false);
+  const [purchaceStatus, setPurchaceStatus] = useState(false);
   return (
     <>
       <Header />
+      <hr className="text-white" />
       <div style={{ height: "200px" }} className="bg-green-950"></div>
       <div
         style={{
@@ -27,12 +31,12 @@ const Profile = () => {
       </div>
       <div className="flex justify-between px-20 mt-5">
         <p className="flex justify-center items-center">
-          <span className="text-3xl">Maxx Well</span>
+          <span className="text-3xl font-semibold">Maxx Well</span>
           <FontAwesomeIcon className="text-blue-500" icon={faCircleCheck} />
         </p>
         <EditProfile />
       </div>
-      <p className="md:px-20 px-5 my-5 text-justify max-w-3xl">
+      <p className="md:px-20 px-5 my-5 text-justify max-w-xl">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum
         quam blanditiis animi quaerat voluptatibus repudiandae esse sequi nulla
         deleniti, quia laboriosam iusto incidunt nesciunt molestias?
