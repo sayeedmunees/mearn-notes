@@ -1,7 +1,13 @@
 import React, { use, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowsRotate,
+  faCircleCheck,
+  faImage,
+  faPaperPlane,
+  faSquarePlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditProfile from "../components/EditProfile";
 
@@ -25,6 +31,7 @@ const Profile = () => {
     setBookStatus(false);
     setPurchaceStatus(true);
   };
+
   return (
     <>
       <Header />
@@ -58,8 +65,9 @@ const Profile = () => {
         deleniti, quia laboriosam iusto incidunt nesciunt molestias?
         Perspiciatis unde impedit eius?
       </p>
+
       {/* tabs */}
-      <div className="md:px-40 my-4">
+      <div className="md:px-40 mt-4">
         <div className="flex justify-center">
           <p
             onClick={handleSellStatus}
@@ -93,6 +101,154 @@ const Profile = () => {
           </p>
         </div>
       </div>
+
+      {/* Contents */}
+      {sellStatus && (
+        <div className="p-10 pt-2 max-w-5xl mx-auto">
+          <div className="bg-green-950 rounded-xl text-white text-center gap-4 flex flex-col justify-center items-center p-10">
+            <div className=" flex justify-center items-center text-center flex-col px-5">
+              <h2 className="text-2xl mt-4 font-bold">Book Details</h2>
+            </div>
+
+            <div className="flex flex-row gap-2 w-full">
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="Book Title"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="Publisher"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-2 w-full">
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="Author"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="Language"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-2 w-full">
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="Number of Pages"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="ISBN"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-2 w-full">
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="Image URL"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+              <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                />
+              </div>
+            </div>
+
+            <div className="w-full grid grid-cols-2 gap-2">
+              <div className="flex flex-col col-span-1 gap-4">
+                <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                  <input
+                    type="text"
+                    placeholder="Price"
+                    className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                  />
+                </div>
+
+                <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
+                  <input
+                    type="text"
+                    placeholder="Discount Price"
+                    className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
+                  />
+                </div>
+
+                <div className="flex w-full bg-white rounded items-center py-2 px-4 col-span-1 ">
+                  <textarea
+                    class="placeholder-gray-600 w-full text-black border-none border-0 outline-none focus:outline-none focus:ring-0 resize-none"
+                    placeholder="Type your text..."
+                  ></textarea>
+                </div>
+              </div>
+              <div className="col-span-1 w-full">
+                <div className="flex justify-center items-center w-full my-10">
+                  <label htmlFor="imageFile">
+                    <input
+                      type="file"
+                      name="imageFile"
+                        style={{ display: "none" }}
+                    />
+                    <FontAwesomeIcon
+                      className="text-white text-9xl"
+                      icon={faImage}
+                    />
+                  </label>
+                </div>
+                <div className="flex justify-center items-center">
+                  <img
+                    src="https://blog-cdn.reedsy.com/directories/gallery/248/large_65b0ae90317f7596d6f95bfdd6131398.jpg"
+                    alt="book-cover"
+                    className="border-3 border-white rounded"
+                    style={{ width: "70px", height: "70px" }}
+                  />
+                  <FontAwesomeIcon
+                    icon={faSquarePlus}
+                    className="fa-2x shadow ms-3"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
+              <button className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2">
+                <span className="font-bold me-2">Reset</span>
+                <FontAwesomeIcon icon={faArrowsRotate} />
+              </button>
+
+              <button className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2">
+                <span className="font-bold me-2">Submit</span>
+                <FontAwesomeIcon icon={faPaperPlane} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {bookStatus && <div>Book</div>}
+      {purchaceStatus && <div>Purchase</div>}
+
       <Footer />
     </>
   );
