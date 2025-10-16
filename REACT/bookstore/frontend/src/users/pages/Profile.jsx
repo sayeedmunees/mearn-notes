@@ -209,7 +209,7 @@ const Profile = () => {
                     <input
                       type="file"
                       name="imageFile"
-                        style={{ display: "none" }}
+                      style={{ display: "none" }}
                     />
                     <FontAwesomeIcon
                       className="text-white text-9xl"
