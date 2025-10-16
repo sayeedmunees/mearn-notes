@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EditProfile from "../components/EditProfile";
 
 const Profile = () => {
   return (
@@ -26,10 +27,17 @@ const Profile = () => {
       </div>
       <div className="flex justify-between px-20 mt-5">
         <p className="flex justify-center items-center">
-          <span>Maxx Well</span>
+          <span className="text-3xl">Maxx Well</span>
           <FontAwesomeIcon className="text-blue-500" icon={faCircleCheck} />
         </p>
+        <EditProfile />
       </div>
+      <p className="md:px-20 px-5 my-5 text-justify max-w-3xl">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum
+        quam blanditiis animi quaerat voluptatibus repudiandae esse sequi nulla
+        deleniti, quia laboriosam iusto incidunt nesciunt molestias?
+        Perspiciatis unde impedit eius?
+      </p>
       <Footer />
     </>
   );
