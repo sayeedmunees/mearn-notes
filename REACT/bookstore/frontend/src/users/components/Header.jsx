@@ -131,11 +131,47 @@ const Header = () => {
               </button>
             </Link> */}
 
-            <img
-              src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
-              alt="UserLogin"
-              className="w-10 h-10"
-            />
+            <button
+              onClick={() => setDropDownStatus(!dropDownStatus)}
+              class="gap-x-1.5 rounded-md"
+            >
+              <img
+                src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+                alt="UserLogin"
+                className="w-10 h-10"
+              />
+            </button>
+            {dropDownStatus && (
+              <div
+                className="absolute right-0 top-40 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden"
+                role="menu"
+                aria-orientation=""
+                tabIndex="-1"
+              >
+                <div className="py-1" role="none">
+                  <Link to={"/profile"}>
+                    <p
+                      class="block px-4 py-2 text-sm text-gray-700"
+                      role="menuItem"
+                      tabIndex="-1"
+                      id="menu-item-0"
+                    >
+                      Profile
+                    </p>
+                  </Link>
+
+                  <button
+                    type="submit"
+                    class="block w- px-4 py-2 text-left text-sm text-gray-700"
+                    role="menuItem"
+                    tabIndex="-1"
+                    id="menu-item-1"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
           <div className="flex justify-center items-center text-white">
             <ul
