@@ -23,7 +23,7 @@ const Header = () => {
             />
           </div>
           <div className="col-span-2 md:col-span-1 flex justify-start md:justify-center items-center">
-            <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl uppercase">
+            <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl uppercase text-green-950">
               Book Store
             </h1>
           </div>
@@ -89,10 +89,10 @@ const Header = () => {
                 aria-orientation=""
                 tabIndex="-1"
               >
-                <div className="py-1" role="none">
+                <div role="none">
                   <Link to={"/profile"}>
                     <p
-                      class="block px-4 py-2 text-sm text-gray-700"
+                      class="block px-4 py-2 text-sm rounded-md font-semibold hover:bg-gray-200 text-gray-700"
                       role="menuItem"
                       tabIndex="-1"
                       id="menu-item-0"
@@ -103,7 +103,7 @@ const Header = () => {
 
                   <button
                     type="submit"
-                    class="block w- px-4 py-2 text-left text-sm text-gray-700"
+                    class="block w-full rounded-md font-bold hover:bg-gray-200 px-4 py-2 text-left text-sm text-red-600"
                     role="menuItem"
                     tabIndex="-1"
                     id="menu-item-1"

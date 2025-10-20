@@ -11,7 +11,7 @@ const AdminHome = () => {
       <AdminHeader />
 
       <div className="grid grid-cols-[1fr_4fr]">
-        <div className="bg-green-100 flex flex-col items-center min-h-[55vh]">
+        <div className="bg-green-950 rounded-tr-2xl rounded-br-2xl mb-1 -mt-1 py-4 flex flex-col items-center min-h-[55vh]">
           <AdminSidebar />
         </div>
         <div className="flex gap-2 justify-around mt-4">

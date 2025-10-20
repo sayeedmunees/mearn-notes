@@ -2,7 +2,14 @@ import React from "react";
 import AdminHeader from "../components/AdminHeader";
 import AdminSidebar from "../components/AdminSidebar";
 import Footer from "../../components/Footer";
-import { faPencil, faPenNib, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowsRotate,
+  faPaperPlane,
+  faPencil,
+  faPenNib,
+  faPlane,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AdminSettings = () => {
@@ -11,7 +18,7 @@ const AdminSettings = () => {
       <AdminHeader />
 
       <div className="grid grid-cols-[1fr_4fr]">
-        <div className="bg-green-100 flex flex-col items-center min-h-[55vh]">
+        <div className="bg-green-950 rounded-tr-2xl rounded-br-2xl mb-1 -mt-1 py-4 flex flex-col items-center min-h-[55vh]">
           <AdminSidebar />
         </div>
         <div className="flex flex-col w-full items-center mb-4">
@@ -39,18 +46,21 @@ const AdminSettings = () => {
               </p>
             </div>
             <div className="flex-1 p-2">
-              <div className="flex flex-col items-center gap-3 p-4 bg-green-100  rounded-2xl border border-green-800 shadow-xl">
+              <div className="flex flex-col items-center gap-3 px-6 py-8 bg-green-950  rounded-2xl border shadow-xl">
                 <label
                   htmlFor="imageFile"
                   className="cursor-pointer flex flex-col items-center"
                 >
                   <input type="file" id="imageFile" className="hidden" />
                   <img
-                    src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+                    src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
                     alt="no image"
                     style={{ width: "150px", height: "150px" }}
                   />
-                  <FontAwesomeIcon className="-mt-7 -mr-30" icon={faPencil} />
+                  <FontAwesomeIcon
+                    className="-mt-4 -mr-35 text-white"
+                    icon={faPencil}
+                  />
                 </label>
 
                 <input
@@ -71,13 +81,15 @@ const AdminSettings = () => {
                   className="p-2 border rounded bg-white placeholder-gray-400 w-full"
                 />
 
-                <div className="flex justify-end w-full">
-                  <button className=" text-red-600 tracking-wider p-3 hover:cursor-pointer hover:underline font-semibold">
-                    Reset
+                <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
+                  <button className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2">
+                    <span className="font-bold me-2">Reset</span>
+                    <FontAwesomeIcon icon={faArrowsRotate} />
                   </button>
 
-                  <button className="bg-green-950 rounded text-white p-3 hover:bg-green-100 font-bold border border-green-950 hover:text-green-950 ms-3">
-                    Submit
+                  <button className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2">
+                    <span className="font-bold me-2">Submit</span>
+                    <FontAwesomeIcon icon={faPaperPlane} />
                   </button>
                 </div>
               </div>

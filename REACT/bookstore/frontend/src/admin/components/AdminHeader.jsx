@@ -12,7 +12,12 @@ const AdminHeader = () => {
             alt="Book Store"
             style={{ width: "50px", height: "50px" }}
           />
-          <h1 className="ms-3 font-medium text-2x1">BOOK STORE</h1>
+          <h1 className="font-bold px-4 text-lg md:text-xl lg:text-2xl uppercase text-green-950">
+            Book Store{" "}
+            <span className="text-gray-700 font-medium px-1 text-sm">
+              Admin
+            </span>
+          </h1>
         </div>
         <button className="px-4 py-2 text-green-950 border border-green-950 rounded hover:bg-green-950 hover:text-white">
           <FontAwesomeIcon icon={faPowerOff} /> Logout

@@ -42,15 +42,16 @@ const AdminSidebar = () => {
     } else {
       console.log("no such page");
     }
-  },[]);
+  }, []);
   return (
     <>
       <img
-        src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+        src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
         alt="no image"
         style={{ width: "150px", height: "150px" }}
+        className="mt-4"
       />
-      <h1 className="mt-5">UserName</h1>
+      <h1 className="mt-5 text-white font-medium">UserName</h1>
       <div className="my-5">
         <div className="mb-3" onClick={() => filter("home")}>
           <input
@@ -59,7 +60,7 @@ const AdminSidebar = () => {
             name="filterPage"
             checked={homeStatus}
           />
-          <label htmlFor="home" className="ms-3">
+          <label htmlFor="home" className="ms-3 text-white">
             <FontAwesomeIcon icon={faHouse} className="me-3" />
             Home
           </label>
@@ -71,7 +72,7 @@ const AdminSidebar = () => {
             name="filterPage"
             checked={bookStatus}
           />
-          <label htmlFor="allBooks" className="ms-3">
+          <label htmlFor="allBooks" className="ms-3 text-white">
             <FontAwesomeIcon icon={faBook} className="me-3" />
             All Books
           </label>
@@ -83,7 +84,7 @@ const AdminSidebar = () => {
             name="filterPage"
             checked={careerStatus}
           />
-          <label htmlFor="careers" className="ms-3">
+          <label htmlFor="careers" className="ms-3 text-white">
             <FontAwesomeIcon icon={faUserTie} className="me-3" />
             Careers
           </label>
@@ -95,7 +96,7 @@ const AdminSidebar = () => {
             name="filterPage"
             checked={settingsStatus}
           />
-          <label htmlFor="settings" className="ms-3">
+          <label htmlFor="settings" className="ms-3 text-white">
             <FontAwesomeIcon icon={faGear} className="me-3" />
             Settings
           </label>

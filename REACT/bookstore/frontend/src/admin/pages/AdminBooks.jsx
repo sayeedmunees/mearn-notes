@@ -27,7 +27,7 @@ const AdminBooks = () => {
       <AdminHeader />
 
       <div className="grid grid-cols-[1fr_4fr]">
-        <div className="bg-green-100 flex flex-col items-center min-h-[55vh]">
+        <div className="bg-green-950 rounded-tr-2xl rounded-br-2xl mb-1 -mt-1 py-4 flex flex-col items-center min-h-[55vh]">
           <AdminSidebar />
         </div>
         <div>
@@ -62,8 +62,8 @@ const AdminBooks = () => {
 
           {/* Contents */}
           {bookListStatus && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 py-6 px-4">
-              <div className="p-3 shadow-xl col-span-1 rounded">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-6 px-4">
+              <div className="p-3 shadow-xl col-span-1 rounded border border-gray-400">
                 <img
                   src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"
                   alt="Book cover"
@@ -78,7 +78,7 @@ const AdminBooks = () => {
                   </div>
                 </div>
               </div>
-              <div className="p-3 shadow-xl col-span-1  rounded">
+              <div className="p-3 shadow-xl col-span-1  rounded border border-gray-400">
                 <img
                   src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"
                   alt="Book cover"
@@ -93,7 +93,7 @@ const AdminBooks = () => {
                   </div>
                 </div>
               </div>
-              <div className="p-3 shadow-xl col-span-1 rounded">
+              <div className="p-3 shadow-xl col-span-1 rounded border border-gray-400">
                 <img
                   src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"
                   alt="Book cover"
@@ -108,7 +108,7 @@ const AdminBooks = () => {
                   </div>
                 </div>
               </div>
-              <div className="p-3 shadow-xl col-span-1 rounded">
+              <div className="p-3 shadow-xl col-span-1 rounded border border-gray-400">
                 <img
                   src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"
                   alt="Book cover"
@@ -126,8 +126,8 @@ const AdminBooks = () => {
           )}
 
           {usersStatus && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 py-6 px-4">
-              <div className="p-3 shadow-xl col-span-1 rounded bg-gray-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-6 px-4">
+              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
                 <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
                 <div className="flex flex-row gap-4 items-center mt-3 ">
                   <div className="bg-gray-400 rounded-full">
@@ -144,7 +144,7 @@ const AdminBooks = () => {
                 </div>
               </div>
 
-              <div className="p-3 shadow-xl col-span-1 rounded bg-gray-100">
+              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
                 <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
                 <div className="flex flex-row gap-4 items-center mt-3 ">
                   <div className="bg-gray-400 rounded-full">
@@ -161,7 +161,7 @@ const AdminBooks = () => {
                 </div>
               </div>
 
-              <div className="p-3 shadow-xl col-span-1 rounded bg-gray-100">
+              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
                 <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
                 <div className="flex flex-row gap-4 items-center mt-3 ">
                   <div className="bg-gray-400 rounded-full">
@@ -178,7 +178,7 @@ const AdminBooks = () => {
                 </div>
               </div>
 
-              <div className="p-3 shadow-xl col-span-1 rounded bg-gray-100">
+              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
                 <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
                 <div className="flex flex-row gap-4 items-center mt-3 ">
                   <div className="bg-gray-400 rounded-full">
@@ -195,7 +195,7 @@ const AdminBooks = () => {
                 </div>
               </div>
 
-              <div className="p-3 shadow-xl col-span-1 rounded bg-gray-100">
+              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
                 <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
                 <div className="flex flex-row gap-4 items-center mt-3 ">
                   <div className="bg-gray-400 rounded-full">
@@ -212,7 +212,7 @@ const AdminBooks = () => {
                 </div>
               </div>
 
-              <div className="p-3 shadow-xl col-span-1 rounded bg-gray-100">
+              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
                 <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
                 <div className="flex flex-row gap-4 items-center mt-3 ">
                   <div className="bg-gray-400 rounded-full">
