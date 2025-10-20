@@ -1,9 +1,9 @@
 import React from "react";
 import AdminHeader from "../components/AdminHeader";
-import Footer from "../../components/Footer";
 import AdminSidebar from "../components/AdminSidebar";
+import Footer from "../../components/Footer";
 
-const AdminHome = () => {
+const AdminSettings = () => {
   return (
     <>
       <AdminHeader />
@@ -12,7 +12,7 @@ const AdminHome = () => {
         <div className="bg-green-100 flex flex-col items-center">
           <AdminSidebar />
         </div>
-        <div>Home</div>
+        <div>Settings</div>
       </div>
 
       <Footer />
@@ -20,4 +20,4 @@ const AdminHome = () => {
   );
 };
 
-export default AdminHome;
+export default AdminSettings;

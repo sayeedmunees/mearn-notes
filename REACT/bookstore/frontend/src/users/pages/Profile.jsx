@@ -14,22 +14,22 @@ import EditProfile from "../components/EditProfile";
 const Profile = () => {
   const [sellStatus, setSellStatus] = useState(true);
   const [bookStatus, setBookStatus] = useState(false);
-  const [purchaceStatus, setPurchaceStatus] = useState(false);
+  const [purchaseStatus, setPurchaseStatus] = useState(false);
 
   const handleSellStatus = () => {
     setSellStatus(true);
     setBookStatus(false);
-    setPurchaceStatus(false);
+    setPurchaseStatus(false);
   };
   const handleBookStatus = () => {
     setSellStatus(false);
     setBookStatus(true);
-    setPurchaceStatus(false);
+    setPurchaseStatus(false);
   };
-  const handlePurchaceStatus = () => {
+  const handlePurchaseStatus = () => {
     setSellStatus(false);
     setBookStatus(false);
-    setPurchaceStatus(true);
+    setPurchaseStatus(true);
   };
 
   return (
@@ -90,9 +90,9 @@ const Profile = () => {
             Sold History
           </p>
           <p
-            onClick={handlePurchaceStatus}
+            onClick={handlePurchaseStatus}
             className={
-              purchaceStatus
+              purchaseStatus
                 ? "p-4 text-green-950 border-2 border-b-0 border-gray-200 rounded cursor-pointer"
                 : "p-4 text-black border-b-2 border-b-gray-200"
             }
@@ -246,8 +246,130 @@ const Profile = () => {
           </div>
         </div>
       )}
-      {bookStatus && <div>Book</div>}
-      {purchaceStatus && <div>Purchase</div>}
+
+      {bookStatus && (
+        <div className="p-10 my-20 shadow rounded">
+          <div className="bg-gray-200 p-4 rounded">
+            <div className="md:grid grid-cols-[3fr_1fr]">
+              <div>
+                <h1 className="text-2xl">Book Name :</h1>
+                <h1>Author :</h1>
+                <p>
+                  Abstract/Discription : Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit. Assumenda dignissimos deleniti ad non
+                  consectetur architecto quo modi tempore optio quisquam
+                  asperiores, nostrum recusandae ducimus nesciunt quis nam
+                  doloribus blanditiis eos?
+                </p>
+                <div className="flex">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/09/74/65/39/360_F_974653955_Auq2ekCJ7Q6lGaTpmnYxAu4lRbsZblxT.png"
+                    alt="Pending"
+                    style={{ width: "70px", height: "70px" }}
+                  />
+
+                  <img
+                    src="https://png.pngtree.com/png-clipart/20250507/original/pngtree-rounded-sold-out-label-with-stamp-effect-for-product-availability-of-png-image_20938218.png"
+                    alt="sold"
+                    style={{ width: "70px", height: "70px" }}
+                  />
+
+                  <img
+                    src="https://toppng.com/uploads/preview/round-approved-blue-postage-stamp-11642625101msjywonr0e.png"
+                    alt="Approved"
+                    style={{ width: "70px", height: "70px" }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIgFsPvKjCc9OhYq89CL6PjUbk7kLFQIHH7A&s"
+                  alt=""
+                  className="w-full"
+                  style={{ height: "400px" }}
+                />
+                <div className="flex justify-end mt-4">
+                  <button className="bg-red-500 rounded text-white p-3 hover:bg-white hover:border hover:border-red-500 hover:text-red-500 ms-3">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center items-center flex-col">
+            <img
+              style={{ width: "400px", height: "400px" }}
+              src="https://i.pinimg.com/originals/39/70/fd/3970fd45f8264338153834f7ff18f4f0.gif"
+              alt="noimage"
+            />
+            <p className="text-red-600 text-4xl">No Books Added Yet!!</p>
+          </div>
+        </div>
+      )}
+
+      {purchaseStatus && (
+        <div className="p-10 my-20 shadow rounded">
+          <div className="bg-gray-200 p-4 rounded">
+            <div className="md:grid grid-cols-[3fr_1fr]">
+              <div>
+                <h1 className="text-2xl">Book Name :</h1>
+                <h1>Author :</h1>
+                <p>
+                  Abstract/Discription : Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit. Assumenda dignissimos deleniti ad non
+                  consectetur architecto quo modi tempore optio quisquam
+                  asperiores, nostrum recusandae ducimus nesciunt quis nam
+                  doloribus blanditiis eos?
+                </p>
+                <div className="flex">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/09/74/65/39/360_F_974653955_Auq2ekCJ7Q6lGaTpmnYxAu4lRbsZblxT.png"
+                    alt="Pending"
+                    style={{ width: "70px", height: "70px" }}
+                  />
+
+                  <img
+                    src="https://png.pngtree.com/png-clipart/20250507/original/pngtree-rounded-sold-out-label-with-stamp-effect-for-product-availability-of-png-image_20938218.png"
+                    alt="sold"
+                    style={{ width: "70px", height: "70px" }}
+                  />
+
+                  <img
+                    src="https://toppng.com/uploads/preview/round-approved-blue-postage-stamp-11642625101msjywonr0e.png"
+                    alt="Approved"
+                    style={{ width: "70px", height: "70px" }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIgFsPvKjCc9OhYq89CL6PjUbk7kLFQIHH7A&s"
+                  alt=""
+                  className="w-full"
+                  style={{ height: "400px" }}
+                />
+                <div className="flex justify-end mt-4">
+                  <button className="bg-red-500 rounded text-white p-3 hover:bg-white hover:border hover:border-red-500 hover:text-red-500 ms-3">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center items-center flex-col">
+            <img
+              style={{ width: "400px", height: "400px" }}
+              src="https://i.pinimg.com/originals/39/70/fd/3970fd45f8264338153834f7ff18f4f0.gif"
+              alt="noimage"
+            />
+            <p className="text-red-600 text-4xl">No Books Added Yet!!</p>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>

@@ -11,6 +11,9 @@ import Careers from "./users/pages/Careers";
 import Contact from "./users/pages/Contact";
 import Profile from "./users/pages/Profile";
 import AdminHome from "./admin/pages/AdminHome";
+import AdminBooks from "./admin/pages/AdminBooks";
+import AdminCareers from "./admin/pages/AdminCareers";
+import AdminSettings from "./admin/pages/AdminSettings";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +33,14 @@ function App() {
         <Route path="/career" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/admin-home" element={isLoading ? <Preloader /> : <AdminHome />} />
+
+        <Route
+          path="/admin-home"
+          element={isLoading ? <Preloader /> : <AdminHome />}
+        />
+        <Route path="/admin-books" element={<AdminBooks />} />
+        <Route path="/admin-careers" element={<AdminCareers />} />
+        <Route path="/admin-settings" element={<AdminSettings />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </>
