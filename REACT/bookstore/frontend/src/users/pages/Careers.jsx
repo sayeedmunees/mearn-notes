@@ -42,6 +42,7 @@ const Careers = () => {
             Dignissimos nulla doloremque ad ut quae!
           </p>
         </div>
+
         <div className="flex flex-col items-center my-2 ">
           <h2 className="text-xl text-center font-semibold">
             Current Openings
@@ -58,6 +59,7 @@ const Careers = () => {
             />
           </div>
         </div>
+
         <div className="flex flex-col border border-gray-400 rounded-lg items-center my-2 p-4 max-w-4xl lg:w-4xl mx-2 shadow-lg">
           <div className="flex flex-row justify-between w-full items-center">
             <h2 className="text-xl text-center font-semibold">Job Title</h2>

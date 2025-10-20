@@ -36,7 +36,7 @@ const Profile = () => {
     <>
       <Header />
       <hr className="text-white" />
-      <div style={{ height: "200px" }} className="bg-green-950"></div>
+      <div style={{ height: "200px" }} className="bg-gray-600"></div>
       <div
         style={{
           width: "230px",

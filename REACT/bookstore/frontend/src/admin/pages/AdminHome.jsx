@@ -11,28 +11,31 @@ const AdminHome = () => {
       <AdminHeader />
 
       <div className="grid grid-cols-[1fr_4fr]">
-        <div className="bg-green-100 flex flex-col items-center">
+        <div className="bg-green-100 flex flex-col items-center min-h-[55vh]">
           <AdminSidebar />
         </div>
         <div className="flex gap-2 justify-around mt-4">
           <div className="flex gap-2  items-center px-6 py-4 bg-green-950 text-white rounded-xl h-fit">
             <FontAwesomeIcon className="text-4xl" icon={faBook} />
             <p className="flex flex-col text-center">
-              Total Number of Books <span className="font-bold text-xl">100+</span>
+              Total Number of Books{" "}
+              <span className="font-bold text-xl">100+</span>
             </p>
           </div>
 
           <div className="flex gap-2 items-center px-6 py-4 bg-blue-950 text-white rounded-xl h-fit">
             <FontAwesomeIcon className="text-4xl" icon={faUsers} />
             <p className="flex flex-col text-center">
-              Total Number of Users <span className="font-bold text-xl">100+</span>
+              Total Number of Users{" "}
+              <span className="font-bold text-xl">100+</span>
             </p>
           </div>
 
           <div className="flex gap-2  items-center px-6 py-4 bg-amber-700 text-white rounded-xl h-fit">
             <FontAwesomeIcon className="text-4xl" icon={faUserTie} />
             <p className="flex flex-col text-center">
-              Total Number of Employees <span className="font-bold text-xl">100+</span>
+              Total Number of Employees{" "}
+              <span className="font-bold text-xl">100+</span>
             </p>
           </div>
         </div>
