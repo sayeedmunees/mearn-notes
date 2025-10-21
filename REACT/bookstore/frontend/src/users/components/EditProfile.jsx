@@ -65,6 +65,7 @@ const EditProfile = () => {
                 className="p-2 mt-3 border rounded bg-white placeholder-gray-700 w-full"
               />
 
+
               <input
                 type="password"
                 placeholder="Password"
