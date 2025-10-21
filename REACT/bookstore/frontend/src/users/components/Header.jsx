@@ -3,7 +3,11 @@ import {
   faInstagram,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faRightFromBracket,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -109,6 +113,10 @@ const Header = () => {
                     id="menu-item-1"
                   >
                     Logout
+                    <FontAwesomeIcon
+                      className="ps-2"
+                      icon={faRightFromBracket}
+                    />
                   </button>
                 </div>
               </div>
@@ -168,6 +176,10 @@ const Header = () => {
                     id="menu-item-1"
                   >
                     Logout
+                    <FontAwesomeIcon
+                      className="ps-2"
+                      icon={faRightFromBracket}
+                    />
                   </button>
                 </div>
               </div>
