@@ -1,9 +1,14 @@
+// import dotenv config
+require("dotenv").config();
+
 // import express library
 const express = require("express");
 // import cors
 const cors = require("cors");
 // import route
 const route = require("./routes.js");
+// import db connection files
+require("./databaseConnection.js");
 
 // Create server
 const bookStoreServer = express();

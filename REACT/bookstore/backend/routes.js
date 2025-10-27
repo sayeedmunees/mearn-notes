@@ -7,7 +7,7 @@ const userController = require("./controller/userController.js");
 const route = new express.Router();
 
 // path..
-route.post = ("/register", userController.registerController);
+route.post("/register", userController.registerController);
 
 // routes export
 module.exports = route;
