@@ -5,12 +5,29 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../users/components/Header";
 import Footer from "../components/Footer";
 
 const Auth = ({ register }) => {
+  const [userDetails, setUserDetails] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  console.log(userDetails);
+  
+  const handleRegister=()=>{
+    const {username, email, password} = userDetails
+    if (!username || !email || !password){
+      alert("Please fill the form completely")
+    }else{
+      alert("Proceed")
+    }
+  }
+
   return (
     <>
       <Header />
@@ -76,6 +93,9 @@ const Auth = ({ register }) => {
           {register && (
             <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
               <input
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, username: e.target.value })
+                }
                 type="text"
                 placeholder="Username"
                 className=" placeholder-gray-600 w-full text-black border-none"
@@ -85,6 +105,9 @@ const Auth = ({ register }) => {
 
           <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
             <input
+              onChange={(e) =>
+                setUserDetails({ ...userDetails, email: e.target.value })
+              }
               type="text"
               placeholder="Email"
               className=" placeholder-gray-600 w-full text-black border-none"
@@ -94,7 +117,10 @@ const Auth = ({ register }) => {
           <div className="w-full">
             <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
               <input
-                type="text"
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, password: e.target.value })
+                }
+                type="password"
                 placeholder="Password"
                 className=" placeholder-gray-600 text-black border-none w-full"
               />
@@ -113,7 +139,7 @@ const Auth = ({ register }) => {
           </div>
 
           {register ? (
-            <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 px-6 py-2 font-bold">
+            <button onClick={handleRegister} className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 px-6 py-2 font-bold">
               Register
             </button>
           ) : (

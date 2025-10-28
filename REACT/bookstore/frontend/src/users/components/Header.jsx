@@ -35,13 +35,14 @@ const Header = () => {
             <FontAwesomeIcon className="text-xl" icon={faInstagram} />
             <FontAwesomeIcon className="text-xl" icon={faXTwitter} />
             <FontAwesomeIcon className="text-xl" icon={faFacebook} />
-            {/* <Link to={"/login"}>
+            <Link to={"/login"}>
               <button className="border border-gray-700 bg-white rounded-lg h-8 w-fit p-3 flex justify-center items-center hover:bg-gray-800 text-gray-900 hover:text-white">
                 <FontAwesomeIcon icon={faUser} />
                 <h2>Login</h2>
               </button>
-            </Link> */}
-            <button
+            </Link>
+
+            {/* <button
               onClick={() => setDropDownStatus(!dropDownStatus)}
               class="gap-x-1.5 rounded-md"
             >
@@ -50,7 +51,43 @@ const Header = () => {
                 alt="UserLogin"
                 className="w-10 h-10"
               />
-            </button>
+            </button> */}
+
+            {/* {dropDownStatus && (
+              <div
+                className="absolute right-0 top-20 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden"
+                role="menu"
+                aria-orientation=""
+                tabIndex="-1"
+              >
+                <div role="none">
+                  <Link to={"/profile"}>
+                    <p
+                      class="block px-4 py-2 text-sm rounded-md font-semibold hover:bg-gray-200 text-gray-700"
+                      role="menuItem"
+                      tabIndex="-1"
+                      id="menu-item-0"
+                    >
+                      Profile
+                    </p>
+                  </Link>
+
+                  <button
+                    type="submit"
+                    class="block w-full rounded-md font-bold hover:bg-gray-200 px-4 py-2 text-left text-sm text-red-600"
+                    role="menuItem"
+                    tabIndex="-1"
+                    id="menu-item-1"
+                  >
+                    Logout
+                    <FontAwesomeIcon
+                      className="ps-2"
+                      icon={faRightFromBracket}
+                    />
+                  </button>
+                </div>
+              </div>
+            )} */}
 
             {/* Dropdown Tailwind */}
             {/* <el-dropdown class="inline-flex items-center text-black">
@@ -86,41 +123,7 @@ const Header = () => {
               </el-menu>
             </el-dropdown> */}
 
-            {dropDownStatus && (
-              <div
-                className="absolute right-0 top-20 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden"
-                role="menu"
-                aria-orientation=""
-                tabIndex="-1"
-              >
-                <div role="none">
-                  <Link to={"/profile"}>
-                    <p
-                      class="block px-4 py-2 text-sm rounded-md font-semibold hover:bg-gray-200 text-gray-700"
-                      role="menuItem"
-                      tabIndex="-1"
-                      id="menu-item-0"
-                    >
-                      Profile
-                    </p>
-                  </Link>
-
-                  <button
-                    type="submit"
-                    class="block w-full rounded-md font-bold hover:bg-gray-200 px-4 py-2 text-left text-sm text-red-600"
-                    role="menuItem"
-                    tabIndex="-1"
-                    id="menu-item-1"
-                  >
-                    Logout
-                    <FontAwesomeIcon
-                      className="ps-2"
-                      icon={faRightFromBracket}
-                    />
-                  </button>
-                </div>
-              </div>
-            )}
+            
           </div>
         </div>
 
@@ -132,14 +135,15 @@ const Header = () => {
             >
               <FontAwesomeIcon icon={faBars} />
             </button>
-            {/* <Link to={"/login"}>
+
+            <Link to={"/login"}>
               <button className="rounded-lg h-8 w-fit p-3 flex justify-center items-center text-white">
                 <FontAwesomeIcon icon={faUser} />
                 <h2>Login</h2>
               </button>
-            </Link> */}
+            </Link>
 
-            <button
+            {/* <button
               onClick={() => setDropDownStatus(!dropDownStatus)}
               class="gap-x-1.5 rounded-md"
             >
@@ -148,8 +152,8 @@ const Header = () => {
                 alt="UserLogin"
                 className="w-10 h-10"
               />
-            </button>
-            {dropDownStatus && (
+            </button> */}
+            {/* {dropDownStatus && (
               <div
                 className="absolute right-0 top-40 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden"
                 role="menu"
@@ -183,7 +187,7 @@ const Header = () => {
                   </button>
                 </div>
               </div>
-            )}
+            )} */}
           </div>
           <div className="flex justify-center items-center text-white">
             <ul
