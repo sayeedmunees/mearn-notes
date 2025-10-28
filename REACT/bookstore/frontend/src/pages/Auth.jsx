@@ -6,10 +6,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../users/components/Header";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
+import { registerAPI } from "../services/allAPI";
 
 const Auth = ({ register }) => {
   const [userDetails, setUserDetails] = useState({
@@ -18,14 +19,33 @@ const Auth = ({ register }) => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   console.log(userDetails);
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     const { username, email, password } = userDetails;
     if (!username || !email || !password) {
       toast.info("Please fill the form completely");
     } else {
-      alert("Proceed");
+      const result = await registerAPI({ username, email, password });
+      console.log(result);
+      if (result.status == 200) {
+        toast.success("Register Succesful");
+        setUserDetails({
+          username: "",
+          email: "",
+          password: "",
+        });
+        navigate("/login");
+      } else if (result.status == 400) {
+        toast.warning(result.response.data);
+        setUserDetails({
+          username: "",
+          email: "",
+          password: "",
+        });
+      }
     }
   };
 
@@ -94,6 +114,7 @@ const Auth = ({ register }) => {
           {register && (
             <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
               <input
+                value={userDetails.username}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, username: e.target.value })
                 }
@@ -106,6 +127,7 @@ const Auth = ({ register }) => {
 
           <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
             <input
+              value={userDetails.email}
               onChange={(e) =>
                 setUserDetails({ ...userDetails, email: e.target.value })
               }
@@ -118,10 +140,11 @@ const Auth = ({ register }) => {
           <div className="w-full">
             <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
               <input
+                value={userDetails.password}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, password: e.target.value })
                 }
-                type="password"
+                type="text"
                 placeholder="Password"
                 className=" placeholder-gray-600 text-black border-none w-full"
               />
