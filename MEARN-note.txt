@@ -804,6 +804,14 @@ Steps to create an Express Server
             - import dotenv library in index.js - invoke config() to import dovenv config
         12. create model
 
+
+JWT Authentication
+--------------------------------------
+    - JSON Web Token
+    - to generate token: sign({data to be embeded in token}, secret key)
+    -
+
+
 MONGO DB
 ----------------------------------------
 - data is stored as document in json like format(BSON)
