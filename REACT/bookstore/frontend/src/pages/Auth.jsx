@@ -10,7 +10,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../users/components/Header";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
-import { registerAPI } from "../services/allAPI";
+import { loginAPI, registerAPI } from "../services/allAPI";
 
 const Auth = ({ register }) => {
   const [userDetails, setUserDetails] = useState({
@@ -38,6 +38,31 @@ const Auth = ({ register }) => {
           password: "",
         });
         navigate("/login");
+      } else if (result.status == 400) {
+        toast.warning(result.response.data);
+        setUserDetails({
+          username: "",
+          email: "",
+          password: "",
+        });
+      }
+    }
+  };
+
+  const handleLogin = async () => {
+    const { email, password } = userDetails;
+    if (!email || !password) {
+      toast.info("Please fill the form completely");
+    } else {
+      const result = await loginAPI({ email, password });
+      console.log(result);
+      if (result.status == 200) {
+        toast.success("Login Succesful");
+        sessionStorage.setItem(
+          "existingUser",
+          JSON.stringify(result.data.existingUSer)
+        );
+        sessionStorage.setItem("token", result.data.token)
       } else if (result.status == 400) {
         toast.warning(result.response.data);
         setUserDetails({
@@ -172,6 +197,7 @@ const Auth = ({ register }) => {
             </button>
           ) : (
             <button
+              onClick={handleLogin}
               type="button"
               className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 px-6 py-2 font-bold"
             >
