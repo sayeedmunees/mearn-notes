@@ -62,14 +62,9 @@ const Auth = ({ register }) => {
           "existingUser",
           JSON.stringify(result.data.existingUSer)
         );
-        sessionStorage.setItem("token", result.data.token)
-      } else if (result.status == 400) {
+        sessionStorage.setItem("token", result.data.token);
+      } else if (result.status == 401 || result.status == 404) {
         toast.warning(result.response.data);
-        setUserDetails({
-          username: "",
-          email: "",
-          password: "",
-        });
       }
     }
   };
