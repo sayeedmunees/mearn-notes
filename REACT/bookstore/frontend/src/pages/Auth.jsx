@@ -10,8 +10,9 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../users/components/Header";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
-import { loginAPI, registerAPI } from "../services/allAPI";
+import { googleLoginAPI, loginAPI, registerAPI } from "../services/allAPI";
 import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 const Auth = ({ register }) => {
   const [userDetails, setUserDetails] = useState({
@@ -87,6 +88,19 @@ const Auth = ({ register }) => {
         });
       }
     }
+  };
+
+  const handleGoogleLogin = async (credentialResponse) => {
+    const details = jwtDecode(credentialResponse.credential);
+    console.log(details);
+
+    const result = await googleLoginAPI({
+      username: details.name,
+      email: details.email,
+      password: "googlepswd",
+      profile: details.picture,
+    });
+    console.log(result);
   };
 
   return (
@@ -234,7 +248,7 @@ const Auth = ({ register }) => {
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   console.log(credentialResponse);
-                  handleGoogleLogin(credentialResponse)
+                  handleGoogleLogin(credentialResponse);
                 }}
                 onError={() => {
                   console.log("Login Failed");

@@ -13,5 +13,8 @@ route.post("/register", userController.registerController);
 // path for login
 route.post("/login", userController.loginController);
 
+// path for google login
+route.post("/google-login", userController.googleLoginController);
+
 // routes export
 module.exports = route;
