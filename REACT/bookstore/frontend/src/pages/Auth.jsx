@@ -11,6 +11,7 @@ import Header from "../users/components/Header";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import { loginAPI, registerAPI } from "../services/allAPI";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Auth = ({ register }) => {
   const [userDetails, setUserDetails] = useState({
@@ -79,6 +80,11 @@ const Auth = ({ register }) => {
         });
       } else {
         toast.error("Something went wrong");
+        setUserDetails({
+          username: "",
+          email: "",
+          password: "",
+        });
       }
     }
   };
@@ -221,10 +227,19 @@ const Auth = ({ register }) => {
                   ------------------ or ------------------
                 </p>
               </div>
-              <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 w-full px-4 py-2 ">
+              {/* <button className="bg-white border border-white hover:bg-green-950 rounded hover:text-white text-green-950 w-full px-4 py-2 ">
                 <span className="font-semibold">Sign in with Google</span>
                 <FontAwesomeIcon className="ps-2" icon={faGoogle} />
-              </button>
+              </button> */}
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse);
+                  handleGoogleLogin(credentialResponse)
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
             </>
           )}
           <div>

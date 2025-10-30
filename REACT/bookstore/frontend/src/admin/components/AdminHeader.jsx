@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AdminHeader = () => {
   return (
@@ -22,10 +23,12 @@ const AdminHeader = () => {
             </span>
           </h1>
         </div>
-        <button className="px-4 py-2 flex items-center justify-center font-semibold text-green-950 border border-green-950 rounded hover:bg-red-700 hover:text-white">
-          Logout
-          <FontAwesomeIcon className="ps-2" icon={faRightFromBracket} />
-        </button>
+        <Link to={"/"}>
+          <button className="px-4 py-2 flex items-center justify-center font-semibold text-green-950 border border-green-950 rounded hover:bg-red-700 hover:text-white">
+            Logout
+            <FontAwesomeIcon className="ps-2" icon={faRightFromBracket} />
+          </button>
+        </Link>
       </div>
 
       <marquee
