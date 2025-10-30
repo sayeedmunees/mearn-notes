@@ -60,11 +60,25 @@ const Auth = ({ register }) => {
         toast.success("Login Succesful");
         sessionStorage.setItem(
           "existingUser",
-          JSON.stringify(result.data.existingUSer)
+          JSON.stringify(result.data.existingUser)
         );
         sessionStorage.setItem("token", result.data.token);
+        setTimeout(() => {
+          if (result.data.existingUser.email == "bookAdmin@gmail.com") {
+            navigate("/admin-home");
+          } else {
+            navigate("/");
+          }
+        }, 2500);
       } else if (result.status == 401 || result.status == 404) {
         toast.warning(result.response.data);
+        setUserDetails({
+          username: "",
+          email: "",
+          password: "",
+        });
+      } else {
+        toast.error("Something went wrong");
       }
     }
   };
