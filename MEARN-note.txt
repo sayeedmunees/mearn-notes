@@ -797,12 +797,22 @@ Steps to create an Express Server
         5. run server app using command: node index.js
         8. create router file.
         9. create controller
-            - Nodemon : nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+        - Nodemon : nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
             - npm i nodemon
         10. create a cluster in mongoDB
         11. create the server with database
             - import dotenv library in index.js - invoke config() to import dovenv config
         12. create model
+
+
+Middleware
+------------------------
+- It is a function which have then ability to break the request-response cycle and to do specific task such as authentication, data exchange, messaging, connectivity, etc...
+
+- 1. Builtin Middleware
+- 2. Custom
+- Scope : 1. Application specific: all the request in application passes through the middleware
+          2. Router specific: middleware will be active in specific path
 
 
 JWT Authentication
