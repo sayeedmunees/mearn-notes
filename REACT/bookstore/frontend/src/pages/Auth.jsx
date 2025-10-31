@@ -1,12 +1,8 @@
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import {
-  faCircleUser,
-  faEyeSlash,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../users/components/Header";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
@@ -101,6 +97,23 @@ const Auth = ({ register }) => {
       profile: details.picture,
     });
     console.log(result);
+    if (result.status == 200){
+      toast.success("Login Successful")
+      sessionStorage.setItem(
+          "existingUser",
+          JSON.stringify(result.data.existingUser)
+        );
+        sessionStorage.setItem("token", result.data.token);
+        setTimeout(() => {
+          if (result.data.existingUser.email == "bookAdmin@gmail.com") {
+            navigate("/admin-home");
+          } else {
+            navigate("/");
+          }
+        }, 2500);
+    }else {
+      toast.error("Something went wrong")
+    }
   };
 
   return (
