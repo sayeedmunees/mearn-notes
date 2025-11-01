@@ -9,6 +9,9 @@ const bookController = require("./controller/bookController.js");
 // import jwt middleware
 const jwtMiddleware = require("./middleware/jwtMiddleware.js");
 
+// import multer Config
+const multerConfig = require("./middleware/multerMiddleware.js");
+
 // create instance
 const route = new express.Router();
 
@@ -22,7 +25,12 @@ route.post("/login", userController.loginController);
 route.post("/google-login", userController.googleLoginController);
 
 // path for add book
-route.post("/add-book", jwtMiddleware, bookController.addBookController);
+route.post(
+  "/add-book",
+  jwtMiddleware,
+  multerConfig.array("uploadImages", 3),
+  bookController.addBookController
+);
 
 // routes export
 module.exports = route;
