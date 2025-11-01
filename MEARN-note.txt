@@ -819,8 +819,16 @@ JWT Authentication
 --------------------------------------
     - JSON Web Token
     - to generate token: sign({data to be embeded in token}, secret key)
-    -
+    - to verify token : verify(token, secretkey) - return :{ embeded data, ist{time}}
 
+Multer
+------------------------
+- Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files.
+- Multer adds a body object and a file or files object to the request object. - The body object contains the values of the text fields of the form, the file or files object contains the files uploaded via the form.
+- Disk Storage : The disk storage engine gives you full control on string files to disk
+- File filter : function to control which file should be uploaded and which should be skipped
+     - callback(null, false) - skip the file
+     - callback(null, true) - accept the file
 
 MONGO DB
 ----------------------------------------
