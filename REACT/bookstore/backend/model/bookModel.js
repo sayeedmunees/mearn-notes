@@ -61,7 +61,6 @@ const bookSchema = new mongoose.Schema({
   },
   brought: {
     type: String,
-    required: true,
     default: "",
   },
 });

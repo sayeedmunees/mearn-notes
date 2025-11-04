@@ -68,7 +68,7 @@ const Profile = () => {
 
       {/* tabs */}
       <div className="md:px-40 mt-4">
-        <div className="flex justify-center">
+        <div className="flex justify-center hover:cursor-pointer">
           <p
             onClick={handleSellStatus}
             className={

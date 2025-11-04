@@ -847,9 +847,40 @@ Mongosh mongoDB Shell where commands to handle mongodb is given.
 
 MongoDB Operations
 --------------------
-
-
-
+1. show databases: used to show db.
+2. use databaseName to switch into a particular database
+3. show collections to show all collections inside a particular database
+4. db.createCollection("collectionName"): to create a new collection in a database.
+5. db.collectionName.find(): to get all documents from a particular collection.
+6. db.collectionName.findOne (condition): to return the first document that satisfy the condition.
+7. db.collectionName.find().limit(number): return a particular number of documents
+only.
+8. db.collectionName.find().skip(number): return the remain document after skipping a particular document.
+9. db.collectionName.find().sort({condition})
+        - {key:1} - ascending order
+        - {key:-1} - decending order
+10. db.collectionName.insertOne({item}): insert single document
+11. db.collectionName.insertMany ([{item1},{item2.....}]) add more than one item at a time.
+12. updateone() at a time single document can be updated.
+        updateMany()
+        update more than one item at a time.
+        findByIdandUpdate()
+        condition to identify a document should be an id
+13.
+        deleteOne()
+        deleteMany()
+        findByIdandDelete()
+14. Aggregation used to combine/joining two collections in mongodb
+        - using $lookup : a left outerjoin to a collection in same database
+        - syntax: collectionName.aggregation({
+                $lookup:
+                {
+                    from: <collection to join>,
+                    localfield: <field from the input document>
+                    foreignField: <field from the documents of the "from" collection
+                    as: <output array field>
+                }
+            })
 
 
 Query based Operations
@@ -865,16 +896,7 @@ Query based Operations
         - $exists:  db.users.find(address: {$exists:true}) with the key address
                     db.users.find({address: {$exists:false}}): return data without key
 
-    12. updateone() at a time single document can be updated.
-        updateMany()
-        update more than one item at a time.
-        findByIdandUpdate()
-        condition to identify a document should be an id
-    13.
-        deleteOne()
-        deleteMany()
-        findByIdandDelete()
-    14. 
+    
 
 
 

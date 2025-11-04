@@ -1,9 +1,60 @@
+const books = require("../model/bookModel");
+
 // add book
 exports.addBookController = async (req, res) => {
-    console.log("Inside addbook controller");
+  console.log("Inside addbook controller");
+  const {
+    title,
+    author,
+    noofpages,
+    imageurl,
+    price,
+    dprice,
+    abstract,
+    publisher,
+    language,
+    isbn,
+    category,
+  } = req.body;
 
-    console.log(req.body);
-    console.log(req.files);
+  uploadedImg = [];
+  req.files.map((item) => uploadedImg.push(item.filename));
 
-    res.status(200).json("req recieved")
+  console.log(uploadedImg);
+
+  const email = req.payload;
+  console.log(email);
+
+  try {
+    const existingBook = await books.findOne({ title, userMail: email });
+
+    if (existingBook) {
+      res.status(401).json("You have already added this book");
+    } else {
+      const newBook = new books({
+        title,
+        author,
+        noofpages,
+        imageurl,
+        price,
+        dprice,
+        abstract,
+        publisher,
+        language,
+        isbn,
+        category,
+        uploadedImg,
+        userMail: email,
+        status: "pending",
+      });
+
+      await newBook.save();
+      res.status(200).json(newBook);
+    }
+  } catch(err) {
+    res.status(500).json(err)
+    console.log(err);
+    
+  }
+
 };
