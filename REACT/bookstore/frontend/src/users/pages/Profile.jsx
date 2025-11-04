@@ -15,6 +15,20 @@ const Profile = () => {
   const [sellStatus, setSellStatus] = useState(true);
   const [bookStatus, setBookStatus] = useState(false);
   const [purchaseStatus, setPurchaseStatus] = useState(false);
+  const [bookDetails, setBookDetails] = useState({
+    title: "",
+    author: "",
+    noofpages: "",
+    imageurl: "",
+    price: "",
+    dprice: "",
+    abstract: "",
+    publisher: "",
+    language: "",
+    isbn: "",
+    category: "",
+    uploadedImages: [],
+  });
 
   const handleSellStatus = () => {
     setSellStatus(true);
@@ -30,6 +44,16 @@ const Profile = () => {
     setSellStatus(false);
     setBookStatus(false);
     setPurchaseStatus(true);
+  };
+
+  // Referred from ai
+  const handleImage = (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    setBookDetails((bookDetails) => ({
+      ...bookDetails,
+      uploadedImages: [...bookDetails.uploadedImages, ...files],
+    }));
   };
 
   return (
@@ -113,6 +137,10 @@ const Profile = () => {
             <div className="flex flex-row gap-2 w-full">
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.title}
+                  onChange={(e) =>
+                    setBookDetails({ ...bookDetails, title: e.target.value })
+                  }
                   type="text"
                   placeholder="Book Title"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -120,6 +148,13 @@ const Profile = () => {
               </div>
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.publisher}
+                  onChange={(e) =>
+                    setBookDetails({
+                      ...bookDetails,
+                      publisher: e.target.value,
+                    })
+                  }
                   type="text"
                   placeholder="Publisher"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -130,6 +165,10 @@ const Profile = () => {
             <div className="flex flex-row gap-2 w-full">
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.author}
+                  onChange={(e) =>
+                    setBookDetails({ ...bookDetails, title: e.target.value })
+                  }
                   type="text"
                   placeholder="Author"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -137,6 +176,10 @@ const Profile = () => {
               </div>
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.language}
+                  onChange={(e) =>
+                    setBookDetails({ ...bookDetails, language: e.target.value })
+                  }
                   type="text"
                   placeholder="Language"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -147,6 +190,13 @@ const Profile = () => {
             <div className="flex flex-row gap-2 w-full">
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.noofpages}
+                  onChange={(e) =>
+                    setBookDetails({
+                      ...bookDetails,
+                      noofpages: e.target.value,
+                    })
+                  }
                   type="text"
                   placeholder="Number of Pages"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -154,6 +204,10 @@ const Profile = () => {
               </div>
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.isbn}
+                  onChange={(e) =>
+                    setBookDetails({ ...bookDetails, isbn: e.target.value })
+                  }
                   type="text"
                   placeholder="ISBN"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -164,6 +218,10 @@ const Profile = () => {
             <div className="flex flex-row gap-2 w-full">
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.imageurl}
+                  onChange={(e) =>
+                    setBookDetails({ ...bookDetails, imageurl: e.target.value })
+                  }
                   type="text"
                   placeholder="Image URL"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -171,6 +229,10 @@ const Profile = () => {
               </div>
               <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                 <input
+                  value={bookDetails.category}
+                  onChange={(e) =>
+                    setBookDetails({ ...bookDetails, category: e.target.value })
+                  }
                   type="text"
                   placeholder="Category"
                   className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -182,6 +244,10 @@ const Profile = () => {
               <div className="flex flex-col col-span-1 gap-4">
                 <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                   <input
+                    value={bookDetails.price}
+                    onChange={(e) =>
+                      setBookDetails({ ...bookDetails, price: e.target.value })
+                    }
                     type="text"
                     placeholder="Price"
                     className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -190,6 +256,10 @@ const Profile = () => {
 
                 <div className="flex w-full bg-white rounded items-center py-2 px-4 ">
                   <input
+                    value={bookDetails.dprice}
+                    onChange={(e) =>
+                      setBookDetails({ ...bookDetails, dprice: e.target.value })
+                    }
                     type="text"
                     placeholder="Discount Price"
                     className=" placeholder-gray-600 w-full text-black border-none focus:outline-0"
@@ -198,6 +268,13 @@ const Profile = () => {
 
                 <div className="flex w-full bg-white rounded items-center py-2 px-4 col-span-1 ">
                   <textarea
+                    value={bookDetails.abstract}
+                    onChange={(e) =>
+                      setBookDetails({
+                        ...bookDetails,
+                        abstract: e.target.value,
+                      })
+                    }
                     class="placeholder-gray-600 w-full text-black border-none border-0 outline-none focus:outline-none focus:ring-0 resize-none"
                     placeholder="Type your text..."
                   ></textarea>
@@ -207,6 +284,7 @@ const Profile = () => {
                 <div className="flex justify-center items-center w-full my-10">
                   <label htmlFor="imageFile">
                     <input
+                      onChange={handleImage}
                       type="file"
                       name="imageFile"
                       style={{ display: "none" }}
