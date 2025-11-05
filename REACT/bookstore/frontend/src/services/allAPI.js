@@ -15,3 +15,10 @@ export const loginAPI = async (reqBody) => {
 export const googleLoginAPI = async (reqBody) => {
   return await commonAPI(`POST`, `${serverURL}/google-login`, reqBody);
 };
+
+// ------------------Users---------------------------------
+
+// upload book
+export const uploadBookAPI = async (reqBody, reqHeader) => {
+  return await commonAPI(`POST`, `${serverURL}/add-book`, reqBody, reqHeader);
+};
