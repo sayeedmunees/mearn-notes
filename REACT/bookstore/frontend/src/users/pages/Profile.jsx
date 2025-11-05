@@ -134,6 +134,7 @@ const Profile = () => {
 
       const result = await uploadBookAPI(reqBody, reqHeader);
       console.log(result);
+      handleReset()
     }
   };
 
@@ -142,7 +143,7 @@ const Profile = () => {
       const token = sessionStorage.getItem("token");
       setToken(token);
     }
-  });
+  },[]);
 
   return (
     <>
