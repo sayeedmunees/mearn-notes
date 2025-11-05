@@ -830,6 +830,9 @@ Multer
      - callback(null, false) - skip the file
      - callback(null, true) - accept the file
 
+
+- Covert file object into url: URL.createObjectURL
+
 MONGO DB
 ----------------------------------------
 - data is stored as document in json like format(BSON)
@@ -896,7 +899,7 @@ Query based Operations
         - $exists:  db.users.find(address: {$exists:true}) with the key address
                     db.users.find({address: {$exists:false}}): return data without key
 
-    
+
 
 
 

@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditProfile from "../components/EditProfile";
+import { toast, ToastContainer } from "react-toastify";
 
 const Profile = () => {
   const [sellStatus, setSellStatus] = useState(true);
@@ -29,6 +30,10 @@ const Profile = () => {
     category: "",
     uploadedImages: [],
   });
+  const [preview, setPreview] = useState("");
+  const [previewList, setPreviewList] = useState([]);
+
+  console.log(bookDetails);
 
   const handleSellStatus = () => {
     setSellStatus(true);
@@ -46,14 +51,74 @@ const Profile = () => {
     setPurchaseStatus(true);
   };
 
-  // Referred from ai
-  const handleImage = (e) => {
-    const files = Array.from(e.target.files || []);
-    if (!files.length) return;
-    setBookDetails((bookDetails) => ({
-      ...bookDetails,
-      uploadedImages: [...bookDetails.uploadedImages, ...files],
-    }));
+  const handleUploadImage = (e) => {
+    const fileArray = bookDetails.uploadedImages;
+    // console.log(e.target.files[0]);
+    fileArray.push(e.target.files[0]);
+    setBookDetails({ ...bookDetails, uploadedImages: fileArray });
+
+    const url = URL.createObjectURL(e.target.files[0]);
+    setPreview(url);
+
+    const newArray = previewList;
+    newArray.push(url);
+    setPreviewList(newArray);
+  };
+
+  const handleReset = () => {
+    setBookDetails({
+      title: "",
+      author: "",
+      noofpages: "",
+      imageurl: "",
+      price: "",
+      dprice: "",
+      abstract: "",
+      publisher: "",
+      language: "",
+      isbn: "",
+      category: "",
+      uploadedImages: [],
+    });
+    setPreview("");
+    setPreviewList([]);
+  };
+
+  const handleSubmit = () => {
+    const {
+      title,
+      author,
+      noofpages,
+      imageurl,
+      price,
+      dprice,
+      abstract,
+      publisher,
+      language,
+      isbn,
+      category,
+      uploadedImages,
+    } = bookDetails;
+
+    if (
+      !title ||
+      !author ||
+      !noofpages ||
+      !imageurl ||
+      !price ||
+      !dprice ||
+      !abstract ||
+      !publisher ||
+      !language ||
+      !isbn ||
+      !category ||
+      uploadedImages.length == 0
+    ) {
+      toast.info("Please fill the form completely");
+    } else{
+      alert("Proceed")
+      handleReset()
+    }
   };
 
   return (
@@ -167,7 +232,7 @@ const Profile = () => {
                 <input
                   value={bookDetails.author}
                   onChange={(e) =>
-                    setBookDetails({ ...bookDetails, title: e.target.value })
+                    setBookDetails({ ...bookDetails, author: e.target.value })
                   }
                   type="text"
                   placeholder="Author"
@@ -275,48 +340,76 @@ const Profile = () => {
                         abstract: e.target.value,
                       })
                     }
-                    class="placeholder-gray-600 w-full text-black border-none border-0 outline-none focus:outline-none focus:ring-0 resize-none"
+                    className="placeholder-gray-600 w-full text-black border-none border-0 outline-none focus:outline-none focus:ring-0 resize-none"
                     placeholder="Type your text..."
                   ></textarea>
                 </div>
               </div>
+
               <div className="col-span-1 w-full">
                 <div className="flex justify-center items-center w-full my-10">
-                  <label htmlFor="imageFile">
-                    <input
-                      onChange={handleImage}
-                      type="file"
-                      name="imageFile"
-                      style={{ display: "none" }}
+                  {!preview ? (
+                    <label htmlFor="imageFile">
+                      <input
+                        id="imageFile"
+                        onChange={(e) => handleUploadImage(e)}
+                        type="file"
+                        style={{ display: "none" }}
+                      />
+                      <FontAwesomeIcon
+                        className="text-white text-9xl"
+                        icon={faImage}
+                      />
+                    </label>
+                  ) : (
+                    <img
+                      src={preview}
+                      alt="book-cover"
+                      className="border-3 border-white rounded"
+                      style={{ width: "200px", height: "200px" }}
                     />
-                    <FontAwesomeIcon
-                      className="text-white text-9xl"
-                      icon={faImage}
-                    />
-                  </label>
+                  )}
                 </div>
-                <div className="flex justify-center items-center">
-                  <img
-                    src="https://blog-cdn.reedsy.com/directories/gallery/248/large_65b0ae90317f7596d6f95bfdd6131398.jpg"
-                    alt="book-cover"
-                    className="border-3 border-white rounded"
-                    style={{ width: "70px", height: "70px" }}
-                  />
-                  <FontAwesomeIcon
-                    icon={faSquarePlus}
-                    className="fa-2x shadow ms-3"
-                  />
-                </div>
+                {preview && (
+                  <div className="flex justify-center items-center">
+                    {previewList?.map((item, index) => (
+                      <img
+                        key={index}
+                        src={item}
+                        className="border-3 border-white rounded mx-1"
+                        style={{ width: "70px", height: "70px" }}
+                      />
+                    ))}
+                    <label htmlFor="imageFile">
+                      <input
+                        id="imageFile"
+                        onChange={(e) => handleUploadImage(e)}
+                        type="file"
+                        style={{ display: "none" }}
+                      />
+                      <FontAwesomeIcon
+                        icon={faSquarePlus}
+                        className="fa-2x shadow ms-3"
+                      />
+                    </label>
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
-              <button className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2">
+              <button
+                onClick={handleReset}
+                className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2"
+              >
                 <span className="font-bold me-2">Reset</span>
                 <FontAwesomeIcon icon={faArrowsRotate} />
               </button>
 
-              <button className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2">
+              <button
+                onClick={handleSubmit}
+                className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2"
+              >
                 <span className="font-bold me-2">Submit</span>
                 <FontAwesomeIcon icon={faPaperPlane} />
               </button>
@@ -449,6 +542,7 @@ const Profile = () => {
         </div>
       )}
 
+      <ToastContainer theme="colored" position="top-center" autoClose={3000} />
       <Footer />
     </>
   );
