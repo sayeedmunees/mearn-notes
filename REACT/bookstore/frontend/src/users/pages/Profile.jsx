@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import {
@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditProfile from "../components/EditProfile";
 import { toast, ToastContainer } from "react-toastify";
+import { uploadBookAPI } from "../../services/allAPI";
 
 const Profile = () => {
   const [sellStatus, setSellStatus] = useState(true);
@@ -32,6 +33,7 @@ const Profile = () => {
   });
   const [preview, setPreview] = useState("");
   const [previewList, setPreviewList] = useState([]);
+  const [token, setToken] = useState("");
 
   console.log(bookDetails);
 
@@ -84,7 +86,7 @@ const Profile = () => {
     setPreviewList([]);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const {
       title,
       author,
@@ -115,11 +117,32 @@ const Profile = () => {
       uploadedImages.length == 0
     ) {
       toast.info("Please fill the form completely");
-    } else{
-      alert("Proceed")
-      handleReset()
+    } else {
+      const reqHeader = { Authorization: `Bearer ${token}` };
+
+      const reqBody = new FormData();
+
+      for (let key in bookDetails) {
+        if (key != "uploadedImages") {
+          reqBody.append(key, bookDetails[key]);
+        } else {
+          bookDetails.uploadedImages.forEach((item) => {
+            reqBody.append("uploadImages", item);
+          });
+        }
+      }
+
+      const result = await uploadBookAPI(reqBody, reqHeader);
+      console.log(result);
     }
   };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      const token = sessionStorage.getItem("token");
+      setToken(token);
+    }
+  });
 
   return (
     <>
