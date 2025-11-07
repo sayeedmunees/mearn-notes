@@ -22,10 +22,14 @@ export const homeBookAPI = async () => {
   return await commonAPI(`GET`, `${serverURL}/all-home-book`);
 };
 
-
 // ------------------Users---------------------------------
 
 // upload book
 export const uploadBookAPI = async (reqBody, reqHeader) => {
   return await commonAPI(`POST`, `${serverURL}/add-book`, reqBody, reqHeader);
+};
+
+// get All books
+export const allBookAPI = async (reqHeader) => {
+  return await commonAPI(`GET`, `${serverURL}/all-book`, "", reqHeader);
 };

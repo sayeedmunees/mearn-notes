@@ -37,5 +37,8 @@ route.post(
   bookController.addBookController
 );
 
+// path for all book
+route.get("/all-book", jwtMiddleware, bookController.getHomeBookController);
+
 // routes export
 module.exports = route;

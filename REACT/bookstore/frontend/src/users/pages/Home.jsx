@@ -1,11 +1,29 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+import { homeBookAPI } from "../../services/allAPI";
 
 const Home = () => {
+  const [homeBooks, setHomeBooks] = useState([]);
+
+  const getAllBooks = async () => {
+    const result = await homeBookAPI();
+    console.log(result);
+
+    if (result.status == 200) {
+      console.log(result.data);
+      setHomeBooks(result.data);
+    }
+  };
+  console.log(homeBooks.length);
+
+  useEffect(() => {
+    getAllBooks();
+  }, []);
+
   return (
     <>
       <Header />
@@ -14,8 +32,12 @@ const Home = () => {
           <div className="md:grid grid-cols-3">
             <div></div>
             <div className="text-white text-center flex flex-col justify-center items-center ">
-              <h3 className="text-3xl font-semibold tracking-wider lg:text-5xl">Wonderful Gifts</h3>
-              <p className="font-semibold tracking-wider">Give your family and friends a book</p>
+              <h3 className="text-3xl font-semibold tracking-wider lg:text-5xl">
+                Wonderful Gifts
+              </h3>
+              <p className="font-semibold tracking-wider">
+                Give your family and friends a book
+              </p>
               <div className="flex mt-10 w-full bg-white rounded-3xl items-center py-2 px-4 ">
                 <input
                   type="text"
@@ -40,7 +62,27 @@ const Home = () => {
           Explore Our Latest Collections
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full my-5">
-          <div className="p-3 shadow col-span-1">
+          {homeBooks.length > 0 ? (
+            homeBooks?.map((item) => {
+              return (
+                <div className="p-3 flex flex-col items-center shadow col-span-1 hover:shadow-xl border-2 border-green-950/20 rounded-lg" key={item?._id}>
+                  <img
+                    src={item?.imageurl}
+                    style={{ width: "200px", height: "250px" }}
+                    alt="Book cover"
+                  />
+                  <div className="flex flex-col justify-center items-center mt-3 text-center">
+                    <p className="text-green-950">{item?.author}</p>
+                    <h3 className="font-bold">{item?.title}</h3>
+                    <p>${item?.price}</p>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <p>Loading</p>
+          )}
+          {/* <div className="p-3 shadow col-span-1">
             <img
               src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"
               alt="Book cover"
@@ -72,18 +114,7 @@ const Home = () => {
               <h3>Title</h3>
               <p>$Price</p>
             </div>
-          </div>
-          <div className="p-3 shadow col-span-1">
-            <img
-              src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"
-              alt="Book cover"
-            />
-            <div className="flex flex-col justify-center items-center mt-3">
-              <p>Author</p>
-              <h3>Title</h3>
-              <p>$Price</p>
-            </div>
-          </div>
+          </div> */}
         </div>
         <div className="my-5">
           <Link to={"/all-books"}>
@@ -131,7 +162,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Authors */}
+      {/* Testimonial */}
       <section className="flex justify-center items-center flex-col md:p-10 md:px-40 p-5 my-10">
         <div>
           <h2 className="text-xl text-center">TESTIMONIALS</h2>

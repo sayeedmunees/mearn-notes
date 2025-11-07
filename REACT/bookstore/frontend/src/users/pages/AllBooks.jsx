@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect, useEffectEvent, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { allBookAPI } from "../../services/allAPI";
 
 const AllBooks = () => {
+  const [token, setToken] = useState("");
+
+  const getAllBooks = async (tok) => {
+    const reqHeader = {
+      Authorization: `Bearer ${tok}`,
+    };
+    console.log(reqHeader);
+    const result = await allBookAPI(reqHeader);
+    console.log(result);
+  };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      const token1 = sessionStorage.getItem("token");
+      setToken(token1);
+      getAllBooks(token1);
+    }
+  }, []);
+
   return (
     <>
       <Header />
