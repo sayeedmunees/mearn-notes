@@ -24,3 +24,7 @@ PORT = 4000 || process.env.PORT;
 bookStoreServer.listen(PORT, () => {
   console.log(`Server running at port ${PORT}`);
 });
+
+bookStoreServer.get("/", (req, res) => {
+  res.status(200).send(`<h1>Server Started!!</h1>`);
+});

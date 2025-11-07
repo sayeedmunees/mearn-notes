@@ -24,6 +24,11 @@ route.post("/login", userController.loginController);
 // path for google login
 route.post("/google-login", userController.googleLoginController);
 
+// path to get home book
+route.get("/all-home-book", bookController.getHomeBookController);
+
+// ------ USER -----------
+
 // path for add book
 route.post(
   "/add-book",

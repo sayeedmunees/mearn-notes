@@ -16,6 +16,13 @@ export const googleLoginAPI = async (reqBody) => {
   return await commonAPI(`POST`, `${serverURL}/google-login`, reqBody);
 };
 
+// get home books
+// google login
+export const homeBookAPI = async () => {
+  return await commonAPI(`GET`, `${serverURL}/all-home-book`);
+};
+
+
 // ------------------Users---------------------------------
 
 // upload book

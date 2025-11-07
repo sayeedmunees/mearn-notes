@@ -1,12 +1,12 @@
-                                -----------------------------
-                                        MEARN Stack
-                                ----------------------------
+                 -----------------------------
+                         MEARN Stack
+                 ----------------------------
 
 ----------------------------------------------
    HTML - Hyper text markup Language
 ----------------------------------------------
 
-1. Markup language:  Rules to define a document should contain
+1. Markup language: Its a set of instructions/Rules to define a document what should it contain
 2. HTML: Used  to display contents in Webpage
 3.  HTML document  consist of html elemets
     - HTML elements:  <starting-tag> content </closing tag>
@@ -98,7 +98,7 @@
                    - relative
                    - absolute
                    - sticky
-         - z-index:
+        - z-index:
         - FlexBox used to arrange the HTML elements in rows and columns
              - Flex container: parent tag which hold elements that to be arranged as row/column., apply the flex property  to the parent tag.
              - flext-direction
@@ -207,7 +207,7 @@
         - using let keyword : syntax - let variableName = value
     - Hoisting : moving a variable declation to the top of the code
     - Difference between var , let and const
-        Var                                   Const                                let
+        Var                             Const                             let
     -------------------------------------------------------------------------------------------
     1. Use keyword var                  Use const keyword                 use let keyword
     2. can reassign values              Cannot reassign values            Can reassign values
@@ -220,12 +220,12 @@
         - relational Operators : > >= < <= == === != return boolean
         - Logical Operators : && || ! return boolean values
 
-                        &&                         ||                         !
-                ----------------------------------------------------------------------------
-                    T && T = T                T || T = T                    !T = F
-                    T && F = F                T || F = T                    !F = T
-                    F && T = F                F || T = T
-                    F && F = F                F || F = F
+            &&                       ||                         !
+    ----------------------------------------------------------------------------
+        T && T = T                T || T = T                    !T = F
+        T && F = F                T || F = T                    !F = T
+        F && T = F                F || T = T
+        F && F = F                F || F = F
 
         - Increment/Decrement Operators:  ++ --
         - ShortHand Operator : +=, -=, *=

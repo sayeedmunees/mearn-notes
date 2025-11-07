@@ -134,7 +134,17 @@ const Profile = () => {
 
       const result = await uploadBookAPI(reqBody, reqHeader);
       console.log(result);
-      handleReset()
+
+      if (result.status == 401) {
+        toast.warning(result.response.data);
+        handleReset();
+      } else if (result.status == 200) {
+        toast.success("Book Added Successfully");
+        handleReset();
+      } else {
+        toast.error("Something Went Wrong");
+        handleReset();
+      }
     }
   };
 
@@ -143,7 +153,7 @@ const Profile = () => {
       const token = sessionStorage.getItem("token");
       setToken(token);
     }
-  },[]);
+  }, []);
 
   return (
     <>
