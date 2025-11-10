@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const AllBooks = () => {
   const [token, setToken] = useState("");
   const [allBooks, setAllBooks] = useState([]);
+  const [tempAllBooks, setTempAllBooks] = useState([]);
 
   const getAllBooks = async (tok) => {
     const reqHeader = {
@@ -19,10 +20,23 @@ const AllBooks = () => {
     console.log(result);
     if (result.status == 200) {
       setAllBooks(result.data);
+      setTempAllBooks(result.data);
     }
   };
 
   console.log(allBooks);
+
+  const filter = (data) => {
+    if (data == "All") {
+      setAllBooks(tempAllBooks);
+    } else {
+      setAllBooks(
+        tempAllBooks.filter(
+          (item) => item.category.toLowerCase() == data.toLowerCase()
+        )
+      );
+    }
+  };
 
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
@@ -37,25 +51,27 @@ const AllBooks = () => {
       <Header />
 
       {token && (
-        <div className="flex flex-col items-center px-10">
+        <div className="flex flex-col px-10">
           <div className="my-2 mt-2">
             <h2 className="text-xl text-center ">Our New</h2>
             <h4 className="text-3xl text-center uppercase">Collections</h4>
           </div>
-          <div className="flex max-w-xl lg:w-xl shadow-2xl border my-2 bg-white rounded-3xl items-center py-2 px-4 ">
-            <input
-              type="text"
-              placeholder="Search Books By Title"
-              className=" placeholder-gray-600 max-w-3xl lg:w-3xl  text-black focus:outline-0"
-            />
-            <FontAwesomeIcon
-              className="text-green-950"
-              icon={faMagnifyingGlass}
-            />
+          <div className="flex w-full items-center justify-center">
+            <div className="flex max-w-xl lg:w-xl shadow-2xl border my-2 bg-white rounded-3xl items-center py-2 px-4 ">
+              <input
+                type="text"
+                placeholder="Search Books By Title"
+                className=" placeholder-gray-600 max-w-3xl lg:w-3xl  text-black focus:outline-0"
+              />
+              <FontAwesomeIcon
+                className="text-green-950"
+                icon={faMagnifyingGlass}
+              />
+            </div>
           </div>
 
-          {/* filters */}
           <div className="grid grid-cols-4 my-4">
+            {/* filters */}
             <div className="col-span-4 md:col-span-1">
               <h2 className="text-xl font-semibold mb-4">Filters</h2>
               <div className="flex flex-col gap-4 mb-6">
@@ -71,7 +87,7 @@ const AllBooks = () => {
                   </label>
                 </div>
 
-                <div onClick={() => filter("Literary Fiction")}>
+                <div onClick={() => filter("Self Help")}>
                   <label className="inline-flex items-center">
                     <input
                       type="radio"
@@ -79,11 +95,11 @@ const AllBooks = () => {
                       value="fiction-1"
                       className="form-radio text-blue-600 w-5 h-5 mr-2"
                     />
-                    <span>Literary Fiction</span>
+                    <span>Self-Help</span>
                   </label>
                 </div>
 
-                <div onClick={() => filter("Philosophy")}>
+                <div onClick={() => filter("Finance")}>
                   <label className="inline-flex items-center">
                     <input
                       type="radio"
@@ -91,11 +107,11 @@ const AllBooks = () => {
                       value="fiction-2"
                       className="form-radio text-green-600 w-5 h-5 mr-2"
                     />
-                    <span>Philosophy</span>
+                    <span>Finance</span>
                   </label>
                 </div>
 
-                <div onClick={() => filter("Romance")}>
+                <div onClick={() => filter("History")}>
                   <label className="inline-flex items-center">
                     <input
                       type="radio"
@@ -103,7 +119,7 @@ const AllBooks = () => {
                       value="non-fiction"
                       className="form-radio text-red-600 w-5 h-5 mr-2"
                     />
-                    <span>Romance</span>
+                    <span>History</span>
                   </label>
                 </div>
 
@@ -130,9 +146,9 @@ const AllBooks = () => {
                     <span>Horror</span>
                   </label>
                 </div>
-
               </div>
             </div>
+
             <div className="col-span-4 md:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 ">
               {allBooks.length > 0 ? (
                 allBooks.map((item) => {
