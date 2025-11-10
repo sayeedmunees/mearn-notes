@@ -79,3 +79,18 @@ exports.getAllBookController = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+// to get a book
+exports.getABookController = async (req, res) => {
+  console.log("inside getABook controller");
+
+  const { id } = req.params;
+  console.log(id);
+
+  try {
+    const aBook = await books.findOne({ _id: id });
+    res.status(200).json(aBook);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};

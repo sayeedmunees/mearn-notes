@@ -137,7 +137,7 @@ const AllBooks = () => {
                           <h3 className="font-bold">{item?.title}</h3>
                           <p>${item?.price}</p>
                         </div>
-                        <Link to={"/view-book"}>
+                        <Link to={`/view-book/${item?._id}`}>
                           <button className="bg-green-950 border border-green-950 hover:bg-white text-white rounded-md hover:text-green-950 font-semibold p-2 mt-2">
                             Explore More
                           </button>

@@ -38,7 +38,10 @@ route.post(
 );
 
 // path for all book
-route.get("/all-book", jwtMiddleware, bookController.getHomeBookController);
+route.get("/all-book", jwtMiddleware, bookController.getAllBookController);
+
+// path for all book
+route.get("/view-book/:id", bookController.getABookController);
 
 // routes export
 module.exports = route;

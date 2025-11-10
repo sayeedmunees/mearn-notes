@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,9 +8,28 @@ import {
   faXmark,
   faCamera,
 } from "@fortawesome/free-solid-svg-icons";
+import { viewBookAPI } from "../../services/allAPI";
+import { serverURL } from "../../services/serverURL";
 
 const ViewBook = () => {
   const [modalStatus, setModalStatus] = useState(false);
+  const [viewBookDetails, setViewBookDetails] = useState({});
+  const { id } = useParams();
+  console.log(id);
+
+  const viewABook = async (id) => {
+    const result = await viewBookAPI(id);
+    // console.log(result);
+    if (result.status == 200) {
+      setViewBookDetails(result.data);
+    }
+  };
+
+  console.log(viewBookDetails);
+
+  useEffect(() => {
+    viewABook(id);
+  }, []);
 
   return (
     <>
@@ -27,32 +46,54 @@ const ViewBook = () => {
           <div className="md:grid grid-cols-[1fr_3fr] w-full overflow-x-hidden">
             <div className="m-4">
               <img
-                src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRpwVET5XReut9PEV-ifoO_yiQHSzzanilk1pUHvjfx1EIWpVPSrNr9WlYiNrdxkcRUZZr_QFAnAeFuzZvmb8J9niSnqFFPje-FnytkKY0Y5KacLO_fNvqG"
+                src={viewBookDetails?.imageurl}
                 className="rounded-md"
                 alt="no image"
                 style={{ width: "100%", height: "400px", objectFit: "cover" }}
               />
             </div>
             <div className="px-4 mt-5 md:mt-0">
-              <h1 className="text-center font-medium text-2xl">title</h1>
-              <p className="text-blue-500 text-center mt-3 md:mt-0">author</p>
+              <h1 className="text-center font-bold text-2xl">
+                {viewBookDetails?.title}
+              </h1>
+              <p className="text-blue-500 text-center mt-3 md:mt-0">
+                {viewBookDetails?.author}
+              </p>
 
-              <div className="grid grid-cols-3 mt-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3">
                 <div>
-                  <p>Publisher: publisher</p>
-                  <p className="mt-3">Seller Mail: userEmail</p>
+                  <p>
+                    <span className="font-semibold">Publisher:</span>{" "}
+                    {viewBookDetails?.publisher}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Seller Mail:</span>{" "}
+                    {viewBookDetails?.userMail}
+                  </p>
                 </div>
                 <div>
-                  <p>Language: language</p>
-                  <p className="mt-3">Real Price: $price</p>
+                  <p>
+                    <span className="font-semibold">Language:</span>{" "}
+                    {viewBookDetails?.language}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Real Price:</span>{" "}
+                    {viewBookDetails?.price}
+                  </p>
                 </div>
                 <div>
-                  <p>No. of pages: noofPages</p>
-                  <p className="mt-3">ISBN: isbn</p>
+                  <p>
+                    <span className="font-semibold">No. of pages:</span>{" "}
+                    {viewBookDetails?.noofpages}
+                  </p>
+                  <p>
+                    <span className="font-semibold">ISBN:</span>{" "}
+                    {viewBookDetails?.isbn}
+                  </p>
                 </div>
               </div>
 
-              <p className="text-justify mt-10">abstract</p>
+              <p className="text-justify mt-3">{viewBookDetails?.abstract}</p>
               <div className="mt-10 flex justify-end">
                 <Link to="/all-Books">
                   <button className="px-4 py-3 bg-blue-800 rounded text-white hover:bg-white hover:text-blue-800 hover:border hover:border-blue-800">
@@ -97,11 +138,14 @@ const ViewBook = () => {
                 </div>
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="md:flex my-4">
-                    <img
-                      className="mt-4 mx-5 rounded"
-                      src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRpwVET5XReut9PEV-ifoO_yiQHSzzanilk1pUHvjfx1EIWpVPSrNr9WlYiNrdxkcRUZZr_QFAnAeFuzZvmb8J9niSnqFFPje-FnytkKY0Y5KacLO_fNvqG"
-                      alt="Book photo"
-                    />
+                    {viewBookDetails?.uploadedImg.map((item) => (
+                      <img
+                        className="mt-4 mx-5"
+                        src={`${serverURL}/upload/${item}`}
+                        alt="no image"
+                        style={{ width: "300px", height: "300px" }}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>

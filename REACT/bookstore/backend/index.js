@@ -18,6 +18,9 @@ bookStoreServer.use(cors());
 bookStoreServer.use(express.json()); //parse json middleware
 bookStoreServer.use(route);
 
+// export the uploads folder from the server side
+bookStoreServer.use('/upload', express.static("./uploads"))
+
 // Create port
 PORT = 4000 || process.env.PORT;
 

@@ -34,7 +34,7 @@ function App() {
         <Route path="/career" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/view-book" element={<ViewBook />} />
+        <Route path="/view-book/:id" element={<ViewBook />} />
 
         <Route
           path="/admin-home"
