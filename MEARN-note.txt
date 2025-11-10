@@ -493,8 +493,8 @@
 
 1. BASIC REACT:
     - React App is a collection of Libraries
-    - React App is consists of different types of "components",which are used to display contents in browser,  in recat app, all the components are arranged in a tree struture. Tree structure has a single parent/root node., which is by default known as "App Component".  components are reusable.
-    - Pure JS functions are used to build components. It return how to display contents in browser. pure function care capable of doing only one task with the help of its arguments. functions without side effects.
+    - React App is consists of different types of "components",which are used to display contents in browser,  in react app, all the components are arranged in a tree struture. Tree structure has a single parent/root node., which is by default known as "App Component".  components are reusable.
+    - Pure JS functions are used to build components. It return how to display contents in browser. pure function are capable of doing only one task with the help of its arguments. functions without side effects.
     - Declarative Approach
     - Virtual DOM :  Light weight representation of real DOM
     - Babel Library : used to display contents in browser.
