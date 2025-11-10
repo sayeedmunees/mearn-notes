@@ -63,31 +63,31 @@ const ViewBook = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3">
                 <div>
                   <p>
-                    <span className="font-semibold">Publisher:</span>{" "}
+                    <span className="font-semibold">Publisher:</span>
                     {viewBookDetails?.publisher}
                   </p>
                   <p>
-                    <span className="font-semibold">Seller Mail:</span>{" "}
+                    <span className="font-semibold">Seller Mail:</span>
                     {viewBookDetails?.userMail}
                   </p>
                 </div>
                 <div>
                   <p>
-                    <span className="font-semibold">Language:</span>{" "}
+                    <span className="font-semibold">Language:</span>
                     {viewBookDetails?.language}
                   </p>
                   <p>
-                    <span className="font-semibold">Real Price:</span>{" "}
+                    <span className="font-semibold">Real Price:</span>$
                     {viewBookDetails?.price}
                   </p>
                 </div>
                 <div>
                   <p>
-                    <span className="font-semibold">No. of pages:</span>{" "}
+                    <span className="font-semibold">No. of pages:</span>
                     {viewBookDetails?.noofpages}
                   </p>
                   <p>
-                    <span className="font-semibold">ISBN:</span>{" "}
+                    <span className="font-semibold">ISBN:</span>
                     {viewBookDetails?.isbn}
                   </p>
                 </div>
@@ -105,7 +105,7 @@ const ViewBook = () => {
                   type="button"
                   className="ms-3 px-4 py-3 bg-green-800 rounded text-white hover:bg-white hover:text-green-800 hover:border hover:border-green-800"
                 >
-                  Buy $price
+                  Buy ${viewBookDetails?.dprice}
                 </button>
               </div>
             </div>

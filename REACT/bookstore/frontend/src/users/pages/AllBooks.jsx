@@ -53,68 +53,84 @@ const AllBooks = () => {
               icon={faMagnifyingGlass}
             />
           </div>
+
+          {/* filters */}
           <div className="grid grid-cols-4 my-4">
             <div className="col-span-4 md:col-span-1">
               <h2 className="text-xl font-semibold mb-4">Filters</h2>
               <div className="flex flex-col gap-4 mb-6">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="category"
-                    value="all"
-                    className="form-radio text-blue-600 w-5 h-5 mr-2"
-                  />
-                  <span>All</span>
-                </label>
+                <div onClick={() => filter("All")}>
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="all"
+                      className="form-radio text-blue-600 w-5 h-5 mr-2"
+                    />
+                    <span>All</span>
+                  </label>
+                </div>
 
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="category"
-                    value="fiction-1"
-                    className="form-radio text-blue-600 w-5 h-5 mr-2"
-                  />
-                  <span>Literary Fiction</span>
-                </label>
+                <div onClick={() => filter("Literary Fiction")}>
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="fiction-1"
+                      className="form-radio text-blue-600 w-5 h-5 mr-2"
+                    />
+                    <span>Literary Fiction</span>
+                  </label>
+                </div>
 
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="category"
-                    value="fiction-2"
-                    className="form-radio text-green-600 w-5 h-5 mr-2"
-                  />
-                  <span>Philosophy</span>
-                </label>
+                <div onClick={() => filter("Philosophy")}>
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="fiction-2"
+                      className="form-radio text-green-600 w-5 h-5 mr-2"
+                    />
+                    <span>Philosophy</span>
+                  </label>
+                </div>
 
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="category"
-                    value="non-fiction"
-                    className="form-radio text-red-600 w-5 h-5 mr-2"
-                  />
-                  <span>Romance</span>
-                </label>
+                <div onClick={() => filter("Romance")}>
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="non-fiction"
+                      className="form-radio text-red-600 w-5 h-5 mr-2"
+                    />
+                    <span>Romance</span>
+                  </label>
+                </div>
 
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="category"
-                    value="mystery"
-                    className="form-radio text-purple-600 w-5 h-5 mr-2"
-                  />
-                  <span>Mystery</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="category"
-                    value="mystery"
-                    className="form-radio text-purple-600 w-5 h-5 mr-2"
-                  />
-                  <span>Horror</span>
-                </label>
+                <div onClick={() => filter("Mystery")}>
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="mystery"
+                      className="form-radio text-purple-600 w-5 h-5 mr-2"
+                    />
+                    <span>Mystery</span>
+                  </label>
+                </div>
+
+                <div onClick={() => filter("Horror")}>
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="mystery"
+                      className="form-radio text-purple-600 w-5 h-5 mr-2"
+                    />
+                    <span>Horror</span>
+                  </label>
+                </div>
+
               </div>
             </div>
             <div className="col-span-4 md:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 ">
