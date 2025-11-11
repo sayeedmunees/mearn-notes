@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { homeBookAPI } from "../../services/allAPI";
 import { searchKeyContext } from "../../context/ContextShare";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [homeBooks, setHomeBooks] = useState([]);
   const { searchKey, setSearchKey } = useContext(searchKeyContext);
 
@@ -22,7 +23,26 @@ const Home = () => {
   };
   console.log(homeBooks.length);
 
+  const handleSearch = () => {
+    console.log("inside search");
+    const token = sessionStorage.getItem("token");
+    if (searchKey == "") {
+      toast.info("Please Enter the title of any book!!!");
+    } else if (!token) {
+      toast.info("Please login!!!");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2500);
+    } else if (searchKey && token) {
+      navigate("/all-books");
+      I;
+    } else {
+      toast.error("Something went wrong..!!!");
+    }
+  };
+
   useEffect(() => {
+    setSearchKey("");
     getAllBooks();
   }, []);
 
