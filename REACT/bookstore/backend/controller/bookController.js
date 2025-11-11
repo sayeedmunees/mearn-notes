@@ -72,8 +72,16 @@ exports.getHomeBookController = async (req, res) => {
 // to get all books
 exports.getAllBookController = async (req, res) => {
   console.log("inside getAllBook controller");
+  console.log(req.query.search);
+  const searchKey = req.query.search;
   try {
-    const allBooks = await books.find();
+    const query = {
+      title: {
+        $regex: searchKey,
+        $options: "i",
+      },
+    };
+    const allBooks = await books.find(query);
     res.status(200).json(allBooks);
   } catch (err) {
     res.status(500).json(err);

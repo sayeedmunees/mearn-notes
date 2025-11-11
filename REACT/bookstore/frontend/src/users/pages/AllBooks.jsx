@@ -1,29 +1,32 @@
-import React, { useEffect, useEffectEvent, useState } from "react";
+import React, { useContext, useEffect, useEffectEvent, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { allBookAPI } from "../../services/allAPI";
 import { Link } from "react-router-dom";
+import { searchKeyContext } from "../../context/ContextShare";
 
 const AllBooks = () => {
   const [token, setToken] = useState("");
   const [allBooks, setAllBooks] = useState([]);
   const [tempAllBooks, setTempAllBooks] = useState([]);
 
-  const getAllBooks = async (tok) => {
+  const { searchKey, setSearchKey } = useContext(searchKeyContext);
+  console.log(searchKey);
+
+  const getAllBooks = async (searchKey, tok) => {
     const reqHeader = {
       Authorization: `Bearer ${tok}`,
     };
     console.log(reqHeader);
-    const result = await allBookAPI(reqHeader);
+    const result = await allBookAPI(searchKey, reqHeader);
     console.log(result);
     if (result.status == 200) {
       setAllBooks(result.data);
       setTempAllBooks(result.data);
     }
   };
-
   console.log(allBooks);
 
   const filter = (data) => {
@@ -42,9 +45,9 @@ const AllBooks = () => {
     if (sessionStorage.getItem("token")) {
       const token1 = sessionStorage.getItem("token");
       setToken(token1);
-      getAllBooks(token1);
+      getAllBooks(searchKey, token1);
     }
-  }, []);
+  }, [searchKey]);
 
   return (
     <>
@@ -59,6 +62,8 @@ const AllBooks = () => {
           <div className="flex w-full items-center justify-center">
             <div className="flex max-w-xl lg:w-xl shadow-2xl border my-2 bg-white rounded-3xl items-center py-2 px-4 ">
               <input
+                value={searchKey}
+                onChange={(e) => setSearchKey(e.target.value)}
                 type="text"
                 placeholder="Search Books By Title"
                 className=" placeholder-gray-600 max-w-3xl lg:w-3xl  text-black focus:outline-0"

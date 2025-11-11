@@ -1,13 +1,15 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { homeBookAPI } from "../../services/allAPI";
+import { searchKeyContext } from "../../context/ContextShare";
 
 const Home = () => {
   const [homeBooks, setHomeBooks] = useState([]);
+  const { searchKey, setSearchKey } = useContext(searchKeyContext);
 
   const getAllBooks = async () => {
     const result = await homeBookAPI();
@@ -40,11 +42,13 @@ const Home = () => {
               </p>
               <div className="flex mt-10 w-full bg-white rounded-3xl items-center py-2 px-4 ">
                 <input
+                  onChange={(e) => setSearchKey(e.target.value)}
                   type="text"
                   placeholder="Search Books"
                   className=" placeholder-gray-600 w-full focus:outline-0 text-black"
                 />
                 <FontAwesomeIcon
+                  onClick={handleSearch}
                   className="text-green-950"
                   icon={faMagnifyingGlass}
                 />
@@ -65,7 +69,10 @@ const Home = () => {
           {homeBooks.length > 0 ? (
             homeBooks?.map((item) => {
               return (
-                <div className="p-3 flex flex-col items-center shadow col-span-1 hover:shadow-xl border-2 border-green-950/20 rounded-lg" key={item?._id}>
+                <div
+                  className="p-3 flex flex-col items-center shadow col-span-1 hover:shadow-xl border-2 border-green-950/20 rounded-lg"
+                  key={item?._id}
+                >
                   <img
                     src={item?.imageurl}
                     style={{ width: "200px", height: "250px" }}

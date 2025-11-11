@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-const searchKeyContext = createContext("");
+export const searchKeyContext = createContext("");
 
 const Contextshare = ({ children }) => {
   const [searchKey, setSearchKey] = useState("");

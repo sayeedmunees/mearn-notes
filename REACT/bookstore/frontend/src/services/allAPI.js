@@ -30,11 +30,16 @@ export const uploadBookAPI = async (reqBody, reqHeader) => {
 };
 
 // get All books
-export const allBookAPI = async (reqHeader) => {
-  return await commonAPI(`GET`, `${serverURL}/all-book`, "", reqHeader);
+export const allBookAPI = async (searchKey, reqHeader) => {
+  return await commonAPI(
+    `GET`,
+    `${serverURL}/all-book?search=${searchKey}`,
+    "",
+    reqHeader
+  );
 };
 
-// get a view booke
+// get a view book
 export const viewBookAPI = async (id) => {
   return await commonAPI(`GET`, `${serverURL}/view-book/${id}`);
 };
