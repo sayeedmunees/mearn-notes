@@ -833,6 +833,24 @@ Multer
 
 - Covert file object into url: URL.createObjectURL
 
+
+Context API
+------------------------------------------
+- Avoid props drilling while sharing data between components.
+- To share data it uses context of react, with the help of context we can share data inside. I
+- Steps:
+    1. create a component for sharing data
+    2. wrap the app component inside the context component
+    3. create context use create context() method in react.
+    - Use Provider of context to share data to the components, Provider value key will be help context to share data, we can passs value as object.
+    - to access context from compoent use useContext hook, useContext hook will give data shared via context.
+    4. Inside the folder create a react component for perform data sharing using context.
+    - create a context and export it
+    - create state inside component use context provider provide the state as its value to the component
+    - Use children props inside the component to get all children of it.
+    - wrap the app component inside the context component inside main.jsx file
+
+
 MONGO DB
 ----------------------------------------
 - data is stored as document in json like format(BSON)
