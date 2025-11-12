@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { homeBookAPI } from "../../services/allAPI";
 import { searchKeyContext } from "../../context/ContextShare";
+import { toast, ToastContainer } from "react-toastify";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -215,6 +216,7 @@ const Home = () => {
         </div>
       </section>
       <Footer />
+      <ToastContainer theme="colored" position="top-center" autoClose={3000} />
     </>
   );
 };

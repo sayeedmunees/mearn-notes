@@ -63,7 +63,7 @@ const AdminBooks = () => {
           {/* Contents */}
           {bookListStatus && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-6 px-4">
-              <div className="p-3 shadow-xl col-span-1 rounded border border-gray-400">
+              <div className="p-3 shadow-lg col-span-1 rounded border border-gray-400 hover:shadow-2xl">
                 <img
                   src="https://m.media-amazon.com/images/I/71XJ8xwLPpL.jpg"
                   alt="Book cover"

@@ -161,6 +161,9 @@ const AllBooks = () => {
                     <div
                       className="p-3 flex flex-col items-center shadow col-span-1 hover:shadow-xl border-2 border-green-950/20 rounded-lg"
                       key={item?._id}
+                      hidden={
+                        item?.status == "pending" || item?.status == "sold"
+                      }
                     >
                       <img
                         className="border rounded-lg"

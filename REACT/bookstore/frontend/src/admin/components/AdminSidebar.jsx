@@ -33,8 +33,8 @@ const AdminSidebar = () => {
     console.log(location.pathname);
     if (location.pathname == "/admin-home") {
       setHomeStatus(true);
-    } else if (location.pathname == "/admin-careers") {
-      setCareerStatus(true);
+      // } else if (location.pathname == "/admin-careers") {
+      //   setCareerStatus(true);
     } else if (location.pathname == "/admin-books") {
       setBookStatus(true);
     } else if (location.pathname == "/admin-settings") {
@@ -77,7 +77,7 @@ const AdminSidebar = () => {
             All Books
           </label>
         </div>
-        <div className="mb-3" onClick={() => filter("careers")}>
+        {/* <div className="mb-3" onClick={() => filter("careers")}>
           <input
             type="radio"
             id="careers"
@@ -88,7 +88,7 @@ const AdminSidebar = () => {
             <FontAwesomeIcon icon={faUserTie} className="me-3" />
             Careers
           </label>
-        </div>
+        </div> */}
         <div className="mb-3" onClick={() => filter("settings")}>
           <input
             type="radio"

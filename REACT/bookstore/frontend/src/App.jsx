@@ -31,7 +31,7 @@ function App() {
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Auth register />} />
         <Route path="/all-books" element={<AllBooks />} />
-        <Route path="/career" element={<Careers />} />
+        {/* <Route path="/career" element={<Careers />} /> */}
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/view-book/:id" element={<ViewBook />} />
@@ -41,7 +41,7 @@ function App() {
           element={isLoading ? <Preloader /> : <AdminHome />}
         />
         <Route path="/admin-books" element={<AdminBooks />} />
-        <Route path="/admin-careers" element={<AdminCareers />} />
+        {/* <Route path="/admin-careers" element={<AdminCareers />} /> */}
         <Route path="/admin-settings" element={<AdminSettings />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>

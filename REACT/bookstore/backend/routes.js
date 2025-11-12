@@ -11,6 +11,7 @@ const jwtMiddleware = require("./middleware/jwtMiddleware.js");
 
 // import multer Config
 const multerConfig = require("./middleware/multerMiddleware.js");
+const jwtAdminMiddleware = require("./middleware/jwtAdminMiddleware.js");
 
 // create instance
 const route = new express.Router();
@@ -42,6 +43,15 @@ route.get("/all-book", jwtMiddleware, bookController.getAllBookController);
 
 // path for all book
 route.get("/view-book/:id", bookController.getABookController);
+
+// ------------ADMIN------------
+
+// path for Admin All books....
+route.get(
+  "/admin-all-books",
+  jwtAdminMiddleware,
+  bookController.getAllBookAdminController
+);
 
 // routes export
 module.exports = route;

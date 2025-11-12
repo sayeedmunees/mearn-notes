@@ -74,12 +74,14 @@ exports.getAllBookController = async (req, res) => {
   console.log("inside getAllBook controller");
   console.log(req.query.search);
   const searchKey = req.query.search;
+  const email = req.payload;
   try {
     const query = {
       title: {
         $regex: searchKey,
         $options: "i",
       },
+      userMail: { $ne: email },
     };
     const allBooks = await books.find(query);
     res.status(200).json(allBooks);
@@ -98,6 +100,19 @@ exports.getABookController = async (req, res) => {
   try {
     const aBook = await books.findOne({ _id: id });
     res.status(200).json(aBook);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// ------------------Admin------------------
+
+// to get all books - pending status
+exports.getAllBookAdminController = async (req, res) => {
+  console.log("inside getAllBookAdminController");
+  try {
+    const allBooks = await books.find();
+    res.status(200).json(allBooks);
   } catch (err) {
     res.status(500).json(err);
   }

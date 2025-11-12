@@ -215,9 +215,9 @@ const Header = () => {
               <Link to={"/all-books"}>
                 <li>Books</li>
               </Link>
-              <Link to={"/career"}>
+              {/* <Link to={"/career"}>
                 <li>Career</li>
-              </Link>
+              </Link> */}
               <Link to={"/contact"}>
                 <li>Contact</li>
               </Link>
