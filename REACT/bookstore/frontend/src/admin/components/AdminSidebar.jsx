@@ -58,7 +58,7 @@ const AdminSidebar = () => {
             type="radio"
             id="home"
             name="filterPage"
-            checked={homeStatus}
+            defaultChecked={homeStatus}
           />
           <label htmlFor="home" className="ms-3 text-white">
             <FontAwesomeIcon icon={faHouse} className="me-3" />
@@ -70,7 +70,7 @@ const AdminSidebar = () => {
             type="radio"
             id="allBooks"
             name="filterPage"
-            checked={bookStatus}
+            defaultChecked={bookStatus}
           />
           <label htmlFor="allBooks" className="ms-3 text-white">
             <FontAwesomeIcon icon={faBook} className="me-3" />
@@ -94,7 +94,7 @@ const AdminSidebar = () => {
             type="radio"
             id="settings"
             name="filterPage"
-            checked={settingsStatus}
+            defaultChecked={settingsStatus}
           />
           <label htmlFor="settings" className="ms-3 text-white">
             <FontAwesomeIcon icon={faGear} className="me-3" />
