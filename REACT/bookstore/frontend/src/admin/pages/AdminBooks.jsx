@@ -8,12 +8,13 @@ import {
   faSquarePlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { allBookAdminAPI } from "../../services/allAPI";
+import { allBookAdminAPI, approveBookAPI } from "../../services/allAPI";
 
 const AdminBooks = () => {
   const [bookListStatus, setBookListStatus] = useState(true);
   const [usersStatus, setUsersStatus] = useState(false);
   const [bookDetails, setBookDetails] = useState([]);
+  const [token, setToken] = useState("");
 
   const getAllBooksAdmin = async (token) => {
     const reqHeader = {
@@ -27,9 +28,19 @@ const AdminBooks = () => {
   };
   console.log(bookDetails);
 
+  const approveBook = async (data) => {
+    const reqHeader = {
+      Authorization: `Bearer ${token}`,
+    };
+    console.log(reqHeader);
+    const result = await approveBookAPI(data, reqHeader);
+    console.log(result);
+  };
+
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
       const token = sessionStorage.getItem("token");
+      setToken(token);
       getAllBooksAdmin(token);
     }
   }, []);
@@ -96,14 +107,20 @@ const AdminBooks = () => {
                       alt="Book cover"
                       style={{ width: "200px", height: "250px" }}
                     />
-                    <div className="flex flex-col justify-center items-center mt-3">
+                    <div className="flex flex-col justify-center items-center mt-3 w-full">
                       <p>{item?.author}</p>
                       <h3>{item?.title}</h3>
                       <p>${item?.dprice}</p>
-                      <div className="flex items-center justify-between font-semibold text-green-950 p-2 w-full my-2 ">
+                      <button
+                        onClick={() => approveBook(item)}
+                        className="bg-green-950 text-white border-2 border-green-950 hover:text-green-950 hover:bg-white p-2 w-full my-2 rounded-full font-bold"
+                      >
+                        Approve
+                      </button>
+                      {/* <div className="flex items-center justify-between font-semibold text-green-950 p-2 w-full my-2 ">
                         <p>Approved</p>
                         <FontAwesomeIcon icon={faCircleCheck} />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 );

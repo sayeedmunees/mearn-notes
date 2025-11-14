@@ -49,3 +49,7 @@ export const viewBookAPI = async (id) => {
 export const allBookAdminAPI = async (reqHeader) => {
   return await commonAPI(`GET`, `${serverURL}/admin-all-books`, "", reqHeader);
 };
+
+export const approveBookAPI = async (reqBody, reqHeader) => {
+  return await commonAPI(`PUT`, `${serverURL}/approve-book`, reqBody, reqHeader);
+};

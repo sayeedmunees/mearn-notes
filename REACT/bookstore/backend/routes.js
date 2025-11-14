@@ -53,5 +53,12 @@ route.get(
   bookController.getAllBookAdminController
 );
 
+// path for approve book....
+route.put(
+  "/approve-book",
+  jwtAdminMiddleware,
+  bookController.approveBookController
+);
+
 // routes export
 module.exports = route;

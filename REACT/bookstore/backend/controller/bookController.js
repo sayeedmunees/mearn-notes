@@ -117,3 +117,25 @@ exports.getAllBookAdminController = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+// to approve books status approved.
+exports.approveBookController = async (req, res) => {
+  console.log("inside approve Book Controller");
+  const {
+    _id, title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImg, status, userMail, brought,
+  } = req.body;
+  console.log(
+    _id, title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImg, status, userMail, brought
+  );
+  try {
+    const updatedBook = await books.findByIdAndUpdate(
+      { _id },
+      {
+        _id, title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImg, status: "approved", userMail, brought,
+      },{new:true}
+    );
+    res.status(200).json(updatedBook);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
