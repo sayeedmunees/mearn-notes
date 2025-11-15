@@ -4,6 +4,7 @@ import AdminSidebar from "../components/AdminSidebar";
 import Footer from "../../components/Footer";
 import {
   faCircleCheck,
+  faCircleXmark,
   faImage,
   faSquarePlus,
 } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +16,7 @@ const AdminBooks = () => {
   const [usersStatus, setUsersStatus] = useState(false);
   const [bookDetails, setBookDetails] = useState([]);
   const [token, setToken] = useState("");
+  const [approveStatus, setApproveStatus] = useState(false);
 
   const getAllBooksAdmin = async (token) => {
     const reqHeader = {
@@ -35,6 +37,9 @@ const AdminBooks = () => {
     console.log(reqHeader);
     const result = await approveBookAPI(data, reqHeader);
     console.log(result);
+    if (result.status == 200) {
+      setApproveStatus(!approveStatus);
+    }
   };
 
   useEffect(() => {
@@ -43,7 +48,7 @@ const AdminBooks = () => {
       setToken(token);
       getAllBooksAdmin(token);
     }
-  }, []);
+  }, [approveStatus]);
 
   const handleBookListStatus = () => {
     setBookListStatus(true);
@@ -111,16 +116,28 @@ const AdminBooks = () => {
                       <p>{item?.author}</p>
                       <h3>{item?.title}</h3>
                       <p>${item?.dprice}</p>
-                      <button
-                        onClick={() => approveBook(item)}
-                        className="bg-green-950 text-white border-2 border-green-950 hover:text-green-950 hover:bg-white p-2 w-full my-2 rounded-full font-bold"
-                      >
-                        Approve
-                      </button>
-                      {/* <div className="flex items-center justify-between font-semibold text-green-950 p-2 w-full my-2 ">
-                        <p>Approved</p>
-                        <FontAwesomeIcon icon={faCircleCheck} />
-                      </div> */}
+                      {item?.status == "pending" && (
+                        <button
+                          onClick={() => approveBook(item)}
+                          className="bg-green-950 text-white border-2 border-green-950 hover:text-green-950 hover:bg-white p-2 w-full my-2 rounded-full font-bold"
+                        >
+                          Approve
+                        </button>
+                      )}
+
+                      {item?.status == "approved" && (
+                        <div className="flex items-center justify-center gap-2 font-semibold text-green-950 p-2 w-full my-2 ">
+                          <p>Approved</p>
+                          <FontAwesomeIcon icon={faCircleCheck} />
+                        </div>
+                      )}
+
+                      {item?.status == "sold out" && (
+                        <div className="flex items-center justify-center gap-2 font-semibold text-red-600 p-2 w-full my-2 ">
+                          <p>Sold Out</p>
+                          <FontAwesomeIcon icon={faCircleXmark} />
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
