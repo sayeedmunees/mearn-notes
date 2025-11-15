@@ -60,7 +60,6 @@ route.put(
   bookController.approveBookController
 );
 
-// approveBookController
 
 // routes export
 module.exports = route;
