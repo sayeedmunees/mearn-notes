@@ -60,6 +60,12 @@ route.put(
   bookController.approveBookController
 );
 
+// path for Admin All Users.....
+route.get(
+  "/all-users",
+  jwtAdminMiddleware,
+  userController.getAllUsersController
+);
 
 // routes export
 module.exports = route;

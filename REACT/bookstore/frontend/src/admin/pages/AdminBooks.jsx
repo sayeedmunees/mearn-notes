@@ -9,7 +9,11 @@ import {
   faSquarePlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { allBookAdminAPI, approveBookAPI } from "../../services/allAPI";
+import {
+  allBookAdminAPI,
+  approveBookAPI,
+  getAllUsersAPI,
+} from "../../services/allAPI";
 
 const AdminBooks = () => {
   const [bookListStatus, setBookListStatus] = useState(true);
@@ -17,6 +21,7 @@ const AdminBooks = () => {
   const [bookDetails, setBookDetails] = useState([]);
   const [token, setToken] = useState("");
   const [approveStatus, setApproveStatus] = useState(false);
+  const [allUsers, setAllUsers] = useState([]);
 
   const getAllBooksAdmin = async (token) => {
     const reqHeader = {
@@ -42,13 +47,26 @@ const AdminBooks = () => {
     }
   };
 
+  // get all users
+  const getAllUserss = async () => {
+    const reqHeader = {
+      Authorization: `Bearer ${token}`,
+    };
+    const result = await getAllUsersAPI(reqHeader);
+    console.log(result);
+    setAllUsers(result.data);
+  };
+
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
       const token = sessionStorage.getItem("token");
       setToken(token);
       getAllBooksAdmin(token);
     }
-  }, [approveStatus]);
+    if (usersStatus == true) {
+      getAllUserss();
+    }
+  }, [approveStatus, usersStatus, bookListStatus]);
 
   const handleBookListStatus = () => {
     setBookListStatus(true);
@@ -103,7 +121,11 @@ const AdminBooks = () => {
               {bookDetails.map((item) => {
                 return (
                   <div
-                    className="p-3 flex flex-col items-center shadow col-span-1 hover:shadow-xl border-2 border-green-950/20 rounded-lg"
+                    className={
+                      item?.status == "sold"
+                        ? "p-3 flex flex-col items-center shadow col-span-1 hover:shadow-xl border-2 border-green-950/20 rounded-lg opacity-50"
+                        : "p-3 flex flex-col items-center shadow col-span-1 hover:shadow-xl border-2 border-green-950/20 rounded-lg"
+                    }
                     key={item?._id}
                   >
                     <img
@@ -132,9 +154,9 @@ const AdminBooks = () => {
                         </div>
                       )}
 
-                      {item?.status == "sold out" && (
+                      {item?.status == "sold" && (
                         <div className="flex items-center justify-center gap-2 font-semibold text-red-600 p-2 w-full my-2 ">
-                          <p>Sold Out</p>
+                          <p>Sold</p>
                           <FontAwesomeIcon icon={faCircleXmark} />
                         </div>
                       )}
@@ -162,107 +184,39 @@ const AdminBooks = () => {
 
           {usersStatus && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-6 px-4">
-              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
-                <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
-                <div className="flex flex-row gap-4 items-center mt-3 ">
-                  <div className="bg-gray-400 rounded-full">
-                    <img
-                      src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                      alt="no image"
-                      style={{ width: "50px", height: "50px" }}
-                    />
+              {allUsers?.length > 0 ? (
+                allUsers.map((user) => (
+                  <div
+                    key={user?._id}
+                    className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300"
+                  >
+                    <div className="text-green-950">ID: {user?._id}</div>
+                    <div className="flex flex-row gap-4 items-center mt-3 ">
+                      <div className="bg-gray-400 rounded-full">
+                        <img
+                          src={
+                            user?.profile
+                              ? user?.profile == ""
+                                ? "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+                                : `${user?.profile}`
+                              : "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+                          }
+                          alt="no image"
+                          style={{ width: "50px", height: "50px" }}
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-xl">{user?.username}</h3>
+                        <p>{user?.email}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-xl">Ken</h3>
-                    <p>example@gmail.com</p>
-                  </div>
+                ))
+              ) : (
+                <div className="p-3 shadow-lg col-span-full rounded-xl bg-gray-100 border-3 border-gray-300">
+                  <h3 className="font-bold text-xl">No Users</h3>
                 </div>
-              </div>
-
-              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
-                <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
-                <div className="flex flex-row gap-4 items-center mt-3 ">
-                  <div className="bg-gray-400 rounded-full">
-                    <img
-                      src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                      alt="no image"
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl">Ken</h3>
-                    <p>example@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
-                <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
-                <div className="flex flex-row gap-4 items-center mt-3 ">
-                  <div className="bg-gray-400 rounded-full">
-                    <img
-                      src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                      alt="no image"
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl">Ken</h3>
-                    <p>example@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
-                <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
-                <div className="flex flex-row gap-4 items-center mt-3 ">
-                  <div className="bg-gray-400 rounded-full">
-                    <img
-                      src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                      alt="no image"
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl">Ken</h3>
-                    <p>example@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
-                <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
-                <div className="flex flex-row gap-4 items-center mt-3 ">
-                  <div className="bg-gray-400 rounded-full">
-                    <img
-                      src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                      alt="no image"
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl">Ken</h3>
-                    <p>example@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-3 shadow-lg col-span-1 rounded-xl bg-gray-100 border-3 border-gray-300">
-                <div className="text-green-950">ID: sggjugf7uas6ujfg</div>
-                <div className="flex flex-row gap-4 items-center mt-3 ">
-                  <div className="bg-gray-400 rounded-full">
-                    <img
-                      src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                      alt="no image"
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl">Ken</h3>
-                    <p>example@gmail.com</p>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           )}
         </div>

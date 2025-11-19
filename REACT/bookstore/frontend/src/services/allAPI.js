@@ -51,5 +51,15 @@ export const allBookAdminAPI = async (reqHeader) => {
 };
 
 export const approveBookAPI = async (reqBody, reqHeader) => {
-  return await commonAPI(`PUT`, `${serverURL}/approve-book`, reqBody, reqHeader);
+  return await commonAPI(
+    `PUT`,
+    `${serverURL}/approve-book`,
+    reqBody,
+    reqHeader
+  );
+};
+
+// api to get all users
+export const getAllUsersAPI = async (reqHeader) => {
+  return await commonAPI(`GET`, `${serverURL}/all-users`, " ", reqHeader);
 };
