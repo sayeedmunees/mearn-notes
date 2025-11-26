@@ -110,20 +110,20 @@ const AdminHome = () => {
           <div className="md:grid grid-cols-2 gap-2 m-4 px-2">
             <div className="w-full h-80">
               <ResponsiveContainer width="100%" height="100%">
-                {" "}
+               
                 {/*make the bar chart responsive*/}
                 <BarChart data={data}>
-                  {" "}
+                  
                   {/*Indicates the chart - data - attribute hold the data to displayed*/}
-                  <CartesianGrid strokeDasharray="3 3" />{" "}
+                  <CartesianGrid strokeDasharray="3 3" />
                   {/*grid dash - 3px 3px gap*/}
                   <XAxis dataKey="name" /> {/*represnets x axis*/}
                   <YAxis width="auto" /> {/*represnets y axis*/}
                   <Tooltip /> {/*indicate data*/}
                   <Legend /> {/*denotes the bar representation*/}
-                  <Bar dataKey="pv" fill="#004eaa" />{" "}
+                  <Bar dataKey="pv" fill="#004eff" />
                   {/*It represents the bar in bar chart with the given fill color*/}
-                  <Bar dataKey="uv" fill="#004d2c" />
+                  <Bar dataKey="uv" fill="#032e15" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -148,7 +148,7 @@ const AdminHome = () => {
                     cy="50%"
                     innerRadius="60%"
                     outerRadius="80%"
-                    fill="#004d2c"
+                    fill="#032e15"
                     label
                   />
                 </PieChart>

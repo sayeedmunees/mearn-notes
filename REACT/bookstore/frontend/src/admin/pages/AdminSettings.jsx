@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminHeader from "../components/AdminHeader";
 import AdminSidebar from "../components/AdminSidebar";
 import Footer from "../../components/Footer";
@@ -13,6 +13,29 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AdminSettings = () => {
+  const [adminDetails, setAdminDetails] = useState({
+    username: "",
+    password: "",
+    cpassword: "",
+    profile: "",
+  });
+
+  const [preview, setPreview] = useState("");
+
+  console.log(adminDetails);
+
+  const handleAddFile = (e) => {
+    // console.log(e.target.files[0]);
+    setAdminDetails({ ...adminDetails, profile: e.target.files[0] });
+
+    if (e.target.files[0] != "") {
+      const url = URL.createObjectURL(e.target.files[0]);
+      setPreview(url);
+    }
+  };
+
+  console.log(preview);
+
   return (
     <>
       <AdminHeader />
@@ -51,9 +74,18 @@ const AdminSettings = () => {
                   htmlFor="imageFile"
                   className="cursor-pointer flex flex-col items-center"
                 >
-                  <input type="file" id="imageFile" className="hidden" />
+                  <input
+                    type="file"
+                    id="imageFile"
+                    className="hidden"
+                    onChange={(e) => handleAddFile(e)}
+                  />
                   <img
-                    src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
+                    src={
+                      preview
+                        ? preview
+                        : "https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
+                    }
                     alt="no image"
                     style={{ width: "150px", height: "150px" }}
                   />
@@ -66,19 +98,37 @@ const AdminSettings = () => {
                 <input
                   type="text"
                   placeholder="Username"
-                  className="p-2 border rounded bg-white placeholder-gray-400 w-full mt-4"
+                  onChange={(e) =>
+                    setAdminDetails({
+                      ...adminDetails,
+                      username: e.target.value,
+                    })
+                  }
+                  className="p-2 border rounded bg-white placeholder:text-gray-600  w-full mt-4"
                 />
 
                 <input
                   type="password"
                   placeholder="Password"
-                  className="p-2 border rounded bg-white placeholder-gray-400 w-full"
+                  onChange={(e) =>
+                    setAdminDetails({
+                      ...adminDetails,
+                      password: e.target.value,
+                    })
+                  }
+                  className="p-2 border rounded bg-white placeholder:text-gray-600 w-full"
                 />
 
                 <input
                   type="password"
                   placeholder="Confirm Password"
-                  className="p-2 border rounded bg-white placeholder-gray-400 w-full"
+                  onChange={(e) =>
+                    setAdminDetails({
+                      ...adminDetails,
+                      cpassword: e.target.value,
+                    })
+                  }
+                  className="p-2 border rounded bg-white placeholder:text-gray-600 w-full"
                 />
 
                 <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
