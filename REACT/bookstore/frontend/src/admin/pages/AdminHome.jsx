@@ -9,6 +9,9 @@ import {
   BarChart,
   CartesianGrid,
   Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -52,6 +55,24 @@ const AdminHome = () => {
       pv: 4300,
     },
   ];
+
+  const data01 = [
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 },
+    { name: "Group E", value: 278 },
+    { name: "Group F", value: 189 },
+  ];
+
+  const data02 = [
+    { name: "Group A", value: 2400 },
+    { name: "Group B", value: 4567 },
+    { name: "Group C", value: 1398 },
+    { name: "Group D", value: 9800 },
+    { name: "Group E", value: 3908 },
+    { name: "Group F", value: 4800 },
+  ];
   return (
     <>
       <AdminHeader />
@@ -86,25 +107,53 @@ const AdminHome = () => {
               </p>
             </div>
           </div>
-          <div className="md:grid grid-cols-2 gap-2 mt-4">
-            <BarChart
-              style={{
-                width: "100%",
-                maxWidth: "700px",
-                maxHeight: "70vh",
-                aspectRatio: 1.618,
-              }}
-              responsive
-              data={data}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis width="auto" />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="pv" fill="#8884d8" />
-              <Bar dataKey="uv" fill="#82ca9d" />
-            </BarChart>
+          <div className="md:grid grid-cols-2 gap-2 m-4 px-2">
+            <div className="w-full h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                {" "}
+                {/*make the bar chart responsive*/}
+                <BarChart data={data}>
+                  {" "}
+                  {/*Indicates the chart - data - attribute hold the data to displayed*/}
+                  <CartesianGrid strokeDasharray="3 3" />{" "}
+                  {/*grid dash - 3px 3px gap*/}
+                  <XAxis dataKey="name" /> {/*represnets x axis*/}
+                  <YAxis width="auto" /> {/*represnets y axis*/}
+                  <Tooltip /> {/*indicate data*/}
+                  <Legend /> {/*denotes the bar representation*/}
+                  <Bar dataKey="pv" fill="#004eaa" />{" "}
+                  {/*It represents the bar in bar chart with the given fill color*/}
+                  <Bar dataKey="uv" fill="#004d2c" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="w-full h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                {/*make the bar chart responsive*/}
+                <PieChart margin={{ top: 50, right: 50, bottom: 50, left: 50 }}>
+                  <Pie
+                    data={data01}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius="50%"
+                    fill="#004eaa"
+                  />
+                  <Pie
+                    data={data02}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    innerRadius="60%"
+                    outerRadius="80%"
+                    fill="#004d2c"
+                    label
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
       </div>
