@@ -13,6 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast, ToastContainer } from "react-toastify";
 import { updateProfileAPI } from "../../services/allAPI";
+import { serverURL } from "../../services/serverURL";
 
 const AdminSettings = () => {
   const [adminDetails, setAdminDetails] = useState({
@@ -24,6 +25,7 @@ const AdminSettings = () => {
 
   const [preview, setPreview] = useState("");
   const [token, setToken] = useState("");
+  const [existingProfileImage, setExistingProfileImage] = useState("");
 
   console.log(adminDetails);
 
@@ -54,17 +56,29 @@ const AdminSettings = () => {
 
     if (!username || !password || !cpassword || !profile) {
       toast.info("Please add complete data");
+    } else if (password != cpassword) {
+      toast.warning("Password must match");
     } else {
-      const reqBody = new FormData();
+      if (preview) {
+        const reqBody = new FormData();
 
-      for (let key in adminDetails) {
-        reqBody.append(key, adminDetails[key]);
+        for (let key in adminDetails) {
+          reqBody.append(key, adminDetails[key]);
+        }
+
+        const reqHeader = { Authorization: `Bearer ${token}` };
+
+        const result = await updateProfileAPI(reqBody, reqHeader);
+        console.log(result);
+      } else {
+        const reqHeader = { Authorization: `Bearer ${token}` };
+
+        const result = await updateProfileAPI(
+          { username, password, profile: existingProfileImage },
+          reqHeader
+        );
+        console.log(result);
       }
-
-      const reqHeader = { Authorization: `Bearer ${token}` };
-
-      const result = await updateProfileAPI(reqBody, reqHeader);
-      console.log(result);
     }
   };
 
@@ -74,6 +88,14 @@ const AdminSettings = () => {
     if (sessionStorage.getItem("token")) {
       const token = sessionStorage.getItem("token");
       setToken(token);
+
+      const user = JSON.parse(sessionStorage.getItem("existingUser"));
+      setAdminDetails({
+        username: user.username,
+        password: user.password,
+        cpassword: user.password,
+      });
+      setExistingProfileImage(user.profile);
     }
   }, []);
 
@@ -121,16 +143,31 @@ const AdminSettings = () => {
                     className="hidden"
                     onChange={(e) => handleAddFile(e)}
                   />
-                  <img
-                    src={
-                      preview
-                        ? preview
-                        : "https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
-                    }
-                    alt="no image"
-                    style={{ width: "150px", height: "150px" }}
-                    className="rounded-full"
-                  />
+
+                  {existingProfileImage == "" ? (
+                    <img
+                      src={
+                        preview
+                          ? preview
+                          : "https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
+                      }
+                      alt="no image"
+                      style={{ width: "150px", height: "150px" }}
+                      className="rounded-full"
+                    />
+                  ) : (
+                    <img
+                      src={
+                        preview
+                          ? preview
+                          : `${serverURL}/upload/${existingProfileImage}`
+                      }
+                      alt="no image"
+                      style={{ width: "150px", height: "150px" }}
+                      className="rounded-full"
+                    />
+                  )}
+
                   <FontAwesomeIcon
                     className="-mt-4 -mr-35 text-white"
                     icon={faPencil}

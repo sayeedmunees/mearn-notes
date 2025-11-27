@@ -6,7 +6,6 @@ import {
   faEye,
   faBackward,
   faXmark,
-  faCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import { viewBookAPI } from "../../services/allAPI";
 import { serverURL } from "../../services/serverURL";
