@@ -34,6 +34,17 @@ const AdminSettings = () => {
     }
   };
 
+  const handleReset = () => {
+    setAdminDetails({
+      username: "",
+      password: "",
+      cpassword: "",
+      profile: "",
+    });
+
+    setPreview("");
+  };
+
   console.log(preview);
 
   return (
@@ -98,6 +109,7 @@ const AdminSettings = () => {
                 <input
                   type="text"
                   placeholder="Username"
+                  value={adminDetails.username}
                   onChange={(e) =>
                     setAdminDetails({
                       ...adminDetails,
@@ -110,6 +122,7 @@ const AdminSettings = () => {
                 <input
                   type="password"
                   placeholder="Password"
+                  value={adminDetails.password}
                   onChange={(e) =>
                     setAdminDetails({
                       ...adminDetails,
@@ -122,6 +135,7 @@ const AdminSettings = () => {
                 <input
                   type="password"
                   placeholder="Confirm Password"
+                  value={adminDetails.cpassword}
                   onChange={(e) =>
                     setAdminDetails({
                       ...adminDetails,
@@ -132,13 +146,21 @@ const AdminSettings = () => {
                 />
 
                 <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
-                  <button className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2">
+                  <button
+                    className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2"
+                    type="button"
+                    onClick={handleReset()}
+                  >
                     <span className="font-bold me-2">Reset</span>
                     <FontAwesomeIcon icon={faArrowsRotate} />
                   </button>
 
-                  <button className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2">
-                    <span className="font-bold me-2">Submit</span>
+                  <button
+                    className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2"
+                    type="button"
+                    onClick={handleAdd()}
+                  >
+                    <span className="font-bold me-2">Update</span>
                     <FontAwesomeIcon icon={faPaperPlane} />
                   </button>
                 </div>
