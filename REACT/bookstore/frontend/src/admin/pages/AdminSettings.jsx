@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminHeader from "../components/AdminHeader";
 import AdminSidebar from "../components/AdminSidebar";
 import Footer from "../../components/Footer";
@@ -11,6 +11,8 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { toast, ToastContainer } from "react-toastify";
+import { updateProfileAPI } from "../../services/allAPI";
 
 const AdminSettings = () => {
   const [adminDetails, setAdminDetails] = useState({
@@ -21,6 +23,7 @@ const AdminSettings = () => {
   });
 
   const [preview, setPreview] = useState("");
+  const [token, setToken] = useState("");
 
   console.log(adminDetails);
 
@@ -45,7 +48,34 @@ const AdminSettings = () => {
     setPreview("");
   };
 
+  const handleAdd = async () => {
+    const { username, password, cpassword, profile } = adminDetails;
+    console.log(username, password, cpassword, profile);
+
+    if (!username || !password || !cpassword || !profile) {
+      toast.info("Please add complete data");
+    } else {
+      const reqBody = new FormData();
+
+      for (let key in adminDetails) {
+        reqBody.append(key, adminDetails[key]);
+      }
+
+      const reqHeader = { Authorization: `Bearer ${token}` };
+
+      const result = await updateProfileAPI(reqBody, reqHeader);
+      console.log(result);
+    }
+  };
+
   console.log(preview);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      const token = sessionStorage.getItem("token");
+      setToken(token);
+    }
+  }, []);
 
   return (
     <>
@@ -99,6 +129,7 @@ const AdminSettings = () => {
                     }
                     alt="no image"
                     style={{ width: "150px", height: "150px" }}
+                    className="rounded-full"
                   />
                   <FontAwesomeIcon
                     className="-mt-4 -mr-35 text-white"
@@ -149,7 +180,7 @@ const AdminSettings = () => {
                   <button
                     className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2"
                     type="button"
-                    onClick={handleReset()}
+                    onClick={handleReset}
                   >
                     <span className="font-bold me-2">Reset</span>
                     <FontAwesomeIcon icon={faArrowsRotate} />
@@ -158,7 +189,7 @@ const AdminSettings = () => {
                   <button
                     className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2"
                     type="button"
-                    onClick={handleAdd()}
+                    onClick={handleAdd}
                   >
                     <span className="font-bold me-2">Update</span>
                     <FontAwesomeIcon icon={faPaperPlane} />
@@ -169,6 +200,7 @@ const AdminSettings = () => {
           </div>
         </div>
       </div>
+      <ToastContainer theme="colored" position="top-center" autoClose={3000} />
 
       <Footer />
     </>
