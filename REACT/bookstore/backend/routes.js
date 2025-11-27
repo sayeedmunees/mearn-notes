@@ -67,5 +67,13 @@ route.get(
   userController.getAllUsersController
 );
 
+// path for update admin users....
+route.put(
+  "profile-update",
+  jwtAdminMiddleware,
+  multerConfig.single("profile"),
+  userController.editAdminProfileController
+);
+
 // routes export
 module.exports = route;

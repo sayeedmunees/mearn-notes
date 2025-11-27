@@ -72,12 +72,33 @@ exports.googleLoginController = async (req, res) => {
   }
 };
 
-// getall user controller
+// get all user controller
 exports.getAllUsersController = async (req, res) => {
   const email = req.payload;
   try {
     const allUsers = await users.find({ email: { $ne: email } });
     res.status(200).json(allUsers);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// update admin profile controller
+exports.editAdminProfileController = async (req, res) => {
+  console.log("Inside edit admin profile controller");
+  const { username, password, profile } = req.body;
+  const prof = req.file ? req.file.filename : profile;
+  const email = req.payload;
+  console.log(email);
+
+  try {
+    const adminDetails = await users.findOneAndUpdate(
+      { email },
+      { username, email, password, profile: prof },
+      { new: true }
+    );
+    // await adminDetail.save()
+    res.status(200).json(adminDetails);
   } catch (err) {
     res.status(500).json(err);
   }
