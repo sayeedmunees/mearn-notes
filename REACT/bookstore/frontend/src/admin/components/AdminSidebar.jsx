@@ -5,16 +5,25 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { adminProfileUpdateStatusContext } from "../../context/ContextShare";
 
 const AdminSidebar = () => {
   const [homeStatus, setHomeStatus] = useState(false);
   const [bookStatus, setBookStatus] = useState(false);
   const [careerStatus, setCareerStatus] = useState(false);
   const [settingsStatus, setSettingsStatus] = useState(false);
+  const [adminData, setAdminData] = useState({
+    username: "",
+    profile: "",
+  });
 
   const navigate = useNavigate();
+  const setAdminProfileUpdateStatus = useContext(
+    adminProfileUpdateStatusContext
+  );
+
   const filter = (data) => {
     if (data == "home") {
       navigate("/admin-home");
@@ -42,16 +51,22 @@ const AdminSidebar = () => {
     } else {
       console.log("no such page");
     }
-  }, []);
+    const user = JSON.parse(sessionStorage.getItem("existingUser"));
+    setAdminData({ username: user.username, profile: user.profile });
+  }, [setAdminProfileUpdateStatus]);
   return (
     <>
       <img
-        src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
+        src={
+          adminData.profile == ""
+            ? "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+            : `${serverURL}/upload/${adminData.profile}`
+        }
         alt="no image"
         style={{ width: "150px", height: "150px" }}
         className="mt-4"
       />
-      <h1 className="mt-5 text-white font-medium">UserName</h1>
+      <h1 className="mt-5 text-white font-medium">{adminData.username}</h1>
       <div className="my-5">
         <div className="mb-3" onClick={() => filter("home")}>
           <input

@@ -66,6 +66,7 @@ export const getAllUsersAPI = async (reqHeader) => {
 
 // api to get all users
 export const updateProfileAPI = async (reqBody, reqHeader) => {
+  console.log(reqBody);
   return await commonAPI(
     `PUT`,
     `${serverURL}/profile-update`,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AdminHeader from "../components/AdminHeader";
 import AdminSidebar from "../components/AdminSidebar";
 import Footer from "../../components/Footer";
@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast, ToastContainer } from "react-toastify";
 import { updateProfileAPI } from "../../services/allAPI";
 import { serverURL } from "../../services/serverURL";
+import { adminProfileUpdateStatusContext } from "../../context/ContextShare";
 
 const AdminSettings = () => {
   const [adminDetails, setAdminDetails] = useState({
@@ -26,6 +27,8 @@ const AdminSettings = () => {
   const [preview, setPreview] = useState("");
   const [token, setToken] = useState("");
   const [existingProfileImage, setExistingProfileImage] = useState("");
+  const [updateStatus, setUpdateStatus] = useState({});
+  const setAdminProfileUpdateStatus = useContext(adminProfileUpdateStatusContext)
 
   console.log(adminDetails);
 
@@ -39,22 +42,30 @@ const AdminSettings = () => {
     }
   };
 
-  const handleReset = () => {
-    setAdminDetails({
-      username: "",
-      password: "",
-      cpassword: "",
-      profile: "",
-    });
+  console.log(preview);
 
-    setPreview("");
+  const handleReset = () => {
+    if (sessionStorage.getItem("token")) {
+      const token = sessionStorage.getItem("token");
+      setToken(token);
+
+      const user = JSON.parse(sessionStorage.getItem("existingUser"));
+      setAdminDetails({
+        username: user.username,
+        password: user.password,
+        cpassword: user.password,
+      });
+      setExistingProfileImage(user.profile);
+
+      setPreview("");
+    }
   };
 
   const handleAdd = async () => {
     const { username, password, cpassword, profile } = adminDetails;
-    console.log(username, password, cpassword, profile);
+    console.log(username, password, cpassword, profile, existingProfileImage);
 
-    if (!username || !password || !cpassword || !profile) {
+    if (!username || !password || !cpassword) {
       toast.info("Please add complete data");
     } else if (password != cpassword) {
       toast.warning("Password must match");
@@ -63,21 +74,45 @@ const AdminSettings = () => {
         const reqBody = new FormData();
 
         for (let key in adminDetails) {
+          console.log(key);
           reqBody.append(key, adminDetails[key]);
         }
+
+        console.log(reqBody);
 
         const reqHeader = { Authorization: `Bearer ${token}` };
 
         const result = await updateProfileAPI(reqBody, reqHeader);
         console.log(result);
+
+        if (result.status == 200) {
+          toast.success("Profile Updated Successfully");
+          sessionStorage.setItem("existingUser", JSON.stringify(result.data));
+          setUpdateStatus(result.data);
+          setAdminProfileUpdateStatus(result.data);
+        } else {
+          toast.error("Something went wrong");
+          setUpdateStatus(result);
+        }
       } else {
         const reqHeader = { Authorization: `Bearer ${token}` };
+        console.log(reqHeader);
 
         const result = await updateProfileAPI(
           { username, password, profile: existingProfileImage },
           reqHeader
         );
         console.log(result);
+
+        if (result.status == 200) {
+          toast.success("Profile Updated Successfully");
+          sessionStorage.setItem("existingUser", JSON.stringify(result.data));
+          setUpdateStatus(result.data);
+          setAdminProfileUpdateStatus(result.data);
+        } else {
+          toast.error("Something went wrong");
+          setUpdateStatus(result);
+        }
       }
     }
   };
@@ -97,7 +132,7 @@ const AdminSettings = () => {
       });
       setExistingProfileImage(user.profile);
     }
-  }, []);
+  }, [updateStatus]);
 
   return (
     <>
@@ -188,7 +223,7 @@ const AdminSettings = () => {
                 />
 
                 <input
-                  type="password"
+                  type="text"
                   placeholder="Password"
                   value={adminDetails.password}
                   onChange={(e) =>
@@ -201,7 +236,7 @@ const AdminSettings = () => {
                 />
 
                 <input
-                  type="password"
+                  type="text"
                   placeholder="Confirm Password"
                   value={adminDetails.cpassword}
                   onChange={(e) =>

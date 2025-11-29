@@ -69,7 +69,7 @@ route.get(
 
 // path for update admin users....
 route.put(
-  "profile-update",
+  "/profile-update",
   jwtAdminMiddleware,
   multerConfig.single("profile"),
   userController.editAdminProfileController
