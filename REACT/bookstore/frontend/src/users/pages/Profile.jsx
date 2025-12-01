@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../../components/Footer";
 import {
@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditProfile from "../components/EditProfile";
 import { toast, ToastContainer } from "react-toastify";
 import { uploadBookAPI } from "../../services/allAPI";
+import { userProfileUpdateStatusContext } from "../../context/ContextShare";
 
 const Profile = () => {
   const [sellStatus, setSellStatus] = useState(true);
@@ -34,6 +35,11 @@ const Profile = () => {
   const [preview, setPreview] = useState("");
   const [previewList, setPreviewList] = useState([]);
   const [token, setToken] = useState("");
+  const { userProfileUpdateStatus } = useContext(
+    userProfileUpdateStatusContext
+  );
+  const [username, setUserName] = useState("")
+
 
   console.log(bookDetails);
 
@@ -152,6 +158,9 @@ const Profile = () => {
     if (sessionStorage.getItem("token")) {
       const token = sessionStorage.getItem("token");
       setToken(token);
+      const user = JSON.parse(sessionStorage.getItem("existingUser"));
+      setUserName(user.username)
+      
     }
   }, []);
 
@@ -177,7 +186,7 @@ const Profile = () => {
       </div>
       <div className="flex justify-between px-20 mt-5">
         <p className="flex justify-center items-center">
-          <span className="text-3xl font-semibold">Maxx Well</span>
+          <span className="text-3xl font-semibold">{username}</span>
           <FontAwesomeIcon className="text-blue-500" icon={faCircleCheck} />
         </p>
         <EditProfile />

@@ -7,10 +7,11 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { updateUserProfileAPI } from "../../services/allAPI";
 import { toast, ToastContainer } from "react-toastify";
 import { serverURL } from "../../services/serverURL";
+import { userProfileUpdateStatusContext } from "../../context/ContextShare";
 
 const EditProfile = () => {
   const [offCanvasStatus, setOffCanvasStatus] = useState(false);
@@ -25,6 +26,15 @@ const EditProfile = () => {
   const [existingImage, setExistingImage] = useState("");
   const [preview, setPreview] = useState("");
   const [token, setToken] = useState("");
+  const { setUserProfileUpdateStatus } = useContext(
+    userProfileUpdateStatusContext
+  );
+
+  const handleUploadImage = (e) => {
+    setUserDetails({ ...userDetails, profile: e.target.files[0] });
+    const url = URL.createObjectURL(e.target.files[0]);
+    setPreview(url);
+  };
 
   const handleReset = () => {
     const user = JSON.parse(sessionStorage.getItem("existingUser"));
@@ -36,12 +46,6 @@ const EditProfile = () => {
     });
     setExistingImage(user.profile);
     setPreview("");
-  };
-
-  const handleUploadImage = (e) => {
-    setUserDetails({ ...userDetails, profile: e.target.files[0] });
-    const url = URL.createObjectURL(e.target.files[0]);
-    setPreview(url);
   };
 
   const handleSubmit = async () => {
@@ -73,6 +77,7 @@ const EditProfile = () => {
           sessionStorage.setItem("existingUser", JSON.stringify(result.data));
           handleReset();
           setOffCanvasStatus(false);
+          setUserProfileUpdateStatus (result.data)
         } else {
           toast.error("Something went wrong");
           setUpdateStatus(result);
@@ -92,6 +97,7 @@ const EditProfile = () => {
           sessionStorage.setItem("existingUser", JSON.stringify(result.data));
           handleReset();
           setOffCanvasStatus(false);
+          setUserProfileUpdateStatus(result.data);
         } else {
           toast.error("Something went wrong");
         }
