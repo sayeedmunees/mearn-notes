@@ -8,6 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import { updateUserProfileAPI } from "../../services/allAPI";
+import { toast, ToastContainer } from "react-toastify";
 
 const EditProfile = () => {
   const [offCanvasStatus, setOffCanvasStatus] = useState(false);
@@ -23,9 +25,72 @@ const EditProfile = () => {
   const [preview, setPreview] = useState("");
   const [token, setToken] = useState("");
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    const user = JSON.parse(sessionStorage.getItem("existingUser"));
+    setUserDetails({
+      username: user.username,
+      password: user.password,
+      cpassword: user.password,
+      bio: user.bio,
+    });
+    setExistingImage(user.profile);
+    setPreview("");
+  };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    const { username, password, cpassword, profile, bio } = userDetails;
+    console.log(username, password, cpassword, profile, bio, existingImage);
+
+    if (!username || !password || !cpassword || !bio) {
+      toast.info("Please add complete data");
+    } else if (password != cpassword) {
+      toast.warning("Password must match");
+    } else {
+      if (preview) {
+        const reqBody = new FormData();
+
+        for (let key in userDetails) {
+          console.log(key);
+          reqBody.append(key, userDetails[key]);
+        }
+
+        console.log(reqBody);
+
+        const reqHeader = { Authorization: `Bearer ${token}` };
+
+        const result = await updateUserProfileAPI(reqBody, reqHeader);
+        console.log(result);
+
+        if (result.status == 200) {
+          toast.success("Profile Updated Successfully");
+          sessionStorage.setItem("existingUser", JSON.stringify(result.data));
+          handleReset();
+          setOffCanvasStatus(false);
+        } else {
+          toast.error("Something went wrong");
+          setUpdateStatus(result);
+        }
+      } else {
+        const reqHeader = { Authorization: `Bearer ${token}` };
+        console.log(reqHeader);
+
+        const result = await updateUserProfileAPI(
+          { username, password, profile: existingImage, bio },
+          reqHeader
+        );
+        console.log(result);
+
+        if (result.status == 200) {
+          toast.success("Profile Updated Successfully");
+          sessionStorage.setItem("existingUser", JSON.stringify(result.data));
+          handleReset();
+          setOffCanvasStatus(false);
+        } else {
+          toast.error("Something went wrong");
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
@@ -54,7 +119,7 @@ const EditProfile = () => {
       </div>
 
       {offCanvasStatus && (
-        <div c>
+        <div>
           {/* Overlay */}
           <div
             className="fixed inset-0 bg-gray-500/75 transition-opacity w-full h-full"
@@ -77,12 +142,50 @@ const EditProfile = () => {
                 htmlFor="imageFile"
                 className="cursor-pointer flex flex-col items-center"
               >
-                <input type="file" id="imageFile" className="hidden" />
-                <img
-                  src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
-                  alt="profile pic"
-                  className="w-24 h-24 rounded-full border"
+                <input
+                  id="imageFile"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e) => handleUploadImage(e)}
                 />
+                {existingImage == "" ? (
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/8792/8792047.png"
+                    className="rounded-full"
+                    alt="no image"
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      marginTop: "20px",
+                    }}
+                  />
+                ) : existingImage.startsWith(
+                    "https://lh3.googleusercontent.com/"
+                  ) ? (
+                  <img
+                  className="rounded-full"
+                    src={preview ? preview : existingImage}
+                    alt="no image"
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      marginTop: "20px",
+                    }}
+                  />
+                ) : (
+                  <img
+                  className="rounded-full"
+                    src={
+                      preview ? preview : `${serverURL}/upload/${existingImage}`
+                    }
+                    alt="no image"
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      marginTop: "20px",
+                    }}
+                  />
+                )}
                 <FontAwesomeIcon
                   className="-mt-4 -mr-25 text-xl text-white"
                   icon={faPencil}
@@ -150,6 +253,7 @@ const EditProfile = () => {
           </div>
         </div>
       )}
+      <ToastContainer theme="colored" position="top-center" autoClose={3000} />
     </>
   );
 };

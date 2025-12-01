@@ -10,12 +10,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [status, setStatus] = useState(false);
   const [dropDownStatus, setDropDownStatus] = useState(false);
   const [token, setToken] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.setItem("existingUser", "");
+    sessionStorage.setItem("token", "");
+    setToken("");
+    navigate("/");
+  };
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
@@ -73,7 +81,7 @@ const Header = () => {
                     <div role="none">
                       <Link to={"/profile"}>
                         <p
-                          class="block px-4 py-2 text-sm rounded-md font-semibold hover:bg-gray-200 text-gray-700"
+                          className="block px-4 py-2 text-sm rounded-md font-semibold hover:bg-gray-200 text-gray-700"
                           role="menuItem"
                           tabIndex="-1"
                           id="menu-item-0"
@@ -83,8 +91,9 @@ const Header = () => {
                       </Link>
 
                       <button
+                        onClick={handleLogout}
                         type="submit"
-                        class="block w-full rounded-md font-bold hover:bg-gray-200 px-4 py-2 text-left text-sm text-red-600"
+                        className="block w-full rounded-md font-bold hover:bg-gray-200 px-4 py-2 text-left text-sm text-red-600"
                         role="menuItem"
                         tabIndex="-1"
                         id="menu-item-1"
