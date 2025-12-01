@@ -28,7 +28,9 @@ const AdminSettings = () => {
   const [token, setToken] = useState("");
   const [existingProfileImage, setExistingProfileImage] = useState("");
   const [updateStatus, setUpdateStatus] = useState({});
-  const setAdminProfileUpdateStatus = useContext(adminProfileUpdateStatusContext)
+  const setAdminProfileUpdateStatus = useContext(
+    adminProfileUpdateStatusContext
+  );
 
   console.log(adminDetails);
 
@@ -56,9 +58,8 @@ const AdminSettings = () => {
         cpassword: user.password,
       });
       setExistingProfileImage(user.profile);
-
-      setPreview("");
     }
+    setPreview("");
   };
 
   const handleAdd = async () => {

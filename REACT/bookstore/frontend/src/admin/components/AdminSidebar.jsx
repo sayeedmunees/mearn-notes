@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { adminProfileUpdateStatusContext } from "../../context/ContextShare";
+import { serverURL } from "../../services/serverURL";
 
 const AdminSidebar = () => {
   const [homeStatus, setHomeStatus] = useState(false);
@@ -64,7 +65,7 @@ const AdminSidebar = () => {
         }
         alt="no image"
         style={{ width: "150px", height: "150px" }}
-        className="mt-4"
+        className="mt-4 rounded-full"
       />
       <h1 className="mt-5 text-white font-medium">{adminData.username}</h1>
       <div className="my-5">
