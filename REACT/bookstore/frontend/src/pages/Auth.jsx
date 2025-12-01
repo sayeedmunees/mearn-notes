@@ -26,7 +26,12 @@ const Auth = ({ register }) => {
     if (!username || !email || !password) {
       toast.info("Please fill the form completely");
     } else {
-      const result = await registerAPI({ username, email, password });
+      const result = await registerAPI({
+        username,
+        email,
+        password,
+        profile: "",
+      });
       console.log(result);
       if (result.status == 200) {
         toast.success("Register Succesful");
@@ -97,22 +102,22 @@ const Auth = ({ register }) => {
       profile: details.picture,
     });
     console.log(result);
-    if (result.status == 200){
-      toast.success("Login Successful")
+    if (result.status == 200) {
+      toast.success("Login Successful");
       sessionStorage.setItem(
-          "existingUser",
-          JSON.stringify(result.data.existingUser)
-        );
-        sessionStorage.setItem("token", result.data.token);
-        setTimeout(() => {
-          if (result.data.existingUser.email == "bookAdmin@gmail.com") {
-            navigate("/admin-home");
-          } else {
-            navigate("/");
-          }
-        }, 2500);
-    }else {
-      toast.error("Something went wrong")
+        "existingUser",
+        JSON.stringify(result.data.existingUser)
+      );
+      sessionStorage.setItem("token", result.data.token);
+      setTimeout(() => {
+        if (result.data.existingUser.email == "bookAdmin@gmail.com") {
+          navigate("/admin-home");
+        } else {
+          navigate("/");
+        }
+      }, 2500);
+    } else {
+      toast.error("Something went wrong");
     }
   };
 

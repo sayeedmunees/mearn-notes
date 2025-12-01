@@ -15,6 +15,7 @@ exports.registerController = async (req, res) => {
         username,
         email,
         password,
+        profile: "",
       });
       await newUser.save(); // mongodb save
       res.status(200).json(newUser);
@@ -102,6 +103,5 @@ exports.editAdminProfileController = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
-    
   }
 };

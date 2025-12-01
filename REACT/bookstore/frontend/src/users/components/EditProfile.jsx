@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { updateUserProfileAPI } from "../../services/allAPI";
 import { toast, ToastContainer } from "react-toastify";
+import { serverURL } from "../../services/serverURL";
 
 const EditProfile = () => {
   const [offCanvasStatus, setOffCanvasStatus] = useState(false);
@@ -35,6 +36,12 @@ const EditProfile = () => {
     });
     setExistingImage(user.profile);
     setPreview("");
+  };
+
+  const handleUploadImage = (e) => {
+    setUserDetails({ ...userDetails, profile: e.target.files[0] });
+    const url = URL.createObjectURL(e.target.files[0]);
+    setPreview(url);
   };
 
   const handleSubmit = async () => {
@@ -103,7 +110,7 @@ const EditProfile = () => {
         cpassword: user.password,
         bio: user.bio,
       });
-      setExistingImage(user.profile);
+      setExistingImage(user.profile || "");
     }
   }, []);
 
@@ -159,11 +166,11 @@ const EditProfile = () => {
                       marginTop: "20px",
                     }}
                   />
-                ) : existingImage.startsWith(
+                ) : existingImage?.startsWith(
                     "https://lh3.googleusercontent.com/"
                   ) ? (
                   <img
-                  className="rounded-full"
+                    className="rounded-full"
                     src={preview ? preview : existingImage}
                     alt="no image"
                     style={{
@@ -174,7 +181,7 @@ const EditProfile = () => {
                   />
                 ) : (
                   <img
-                  className="rounded-full"
+                    className="rounded-full"
                     src={
                       preview ? preview : `${serverURL}/upload/${existingImage}`
                     }
