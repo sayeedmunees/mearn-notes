@@ -7,10 +7,40 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const EditProfile = () => {
   const [offCanvasStatus, setOffCanvasStatus] = useState(false);
+  const [userDetails, setUserDetails] = useState({
+    username: "",
+    password: "",
+    cpassword: "",
+    bio: "",
+    profile: "",
+  });
+
+  const [existingImage, setExistingImage] = useState("");
+  const [preview, setPreview] = useState("");
+  const [token, setToken] = useState("");
+
+  const handleReset = () => {};
+
+  const handleSubmit = () => {};
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      const token = sessionStorage.getItem("token");
+      setToken(token);
+      const user = JSON.parse(sessionStorage.getItem("existingUser"));
+      setUserDetails({
+        username: user.username,
+        password: user.password,
+        cpassword: user.password,
+        bio: user.bio,
+      });
+      setExistingImage(user.profile);
+    }
+  }, []);
 
   return (
     <>
@@ -63,34 +93,55 @@ const EditProfile = () => {
                 type="text"
                 placeholder="Username"
                 className="p-2 mt-3 border rounded bg-white placeholder-gray-700 w-full"
+                value={userDetails.username}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, username: e.target.value })
+                }
               />
 
-
               <input
-                type="password"
+                type="text"
                 placeholder="Password"
                 className="p-2 border rounded bg-white placeholder-gray-700 w-full"
+                value={userDetails.password}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, password: e.target.value })
+                }
               />
 
               <input
-                type="password"
+                type="text"
                 placeholder="Confirm Password"
                 className="p-2 border rounded bg-white placeholder-gray-700 w-full"
+                value={userDetails.cpassword}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, cpassword: e.target.value })
+                }
               />
 
               <textarea
                 rows={5}
                 placeholder="Bio"
                 className="p-2 border rounded bg-white placeholder-gray-700 w-full"
+                value={userDetails.bio}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, bio: e.target.value })
+                }
               ></textarea>
 
               <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
-                <button className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2">
+                <button
+                  onClick={handleReset}
+                  className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2"
+                >
                   <span className="font-bold me-2">Reset</span>
                   <FontAwesomeIcon icon={faArrowsRotate} />
                 </button>
 
-                <button className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2">
+                <button
+                  onClick={handleSubmit}
+                  className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2"
+                >
                   <span className="font-bold me-2">Submit</span>
                   <FontAwesomeIcon icon={faPaperPlane} />
                 </button>
