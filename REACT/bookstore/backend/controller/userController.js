@@ -105,3 +105,25 @@ exports.editAdminProfileController = async (req, res) => {
     console.log(err);
   }
 };
+
+// update admin profile controller
+exports.editUserProfileController = async (req, res) => {
+  console.log("Inside edit user profile controller");
+  const { username, password, profile, bio } = req.body;
+  const prof = req.file ? req.file.filename : profile;
+  const email = req.payload;
+  console.log(email);
+
+  try {
+    const userDetails = await users.findOneAndUpdate(
+      { email },
+      { username, email, password, bio, profile: prof },
+      { new: true }
+    );
+    // await adminDetail.save()
+    res.status(200).json(userDetails);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+};

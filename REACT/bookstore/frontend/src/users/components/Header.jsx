@@ -67,7 +67,7 @@ const Header = () => {
                   <img
                     src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
                     alt="UserLogin"
-                    className="w-10 h-10"
+                    className="w-10 h-10 rounded-full"
                   />
                 </button>
 
@@ -171,7 +171,7 @@ const Header = () => {
                   <img
                     src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
                     alt="UserLogin"
-                    className="w-10 h-10"
+                    className="w-10 h-10 rounded-full"
                   />
                 </button>
                 {dropDownStatus && (

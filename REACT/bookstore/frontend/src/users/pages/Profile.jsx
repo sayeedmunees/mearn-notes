@@ -18,6 +18,7 @@ import {
   uploadBookAPI,
 } from "../../services/allAPI";
 import { userProfileUpdateStatusContext } from "../../context/ContextShare";
+import { serverURL } from "../../services/serverURL";
 
 const Profile = () => {
   const [sellStatus, setSellStatus] = useState(true);
@@ -42,6 +43,7 @@ const Profile = () => {
   const [token, setToken] = useState("");
   const [username, setUserName] = useState("");
   const [profile, setProfile] = useState("");
+  const [bio, setBio] = useState("");
   const [userBooks, setUserBooks] = useState("");
   const [userBroughtBooks, setUserBroughtBooks] = useState("");
   const [deleteStatus, setDeleteStatus] = useState("");
@@ -209,7 +211,8 @@ const Profile = () => {
       setToken(token);
       const user = JSON.parse(sessionStorage.getItem("existingUser"));
       setUserName(user.username);
-      setProfile(user.profile || "");
+      setProfile(user.profile);
+      setBio(user.bio);
     }
   }, [userProfileUpdateStatus]);
 
@@ -231,13 +234,13 @@ const Profile = () => {
         <img
           src={
             profile == ""
-              ? "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+              ? "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
               : profile.startsWith("https://lh3.googleusercontent.com/")
               ? profile
               : `${serverURL}/upload/${profile}`
           }
           alt="profile pic"
-          className="rounded-full"
+          className="rounded-full w-full h-full"
         />
       </div>
       <div className="flex justify-between px-20 mt-5">
@@ -247,12 +250,7 @@ const Profile = () => {
         </p>
         <EditProfile />
       </div>
-      <p className="md:px-20 px-5 my-5 text-justify max-w-3xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum
-        quam blanditiis animi quaerat voluptatibus repudiandae esse sequi nulla
-        deleniti, quia laboriosam iusto incidunt nesciunt molestias?
-        Perspiciatis unde impedit eius?
-      </p>
+      <p className="md:px-20 px-5 my-5 text-justify max-w-3xl">{bio}</p>
 
       {/* tabs */}
       <div className="md:px-40 mt-4">

@@ -51,6 +51,14 @@ route.get(
   bookController.getAllUserBookController
 );
 
+// path for update users....
+route.put(
+  "/user-profile-update",
+  jwtMiddleware,
+  multerConfig.single("profile"),
+  userController.editAdminProfileController
+);
+
 // path for get All user brought books.....
 route.get(
   "/user-brought-books",

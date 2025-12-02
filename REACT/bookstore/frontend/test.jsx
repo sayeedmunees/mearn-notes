@@ -1,13 +1,11 @@
 import {
-  faArrowsRotate,
-  faPaperPlane,
-  faPencil,
+  faPenNib,
   faPenToSquare,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { updateUserProfileAPI } from "../../services/allAPI";
+import { updateUserProfileApi } from "../../services/allApi";
 import { toast, ToastContainer } from "react-toastify";
 import { serverURL } from "../../services/serverURL";
 import { userProfileUpdateStatusContext } from "../../context/ContextShare";
@@ -21,10 +19,13 @@ const EditProfile = () => {
     bio: "",
     profile: "",
   });
-
   const [existingImage, setExistingImage] = useState("");
   const [preview, setPreview] = useState("");
   const [token, setToken] = useState("");
+
+  console.log(userDetails);
+
+  // const [setUserProfileUpdateStatus] = useContext(userProfileUpdateStatusContext)
   const { setUserProfileUpdateStatus } = useContext(
     userProfileUpdateStatusContext
   );
@@ -40,7 +41,7 @@ const EditProfile = () => {
     setUserDetails({
       username: user.username,
       password: user.password,
-      cpassword: user.password,
+      cpassword: user.cpassword,
       bio: user.bio,
     });
     setExistingImage(user.profile);
@@ -52,55 +53,56 @@ const EditProfile = () => {
     console.log(username, password, cpassword, bio, profile);
 
     if (!username || !password || !cpassword || !bio) {
-      toast.info("Please add complete data");
-    } else if (password != cpassword) {
-      toast.warning("Password must match");
+      toast.info("please add complete details");
     } else {
-      if (preview) {
-        const reqBody = new FormData();
-
-        for (let key in userDetails) {
-          console.log(key);
-          console.log(userDetails[key]);
-          reqBody.append(key, userDetails[key]);
-        }
-
-        console.log(reqBody);
-
-        const reqHeader = { Authorization: `Bearer ${token}` };
-
-        const result = await updateUserProfileAPI(reqBody, reqHeader);
-        console.log(result);
-
-        if (result.status == 200) {
-          toast.success("Profile Updated Successfully");
-          sessionStorage.setItem("existingUser", JSON.stringify(result.data));
-          handleReset();
-          setOffCanvasStatus(false);
-          setUserProfileUpdateStatus(result.data);
-        } else {
-          toast.error("Something went wrong");
-          handleReset();
-        }
+      if (password != cpassword) {
+        toast.warning("Password Must Match ");
       } else {
-        const reqHeader = { Authorization: `Bearer ${token}` };
-        console.log(reqHeader);
+        if (preview) {
+          const reqbody = new FormData();
 
-        const result = await updateUserProfileAPI(
-          { username, password, profile: existingImage, bio },
-          reqHeader
-        );
-        console.log(result);
+          for (let key in userDetails) {
+            console.log(key);
 
-        if (result.status == 200) {
-          toast.success("Profile Updated Successfully");
-          sessionStorage.setItem("existingUser", JSON.stringify(result.data));
-          handleReset();
-          setOffCanvasStatus(false);
-          setUserProfileUpdateStatus(result.data);
+            reqbody.append(key, userDetails[key]);
+          }
+
+          const reqHeader = {
+            Authorization: `Bearer ${token}`,
+          };
+
+          const result = await updateUserProfileApi(reqbody, reqHeader);
+          console.log(result);
+          if (result.status == 200) {
+            toast.success("Profile Updated SuccessFully!!");
+            sessionStorage.setItem("existingUser", JSON.stringify(result.data));
+            handleReset();
+            setOffCanvasStatus(false);
+            setUserProfileUpdateStatus(result.data);
+          } else {
+            toast.error("Something Went Wrong!!!");
+            handleReset();
+          }
         } else {
-          toast.error("Something went wrong");
-          handleReset();
+          const reqHeader = {
+            Authorization: `Bearer ${token}`,
+          };
+
+          const result = await updateUserProfileApi(
+            { username, password, profile: existingImage, bio },
+            reqHeader
+          );
+          console.log(result);
+          if (result.status == 200) {
+            toast.success("Profile Updated SuccessFully!!");
+            sessionStorage.setItem("existingUser", JSON.stringify(result.data));
+            handleReset();
+            setOffCanvasStatus(false);
+            setUserProfileUpdateStatus(result.data);
+          } else {
+            toast.error("Something Went Wrong!!!");
+            handleReset();
+          }
         }
       }
     }
@@ -114,7 +116,7 @@ const EditProfile = () => {
       setUserDetails({
         username: user.username,
         password: user.password,
-        cpassword: user.password,
+        cpassword: user.cpassword,
         bio: user.bio,
       });
       setExistingImage(user.profile);
@@ -123,51 +125,52 @@ const EditProfile = () => {
 
   return (
     <>
-      <div className="w-full flex justify-end">
+      <div>
         <button
-          className="text-white border border-green-950 bg-green-950 rounded p-3 hover:bg-white hover:text-green-950"
           onClick={() => setOffCanvasStatus(true)}
+          className="text-blue-500 border border-blue-500 rounded px-4 py-2 hover:bg-blue-500 hover:text-white flex items-center gap-2"
         >
-          <FontAwesomeIcon icon={faPenToSquare} /> Edit
+          Edit <FontAwesomeIcon icon={faPenToSquare} />
         </button>
       </div>
 
       {offCanvasStatus && (
         <div>
-          {/* Overlay */}
+          {/* Background Overlay */}
           <div
-            className="fixed inset-0 bg-gray-500/75 transition-opacity w-full h-full"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
             onClick={() => setOffCanvasStatus(false)}
           ></div>
 
-          {/* Off-canvas */}
-          <div className="bg-green-950 h-full w-[90%] max-w-sm z-50 fixed top-0 left-0 shadow-lg">
-            <div className="bg-green-950 px-3 py-4 flex justify-between items-center text-white text-2xl">
-              <h1>Edit User Profile</h1>
+          {/* Offcanvas Panel */}
+          <div className="fixed top-0 left-0 h-full w-80 sm:w-96 bg-white shadow-xl z-50 animate-slideIn">
+            {/* Header */}
+            <div className="bg-gray-900 px-4 py-4 flex justify-between items-center text-white">
+              <h1 className="text-lg font-semibold">Edit User Profile</h1>
               <FontAwesomeIcon
                 icon={faXmark}
-                className="cursor-pointer"
+                className="cursor-pointer text-xl hover:text-red-400"
                 onClick={() => setOffCanvasStatus(false)}
               />
             </div>
 
-            <div className="flex flex-col  items-center gap-3 p-4">
-              <label
-                htmlFor="imageFile"
-                className="cursor-pointer flex flex-col items-center"
-              >
+            {/* Body */}
+            <div className="flex flex-col justify-start items-center p-6 space-y-5">
+              {/* Profile Image Upload */}
+              <label htmlFor="imageFile" className="relative cursor-pointer">
                 <input
                   id="imageFile"
                   type="file"
                   className="hidden"
                   onChange={(e) => handleUploadImage(e)}
                 />
+
                 {existingImage == "" ? (
                   <img
                     src={
                       preview
                         ? preview
-                        : "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+                        : "https://img.icons8.com/fluent/1200/user-male-circle.jpg"
                     }
                     alt="Profile"
                     className="w-36 h-36 rounded-full object-cover border shadow"
@@ -189,74 +192,72 @@ const EditProfile = () => {
                     className="w-36 h-36 rounded-full object-cover border shadow"
                   />
                 )}
-                <FontAwesomeIcon
-                  className="-mt-4 -mr-25 text-xl text-white"
-                  icon={faPencil}
-                />
+
+                <div className="absolute bottom-2 right-3 bg-white shadow-md p-2 rounded-full">
+                  <FontAwesomeIcon icon={faPenNib} className="text-blue-600" />
+                </div>
               </label>
 
+              {/* Username */}
               <input
-                type="text"
-                placeholder="Username"
-                className="p-2 mt-3 border rounded bg-white placeholder-gray-700 w-full"
                 value={userDetails.username}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, username: e.target.value })
                 }
+                type="text"
+                placeholder="Username"
+                className="p-2 bg-gray-100 border rounded w-full"
               />
 
+              {/* Password */}
               <input
-                type="text"
-                placeholder="Password"
-                className="p-2 border rounded bg-white placeholder-gray-700 w-full"
                 value={userDetails.password}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, password: e.target.value })
                 }
+                type="text"
+                placeholder="Password"
+                className="p-2 bg-gray-100 border rounded w-full"
               />
 
+              {/* Confirm Password */}
               <input
-                type="text"
-                placeholder="Confirm Password"
-                className="p-2 border rounded bg-white placeholder-gray-700 w-full"
                 value={userDetails.cpassword}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, cpassword: e.target.value })
                 }
+                type="text"
+                placeholder="Confirm Password"
+                className="p-2 bg-gray-100 border rounded w-full"
               />
 
+              {/* Bio */}
               <textarea
-                rows={5}
+                rows={4}
                 placeholder="Bio"
-                className="p-2 border rounded bg-white placeholder-gray-700 w-full"
-                value={userDetails.bio}
-                onChange={(e) =>
-                  setUserDetails({ ...userDetails, bio: e.target.value })
-                }
+                className="p-2 bg-gray-100 border rounded w-full"
               ></textarea>
 
-              <div className="flex flex-col md:flex-row gap-2 w-full mt-8">
+              {/* Buttons */}
+              <div className="flex justify-end w-full mt-3 gap-3">
                 <button
                   onClick={handleReset}
-                  className="bg-green-950 border border-white hover:bg-white rounded hover:text-green-950 text-white w-full p-2"
+                  className="bg-amber-500 text-black px-4 py-2 rounded hover:bg-white border border-transparent hover:border-amber-500 hover:text-amber-500 transition"
                 >
-                  <span className="font-bold me-2">Reset</span>
-                  <FontAwesomeIcon icon={faArrowsRotate} />
+                  Reset
                 </button>
-
                 <button
                   onClick={handleSubmit}
-                  className="bg-white border border-white hover:bg-green-950 rounded text-green-950 hover:text-white w-full p-2"
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-white border border-transparent hover:border-green-600 hover:text-green-600 transition"
                 >
-                  <span className="font-bold me-2">Submit</span>
-                  <FontAwesomeIcon icon={faPaperPlane} />
+                  Submit
                 </button>
               </div>
             </div>
           </div>
         </div>
       )}
-      <ToastContainer theme="colored" position="top-center" autoClose={3000} />
+      <ToastContainer theme="colored" position="top-center" autoClose={2000} />
     </>
   );
 };
