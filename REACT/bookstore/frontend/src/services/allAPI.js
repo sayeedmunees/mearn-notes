@@ -17,7 +17,6 @@ export const googleLoginAPI = async (reqBody) => {
 };
 
 // get home books
-// google login
 export const homeBookAPI = async () => {
   return await commonAPI(`GET`, `${serverURL}/all-home-book`);
 };
@@ -67,6 +66,11 @@ export const getAllUserBroughtBooksAPI = async (reqHeader) => {
     "",
     reqHeader
   );
+};
+
+// delete a user book
+export const deleteUserBooksAPI = async (id) => {
+  return await commonAPI(`DELETE`, `${serverURL}/delete-user-books/${id}`);
 };
 
 //------------admin--------

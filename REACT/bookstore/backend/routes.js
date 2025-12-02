@@ -58,6 +58,9 @@ route.get(
   bookController.getAllUserBroghtBookController
 );
 
+// path for delete user books.....
+route.delete('/delete-user-books/:id', bookController.deleteUserBookController)
+
 // ------------ADMIN------------
 
 // path for Admin All books....

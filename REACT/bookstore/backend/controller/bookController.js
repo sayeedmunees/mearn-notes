@@ -131,6 +131,19 @@ exports.getAllUserBroghtBookController = async (req, res) => {
   }
 };
 
+// to delete a user book
+exports.deleteUserBookController = async (req, res) => {
+  console.log("inside deleteUserBookController");
+  const { id } = req.params;
+  console.log(id);
+  try {
+    await books.findByIdAndDelete({ _id: id });
+    res.status(200).json("Deleted Successfully..");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 // ------------------Admin------------------
 
 // to get all books - pending status
