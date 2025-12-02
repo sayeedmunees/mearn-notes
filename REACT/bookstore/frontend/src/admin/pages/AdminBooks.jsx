@@ -14,6 +14,7 @@ import {
   approveBookAPI,
   getAllUsersAPI,
 } from "../../services/allAPI";
+import { serverURL } from "../../services/serverURL";
 
 const AdminBooks = () => {
   const [bookListStatus, setBookListStatus] = useState(true);
@@ -192,17 +193,22 @@ const AdminBooks = () => {
                   >
                     <div className="text-green-950">ID: {user?._id}</div>
                     <div className="flex flex-row gap-4 items-center mt-3 ">
-                      <div className="bg-gray-400 rounded-full">
+                      <div className="bg-gray-400 rounded-full overflow-hidden">
                         <img
                           src={
                             user?.profile
                               ? user?.profile == ""
                                 ? "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                                : `${user?.profile}`
+                                : user?.profile.startsWith(
+                                    "https://lh3.googleusercontent.com/"
+                                  )
+                                ? `${user?.profile}`
+                                : `${serverURL}/upload/${user?.profile}`
                               : "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
                           }
                           alt="no image"
                           style={{ width: "50px", height: "50px" }}
+                          
                         />
                       </div>
                       <div>

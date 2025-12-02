@@ -52,6 +52,20 @@ const Profile = () => {
   );
   console.log(bookDetails);
 
+  const handleUploadImage = (e) => {
+    const fileArray = bookDetails.uploadedImages;
+    // console.log(e.target.files[0]);
+    fileArray.push(e.target.files[0]);
+    setBookDetails({ ...bookDetails, uploadedImages: fileArray });
+
+    const url = URL.createObjectURL(e.target.files[0]);
+    setPreview(url);
+
+    const newArray = previewList;
+    newArray.push(url);
+    setPreviewList(newArray);
+  };
+
   const handleSellStatus = () => {
     setSellStatus(true);
     setBookStatus(false);
@@ -66,20 +80,6 @@ const Profile = () => {
     setSellStatus(false);
     setBookStatus(false);
     setPurchaseStatus(true);
-  };
-
-  const handleUploadImage = (e) => {
-    const fileArray = bookDetails.uploadedImages;
-    // console.log(e.target.files[0]);
-    fileArray.push(e.target.files[0]);
-    setBookDetails({ ...bookDetails, uploadedImages: fileArray });
-
-    const url = URL.createObjectURL(e.target.files[0]);
-    setPreview(url);
-
-    const newArray = previewList;
-    newArray.push(url);
-    setPreviewList(newArray);
   };
 
   const handleReset = () => {
@@ -235,7 +235,7 @@ const Profile = () => {
           src={
             profile == ""
               ? "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
-              : profile.startsWith("https://lh3.googleusercontent.com/")
+              : profile?.startsWith("https://lh3.googleusercontent.com/")
               ? profile
               : `${serverURL}/upload/${profile}`
           }

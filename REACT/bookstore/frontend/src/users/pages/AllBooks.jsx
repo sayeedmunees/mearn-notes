@@ -97,7 +97,7 @@ const AllBooks = () => {
                     <input
                       type="radio"
                       name="category"
-                      value="fiction-1"
+                      value="self help"
                       className="form-radio text-blue-600 w-5 h-5 mr-2"
                     />
                     <span>Self-Help</span>
@@ -109,7 +109,7 @@ const AllBooks = () => {
                     <input
                       type="radio"
                       name="category"
-                      value="fiction-2"
+                      value="finance"
                       className="form-radio text-green-600 w-5 h-5 mr-2"
                     />
                     <span>Finance</span>
@@ -121,7 +121,7 @@ const AllBooks = () => {
                     <input
                       type="radio"
                       name="category"
-                      value="non-fiction"
+                      value="history"
                       className="form-radio text-red-600 w-5 h-5 mr-2"
                     />
                     <span>History</span>
@@ -145,7 +145,7 @@ const AllBooks = () => {
                     <input
                       type="radio"
                       name="category"
-                      value="mystery"
+                      value="horror"
                       className="form-radio text-purple-600 w-5 h-5 mr-2"
                     />
                     <span>Horror</span>
