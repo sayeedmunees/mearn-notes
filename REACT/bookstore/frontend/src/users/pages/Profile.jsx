@@ -11,7 +11,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditProfile from "../components/EditProfile";
 import { toast, ToastContainer } from "react-toastify";
-import { uploadBookAPI } from "../../services/allAPI";
+import {
+  getAllUserBooksAPI,
+  getAllUserBroughtBooksAPI,
+  uploadBookAPI,
+} from "../../services/allAPI";
 import { userProfileUpdateStatusContext } from "../../context/ContextShare";
 
 const Profile = () => {
@@ -35,12 +39,13 @@ const Profile = () => {
   const [preview, setPreview] = useState("");
   const [previewList, setPreviewList] = useState([]);
   const [token, setToken] = useState("");
+  const [username, setUserName] = useState("");
+  const [profile, setProfile] = useState("");
+  const [userBooks, setUserBooks] = useState("");
+  const [userBroughtBooks, setUserBroughtBooks] = useState("");
   const { userProfileUpdateStatus } = useContext(
     userProfileUpdateStatusContext
   );
-  const [username, setUserName] = useState("");
-  const [profile, setProfile] = useState("");
-
   console.log(bookDetails);
 
   const handleSellStatus = () => {
@@ -154,6 +159,39 @@ const Profile = () => {
     }
   };
 
+  const getAllUserBooks = async () => {
+    const reqHeader = {
+      Authorization: `Bearer ${token}`,
+    };
+    const result = await getAllUserBooksAPI(reqHeader);
+    console.log(result);
+    if (result.status == 200) {
+      setUserBooks(result.data);
+    }
+  };
+
+  const getAllUserBroughtBooks = async () => {
+    const reqHeader = { Authorization: `Bearer ${token}` };
+    const result = await getAllUserBroughtBooksAPI(reqHeader);
+    console.log(result);
+    if (result.status == 200) {
+      setUserBroughtBooks(result.data);
+    }
+  };
+
+  console.log(userBooks);
+  console.log(userBroughtBooks);
+
+  useEffect(() => {
+    if (bookStatus == true) {
+      getAllUserBooks();
+    } else if (purchaseStatus == true) {
+      getAllUserBroughtBooks();
+    } else {
+      console.log("Something Went Wrong");
+    }
+  }, [bookStatus, purchaseStatus]);
+
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
       const token = sessionStorage.getItem("token");
@@ -162,7 +200,7 @@ const Profile = () => {
       setUserName(user.username);
       setProfile(user.profile || "");
     }
-  }, []);
+  }, [userProfileUpdateStatus]);
 
   return (
     <>
@@ -470,63 +508,63 @@ const Profile = () => {
 
       {bookStatus && (
         <div className="p-10 my-20 shadow rounded">
-          <div className="bg-gray-200 p-4 rounded">
-            <div className="md:grid grid-cols-[3fr_1fr]">
-              <div>
-                <h1 className="text-2xl">Book Name :</h1>
-                <h1>Author :</h1>
-                <p>
-                  Abstract/Discription : Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Assumenda dignissimos deleniti ad non
-                  consectetur architecto quo modi tempore optio quisquam
-                  asperiores, nostrum recusandae ducimus nesciunt quis nam
-                  doloribus blanditiis eos?
-                </p>
-                <div className="flex">
-                  <img
-                    src="https://t4.ftcdn.net/jpg/09/74/65/39/360_F_974653955_Auq2ekCJ7Q6lGaTpmnYxAu4lRbsZblxT.png"
-                    alt="Pending"
-                    style={{ width: "70px", height: "70px" }}
-                  />
+          {userBooks?.length > 0 ? (
+            userBooks.map((item) => (
+              <div className="bg-gray-200 p-4 rounded m-2 my-4">
+                <div className="md:grid grid-cols-[3fr_1fr]">
+                  <div>
+                    <h1 className="text-2xl">{item.title}</h1>
+                    <h1>{item.author}</h1>
+                    <p>
+                      {item.abstract}
+                    </p>
+                    <div className="flex rounded-full">
+                      {item?.status == "pending" && <img
+                        src="https://t4.ftcdn.net/jpg/09/74/65/39/360_F_974653955_Auq2ekCJ7Q6lGaTpmnYxAu4lRbsZblxT.png"
+                        alt="Pending"
+                        style={{ width: "70px", height: "70px" }}
+                      />}
 
-                  <img
-                    src="https://png.pngtree.com/png-clipart/20250507/original/pngtree-rounded-sold-out-label-with-stamp-effect-for-product-availability-of-png-image_20938218.png"
-                    alt="sold"
-                    style={{ width: "70px", height: "70px" }}
-                  />
+                     {item?.status == "sold-out" && <img
+                        src="https://png.pngtree.com/png-clipart/20250507/original/pngtree-rounded-sold-out-label-with-stamp-effect-for-product-availability-of-png-image_20938218.png"
+                        alt="sold"
+                        style={{ width: "70px", height: "70px" }}
+                      />}
 
-                  <img
-                    src="https://toppng.com/uploads/preview/round-approved-blue-postage-stamp-11642625101msjywonr0e.png"
-                    alt="Approved"
-                    style={{ width: "70px", height: "70px" }}
-                  />
+                      {item?.status == "approved" && <img
+                        src="https://toppng.com/uploads/preview/round-approved-blue-postage-stamp-11642625101msjywonr0e.png"
+                        alt="Approved"
+                        style={{ width: "70px", height: "70px" }}
+                      />}
+                    </div>
+                  </div>
+
+                  <div>
+                    <img
+                      src={item?.imageurl || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIgFsPvKjCc9OhYq89CL6PjUbk7kLFQIHH7A&s"}
+                      alt=""
+                      className="w-full"
+                      style={{ height: "400px" }}
+                    />
+                    <div className="flex justify-end mt-4">
+                      <button className="bg-red-500 rounded text-white p-3 hover:bg-white hover:border hover:border-red-500 hover:text-red-500 ms-3">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIgFsPvKjCc9OhYq89CL6PjUbk7kLFQIHH7A&s"
-                  alt=""
-                  className="w-full"
-                  style={{ height: "400px" }}
-                />
-                <div className="flex justify-end mt-4">
-                  <button className="bg-red-500 rounded text-white p-3 hover:bg-white hover:border hover:border-red-500 hover:text-red-500 ms-3">
-                    Delete
-                  </button>
-                </div>
-              </div>
+            ))
+          ) : (
+            <div className="flex justify-center items-center flex-col">
+              <img
+                style={{ width: "400px", height: "400px" }}
+                src="https://i.pinimg.com/originals/39/70/fd/3970fd45f8264338153834f7ff18f4f0.gif"
+                alt="noimage"
+              />
+              <p className="text-red-600 text-4xl">No Books Added Yet!!</p>
             </div>
-          </div>
-
-          <div className="flex justify-center items-center flex-col">
-            <img
-              style={{ width: "400px", height: "400px" }}
-              src="https://i.pinimg.com/originals/39/70/fd/3970fd45f8264338153834f7ff18f4f0.gif"
-              alt="noimage"
-            />
-            <p className="text-red-600 text-4xl">No Books Added Yet!!</p>
-          </div>
+          )}
         </div>
       )}
 

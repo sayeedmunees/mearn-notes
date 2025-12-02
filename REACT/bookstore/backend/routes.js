@@ -44,6 +44,20 @@ route.get("/all-book", jwtMiddleware, bookController.getAllBookController);
 // path for all book
 route.get("/view-book/:id", bookController.getABookController);
 
+// path for get All user books.....
+route.get(
+  "/user-books",
+  jwtMiddleware,
+  bookController.getAllUserBookController
+);
+
+// path for get All user brought books.....
+route.get(
+  "/user-brought-books",
+  jwtMiddleware,
+  bookController.getAllUserBroghtBookController
+);
+
 // ------------ADMIN------------
 
 // path for Admin All books....

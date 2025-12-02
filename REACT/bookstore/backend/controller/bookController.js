@@ -105,6 +105,32 @@ exports.getABookController = async (req, res) => {
   }
 };
 
+// to get user books
+exports.getAllUserBookController = async (req, res) => {
+  console.log("inside getAllUserBookController");
+  const email = req.payload;
+  console.log(email);
+  try {
+    const allUserBooks = await books.find({ userMail: email });
+    res.status(200).json(allUserBooks);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// to get all books brought by user
+exports.getAllUserBroghtBookController = async (req, res) => {
+  console.log("inside getAllUserBroghtBookController");
+  const email = req.payload;
+  console.log(email);
+  try {
+    const allBroughtBooks = await books.find({ brought: email });
+    res.status(200).json(allBroughtBooks);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 // ------------------Admin------------------
 
 // to get all books - pending status
@@ -122,17 +148,63 @@ exports.getAllBookAdminController = async (req, res) => {
 exports.approveBookController = async (req, res) => {
   console.log("inside approve Book Controller");
   const {
-    _id, title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImg, status, userMail, brought,
+    _id,
+    title,
+    author,
+    noofpages,
+    imageurl,
+    price,
+    dprice,
+    abstract,
+    publisher,
+    language,
+    isbn,
+    category,
+    uploadedImg,
+    status,
+    userMail,
+    brought,
   } = req.body;
   console.log(
-    _id, title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImg, status, userMail, brought
+    _id,
+    title,
+    author,
+    noofpages,
+    imageurl,
+    price,
+    dprice,
+    abstract,
+    publisher,
+    language,
+    isbn,
+    category,
+    uploadedImg,
+    status,
+    userMail,
+    brought
   );
   try {
     const updatedBook = await books.findByIdAndUpdate(
       { _id },
       {
-        _id, title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImg, status: "approved", userMail, brought,
-      },{new:true}
+        _id,
+        title,
+        author,
+        noofpages,
+        imageurl,
+        price,
+        dprice,
+        abstract,
+        publisher,
+        language,
+        isbn,
+        category,
+        uploadedImg,
+        status: "approved",
+        userMail,
+        brought,
+      },
+      { new: true }
     );
     res.status(200).json(updatedBook);
   } catch (err) {

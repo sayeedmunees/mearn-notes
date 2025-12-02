@@ -55,6 +55,19 @@ export const updateUserProfileAPI = async (reqBody, reqHeader) => {
   );
 };
 
+// get All user books
+export const getAllUserBooksAPI = async (reqHeader) => {
+  return await commonAPI(`GET`, `${serverURL}/user-books`, "", reqHeader);
+};
+// get All user brought books
+export const getAllUserBroughtBooksAPI = async (reqHeader) => {
+  return await commonAPI(
+    `GET`,
+    `${serverURL}/user-brought-books`,
+    "",
+    reqHeader
+  );
+};
 
 //------------admin--------
 // api to get all book-admin
