@@ -80,7 +80,7 @@ const EditProfile = () => {
           setUserProfileUpdateStatus (result.data)
         } else {
           toast.error("Something went wrong");
-          setUpdateStatus(result);
+          setUserProfileUpdateStatus(result);
         }
       } else {
         const reqHeader = { Authorization: `Bearer ${token}` };
@@ -163,7 +163,7 @@ const EditProfile = () => {
                 />
                 {existingImage == "" ? (
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/8792/8792047.png"
+                    src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
                     className="rounded-full"
                     alt="no image"
                     style={{

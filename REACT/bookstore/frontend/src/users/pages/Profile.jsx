@@ -38,8 +38,8 @@ const Profile = () => {
   const { userProfileUpdateStatus } = useContext(
     userProfileUpdateStatusContext
   );
-  const [username, setUserName] = useState("")
-
+  const [username, setUserName] = useState("");
+  const [profile, setProfile] = useState("");
 
   console.log(bookDetails);
 
@@ -159,8 +159,8 @@ const Profile = () => {
       const token = sessionStorage.getItem("token");
       setToken(token);
       const user = JSON.parse(sessionStorage.getItem("existingUser"));
-      setUserName(user.username)
-      
+      setUserName(user.username);
+      setProfile(user.profile || "");
     }
   }, []);
 
@@ -180,8 +180,15 @@ const Profile = () => {
         className="bg-white p-3"
       >
         <img
-          src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
-          alt="profile-pic"
+          src={
+            profile == ""
+              ? "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+              : profile.startsWith("https://lh3.googleusercontent.com/")
+              ? profile
+              : `${serverURL}/upload/${profile}`
+          }
+          alt="profile pic"
+          className="rounded-full"
         />
       </div>
       <div className="flex justify-between px-20 mt-5">
