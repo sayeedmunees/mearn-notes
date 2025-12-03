@@ -1,5 +1,5 @@
 const books = require("../model/bookModel");
-const stripe = require("stripe") (process.env.secretKey)
+const stripe = require("stripe")(process.env.stripeKey);
 
 // add book
 exports.addBookController = async (req, res) => {
@@ -145,9 +145,66 @@ exports.deleteUserBookController = async (req, res) => {
   }
 };
 
-// to delete a user book
-exports.makePaymentController= async (req, res)=> {
-}
+// to make a book payment
+exports.makePaymentController = async (req, res) => {
+  const { bookDetails } = req.body;
+  const email = req.payload;
+  try {
+    const existingBook = await books.findByIdAndUpdate(
+      { _id: bookDetails._id },
+      {
+        title: bookDetails.title,
+        author: bookDetails.author,
+        noofpages: bookDetails.noofpages,
+        imageurl: bookDetails.imageurl,
+        price: bookDetails.price,
+        dprice: bookDetails.dprice,
+        abstract: bookDetails.abstract,
+        publisher: bookDetails.publisher,
+        language: bookDetails.language,
+        isbn: bookDetails.isbn,
+        category: bookDetails.category,
+        // uploadedImg: bookDetails.uploadedImg,
+        status: "sold",
+        userMail: bookDetails.userMail,
+        brought: email,
+      },
+      { new: true }
+    );
+
+    const line_item = [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: bookDetails.title,
+            description: `${bookDetails.author} | ${bookDetails.publisher}`,
+            images: bookDetails.imageurl,
+          },
+          unit_amount: Math.round(bookDetails.dprice * 100), //cents
+        },
+        quantity: 1,
+      },
+    ];
+
+    // create checkout session
+    const session = await stripe.checkout.sessions.create({
+      // purchased type
+      payment_method_types: ["card"],
+      // details of product that is purchasing
+      line_items: line_item,
+      // make payment
+      mode: "payment",
+      // if payment success- url to be shown
+      success_url: "http://localhost:5173/payment-success",
+      // if payment error- url to be shown
+      cancel_url: "http://localhost:5173/payment-error",
+    });
+    console.log(session);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
 // ------------------Admin------------------
 
