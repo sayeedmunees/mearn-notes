@@ -1,4 +1,5 @@
 const books = require("../model/bookModel");
+const stripe = require("stripe") (process.env.secretKey)
 
 // add book
 exports.addBookController = async (req, res) => {
@@ -143,6 +144,10 @@ exports.deleteUserBookController = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+// to delete a user book
+exports.makePaymentController= async (req, res)=> {
+}
 
 // ------------------Admin------------------
 

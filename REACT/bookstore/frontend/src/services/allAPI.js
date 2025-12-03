@@ -73,6 +73,12 @@ export const deleteUserBooksAPI = async (id) => {
   return await commonAPI(`DELETE`, `${serverURL}/delete-user-books/${id}`);
 };
 
+// make payment
+export const makePaymentAPI = async (reqBody, reqHeader)=> {
+return await commonAPI (`PUT`,`${serverURL}/make-payment`, reqBody, reqHeader)
+
+}
+
 //------------admin--------
 // api to get all book-admin
 export const allBookAdminAPI = async (reqHeader) => {

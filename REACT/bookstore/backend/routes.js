@@ -69,6 +69,9 @@ route.get(
 // path for delete user books.....
 route.delete('/delete-user-books/:id', bookController.deleteUserBookController)
 
+// path for make payment.....
+route.put('/make-payment',jwtMiddleware, bookController.makePaymentController)
+
 // ------------ADMIN------------
 
 // path for Admin All books....

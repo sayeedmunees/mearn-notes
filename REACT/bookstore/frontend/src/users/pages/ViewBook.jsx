@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEye,
-  faBackward,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
-import { viewBookAPI } from "../../services/allAPI";
+import { faEye, faBackward, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { makePaymentAPI, viewBookAPI } from "../../services/allAPI";
 import { serverURL } from "../../services/serverURL";
+import { loadStripe } from "@stripe/stripe-js";
 
 const ViewBook = () => {
   const [modalStatus, setModalStatus] = useState(false);
   const [viewBookDetails, setViewBookDetails] = useState({});
+  const [token, setToken] = useState("");
   const { id } = useParams();
   console.log(id);
 
@@ -23,11 +21,31 @@ const ViewBook = () => {
       setViewBookDetails(result.data);
     }
   };
-
   console.log(viewBookDetails);
+
+  const makePayment = async () => {
+    console.log(viewBookDetails);
+    const stripe = await loadStripe(
+      "pk_test_51Sa7V30VECkXdM8PbdiWsa5A4lIKXet6lkKYteTZjc1Gz9SA3ZCg5BDaOrm2f9POrOjFdF2rXHS5XYihUgm0SomS004XdhDDX1"
+    );
+
+    const reqBody = {
+      bookDetails: viewBookDetails,
+    };
+    const reqHeader = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const result = await makePaymentAPI(reqBody, reqHeader);
+    console.log(result);
+  };
 
   useEffect(() => {
     viewABook(id);
+    if (sessionStorage.getItem("token")) {
+      const token = sessionStorage.getItem("token");
+      setToken(token);
+    }
   }, []);
 
   return (
@@ -102,6 +120,7 @@ const ViewBook = () => {
                 </Link>
                 <button
                   type="button"
+                  onClick={makePayment}
                   className="ms-3 px-4 py-3 bg-green-800 rounded text-white hover:bg-white hover:text-green-800 hover:border hover:border-green-800"
                 >
                   Buy ${viewBookDetails?.dprice}
