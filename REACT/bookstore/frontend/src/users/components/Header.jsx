@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { userProfileUpdateStatusContext } from "../../context/ContextShare";
+import { serverURL } from "../../services/serverURL";
 
 const Header = () => {
   const [status, setStatus] = useState(false);
@@ -34,6 +35,9 @@ const Header = () => {
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     setToken(token);
+    const user = JSON.parse(sessionStorage.getItem("existingUser"));
+
+    setProfile(user.profile);
   }, [userProfileUpdateStatus]);
 
   return (
@@ -70,10 +74,16 @@ const Header = () => {
                   onClick={() => setDropDownStatus(!dropDownStatus)}
                   className="gap-x-1.5 rounded-md"
                 >
-
-                  
                   <img
-                    src={profile == "" ?"https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=" : profile.startsWith('https://lh3.googleusercontent.com/')? profile : `${serverURL}/upload/${profile}`}
+                    src={
+                      profile == ""
+                        ? "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+                        : profile.startsWith(
+                            "https://lh3.googleusercontent.com/"
+                          )
+                        ? profile
+                        : `${serverURL}/upload/${profile}`
+                    }
                     alt="UserLogin"
                     className="w-10 h-10 rounded-full"
                   />
@@ -177,7 +187,15 @@ const Header = () => {
                   className="gap-x-1.5 rounded-md"
                 >
                   <img
-                    src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+                    src={
+                      profile == ""
+                        ? "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+                        : profile.startsWith(
+                            "https://lh3.googleusercontent.com/"
+                          )
+                        ? profile
+                        : `${serverURL}/upload/${profile}`
+                    }
                     alt="UserLogin"
                     className="w-10 h-10 rounded-full"
                   />
