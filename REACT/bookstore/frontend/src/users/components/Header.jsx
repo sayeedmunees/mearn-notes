@@ -33,11 +33,13 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
-    setToken(token);
-    const user = JSON.parse(sessionStorage.getItem("existingUser"));
+    if (sessionStorage.getItem("token")) {
+      const token = sessionStorage.getItem("token");
+      setToken(token);
+      const user = JSON.parse(sessionStorage.getItem("existingUser"));
 
-    setProfile(user.profile);
+      setProfile(user.profile);
+    }
   }, [userProfileUpdateStatus]);
 
   return (
@@ -78,7 +80,7 @@ const Header = () => {
                     src={
                       profile == ""
                         ? "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
-                        : profile.startsWith(
+                        : profile?.startsWith(
                             "https://lh3.googleusercontent.com/"
                           )
                         ? profile
@@ -190,7 +192,7 @@ const Header = () => {
                     src={
                       profile == ""
                         ? "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
-                        : profile.startsWith(
+                        : profile?.startsWith(
                             "https://lh3.googleusercontent.com/"
                           )
                         ? profile
