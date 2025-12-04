@@ -164,7 +164,7 @@ exports.makePaymentController = async (req, res) => {
         language: bookDetails.language,
         isbn: bookDetails.isbn,
         category: bookDetails.category,
-        // uploadedImg: bookDetails.uploadedImg,
+        uploadedImg: bookDetails.uploadedImg,
         status: "sold",
         userMail: bookDetails.userMail,
         brought: email,
@@ -179,7 +179,24 @@ exports.makePaymentController = async (req, res) => {
           product_data: {
             name: bookDetails.title,
             description: `${bookDetails.author} | ${bookDetails.publisher}`,
-            images: bookDetails.imageurl,
+            images: [bookDetails.imageurl],
+            metadata: {
+              title: bookDetails.title,
+              author: bookDetails.author,
+              noofpages: `${bookDetails.noofpages}`,
+              imageurl: bookDetails.imageurl,
+              price: `${bookDetails.price}`,
+              dprice: `${bookDetails.dprice}`,
+              abstract: bookDetails.abstract,
+              publisher: bookDetails.publisher,
+              language: bookDetails.language,
+              isbn: bookDetails.isbn,
+              category: bookDetails.category,
+              // uploadedImg: bookDetails.uploadedImg,
+              status: "sold",
+              userMail: bookDetails.userMail,
+              brought: email,
+            },
           },
           unit_amount: Math.round(bookDetails.dprice * 100), //cents
         },
@@ -200,7 +217,10 @@ exports.makePaymentController = async (req, res) => {
       // if payment error- url to be shown
       cancel_url: "http://localhost:5173/payment-error",
     });
+
     console.log(session);
+
+    res.status(200).json({ url: session.url });
   } catch (err) {
     res.status(500).json(err);
   }

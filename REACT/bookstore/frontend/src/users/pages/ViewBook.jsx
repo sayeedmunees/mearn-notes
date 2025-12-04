@@ -6,6 +6,7 @@ import { faEye, faBackward, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { makePaymentAPI, viewBookAPI } from "../../services/allAPI";
 import { serverURL } from "../../services/serverURL";
 import { loadStripe } from "@stripe/stripe-js";
+import { toast, ToastContainer } from "react-toastify";
 
 const ViewBook = () => {
   const [modalStatus, setModalStatus] = useState(false);
@@ -36,8 +37,20 @@ const ViewBook = () => {
       Authorization: `Bearer ${token}`,
     };
 
+    console.log(reqBody);
+    console.log(reqBody);
+    
+
     const result = await makePaymentAPI(reqBody, reqHeader);
     console.log(result);
+
+    const checkOutUrl = result?.data?.url;
+    if (checkOutUrl) {
+      // just redirect the user to the stripe checkout page
+      window.location.href = checkOutUrl;
+    } else {
+      toast.error("Something Went wrong");
+    }
   };
 
   useEffect(() => {
@@ -171,6 +184,7 @@ const ViewBook = () => {
           </div>
         </div>
       )}
+      <ToastContainer theme="colored" position="top-center" autoClose={3000} />
     </>
   );
 };

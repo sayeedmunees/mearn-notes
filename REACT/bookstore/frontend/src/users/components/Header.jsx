@@ -9,18 +9,24 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { userProfileUpdateStatusContext } from "../../context/ContextShare";
 
 const Header = () => {
   const [status, setStatus] = useState(false);
   const [dropDownStatus, setDropDownStatus] = useState(false);
   const [token, setToken] = useState("");
+  const [profile, setProfile] = useState("");
+  const { userProfileUpdateStatus } = useContext(
+    userProfileUpdateStatusContext
+  );
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    sessionStorage.setItem("existingUser", "");
-    sessionStorage.setItem("token", "");
+    sessionStorage.removeItem("existingUser");
+    sessionStorage.removeItem("token");
     setToken("");
     navigate("/");
   };
@@ -28,7 +34,7 @@ const Header = () => {
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     setToken(token);
-  }, []);
+  }, [userProfileUpdateStatus]);
 
   return (
     <>
@@ -64,8 +70,10 @@ const Header = () => {
                   onClick={() => setDropDownStatus(!dropDownStatus)}
                   className="gap-x-1.5 rounded-md"
                 >
+
+                  
                   <img
-                    src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+                    src={profile == "" ?"https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=" : profile.startsWith('https://lh3.googleusercontent.com/')? profile : `${serverURL}/upload/${profile}`}
                     alt="UserLogin"
                     className="w-10 h-10 rounded-full"
                   />
