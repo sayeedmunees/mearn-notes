@@ -946,7 +946,7 @@ MoNGO DB
     - package.json file: npm configuration file
     - package-lock.json file version details of package installed using npm
     - angular.json file : Angular project configuration file
-    - node_modeles folder folder is used to hold copies of installed packages using npm in your project. I
+    - node_modeles: folder is used to hold copies of installed packages using npm in your project.
     - public folder can access by all files inside the project
     - src folder project related contents.
         - styles.css file used to style globally to all html pages
@@ -965,9 +965,23 @@ MoNGO DB
 12. Data Binding Data sharing within a component
     - One way Binding: Data shared from one file to another at a time
         - ts (component file) to html (view) file
-        - Interpolation: {{ts class property}} inside HTML page
-        - Property binding: [attibute-name] ="property-name"
-        - Style binding: [style.styleAttribute] ="property-name"
+            - Interpolation: {{ts class property}} inside HTML page
+            - Property binding: [attibute-name] ="property-name"
+            - Style binding: [style.styleAttribute] ="property-name"
+        - HTML (view) file to ts (component file)
+            - Event Binding: (eventname)="function-name()"
+            - Event Binding using $event: (eventname)= "function-name($event)" because $event will give the event occur in DOM.
+            - Event Binding using template reference variable (eventname)= "function-name(template reference variable)", set template reference variable '#variableNAme' to a tag, will give you the tag while binding the function.
+13. Angular Directives: used to modify behaviour of html elements/attributes/properties
+    3 types:
+    - component directives: used to display component in html page. Used with a template. This type of directive is the most common directive type.
+        eg: component selectors
+    - Attribute Directives: used to change style of html elements. Change the appearance or behavior of an element, component, or another directive.
+        The most common attribute directives are as follows:
+            - NgClass Adds and removes a set of CSS classes.
+                - import NgClass in import array of component file
+            - NgStyle Adds and removes a set of HTML styles.
+            - NgModel Adds two-way data binding to an HTML form element.
 
 
 
