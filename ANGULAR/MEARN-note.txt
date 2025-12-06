@@ -972,6 +972,7 @@ MoNGO DB
             - Event Binding: (eventname)="function-name()"
             - Event Binding using $event: (eventname)= "function-name($event)" because $event will give the event occur in DOM.
             - Event Binding using template reference variable (eventname)= "function-name(template reference variable)", set template reference variable '#variableNAme' to a tag, will give you the tag while binding the function.
+    - Two Way binding: NgModel directive
 13. Angular Directives: used to modify behaviour of html elements/attributes/properties
     3 types:
     - component directives: used to display component in html page. Used with a template. This type of directive is the most common directive type.
@@ -982,6 +983,22 @@ MoNGO DB
                 - import NgClass in import array of component file
             - NgStyle Adds and removes a set of HTML styles.
             - NgModel Adds two-way data binding to an HTML form element.
+                - Import "FormsModule" in component import array, to [(NgModel)] = "class property"
+    - Structural Directives: Structural directives are directives applied to an
+    <ng-template> element that conditionally or repeatedly render the content
+    of that <ng-template>
+        - *ngif
+        - *ngFor
+        - *ngSwitch
+    - ngForm Directive: used to get / control properties of form tag
+14. Control Flow statements: Similar to Structural directives, no need to import control flow statements to use in component, used in html view.
+    - @if, @else, @elseif
+    - @for
+    - @switch
+15. Pipes: Used to convert data to another format, to ruse pipe in html use pipe charecter |
+    - Syntax is: dataToConvert pipe-charecter(1) pipe-name [:"options"] in html element
+    - Built in Pipes eg. Date Pies, Currency Pipes
+    - CUstom pipes
 
 
 
